@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use App\Http\Controllers\AdminBaseController;
+use App\Http\Controllers\Blog\Admin\AdminBaseController;
 use Illuminate\Http\Request;
 
 class MainController extends AdminBaseController
