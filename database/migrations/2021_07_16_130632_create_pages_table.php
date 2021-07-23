@@ -15,13 +15,23 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('excerpt')->nullable();
-            $table->text('body')->nullable();
+            $table->string('title_uz');
+            $table->string('title_ru');
+            $table->string('title_en');
+            $table->string('excerpt_uz')->nullable();
+            $table->string('excerpt_ru')->nullable();
+            $table->string('excerpt_en')->nullable();
+            $table->text('body_uz')->nullable();
+            $table->text('body_ru')->nullable();
+            $table->text('body_en')->nullable();
             $table->string('image')->nullable();
             $table->string('slug')->unique();
-            $table->text('meta_description')->nullable();
-            $table->text('meta_keywords')->nullable();
+            $table->text('meta_description_uz')->nullable();
+            $table->text('meta_description_ru')->nullable();
+            $table->text('meta_description_en')->nullable();
+            $table->text('meta_keywords_uz')->nullable();
+            $table->text('meta_keywords_ru')->nullable();
+            $table->text('meta_keywords_en')->nullable();
             $table->enum('template', ['about','contacts','home','default'])->default('default');
             $table->timestamps();
         });

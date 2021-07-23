@@ -31,7 +31,8 @@ Route::group(['middleware'=>['status','auth']], function(){
     ];
 
     Route::group($groupData, function(){
-        Route::get('index', 'MainController@index')->name('admin.index');
+        Route::get('/', 'MainController@index')->name('admin.index');
+        // Route::get('index', 'MainController@index')->name('admin.index');
 
     });
 
