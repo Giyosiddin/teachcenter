@@ -13,7 +13,6 @@ abstract class AdminBaseController extends BaseController
         $this->middleware('auth');
         $this->middleware('status');
 
-        // MetaTags
 
     }
 }

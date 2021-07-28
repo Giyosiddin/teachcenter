@@ -21,6 +21,9 @@ class CreateTeachersTable extends Migration
             $table->text('information_uz')->nullable();
             $table->text('information_ru')->nullable();
             $table->text('information_en')->nullable();
+            $table->text('position_uz')->nullable();
+            $table->text('position_ru')->nullable();
+            $table->text('position_en')->nullable();
             $table->string('image')->nullable();
         });
     }

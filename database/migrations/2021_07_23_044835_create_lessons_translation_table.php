@@ -19,6 +19,7 @@ class CreateLessonsTranslationTable extends Migration
             $table->string('locale');
             $table->string('title');
             $table->string('description')->nullable();
+            $table->string('body')->nullable();
             $table->timestamps();
         });
     }

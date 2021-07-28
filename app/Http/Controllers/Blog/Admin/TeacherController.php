@@ -10,31 +10,65 @@ class TeacherController extends Controller
 {
     public function index()
     {
+        $teachers = Teacher::orderBy('id','ASC')->paginate(10);
+        return view('admin.teacher.index', compact('teachers'));
 
     }
 
     public function create()
     {
-
+        return view('admin.teacher.create');
     }
 
     public function store(Request $request)
     {
+        // dd($request->all());
+        $data = $request->all();
+        $teacher = Teacher::create($data);
+        if($teacher){
+            return redirect()->route('teacher.index')->with(['success' => 'Has been created!']);
+        }else{
+            return redirect()->back()->with(['error' => 'Error. Has not been created!']);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $teacher = Teacher::find($id);
+        if(!$teacher){
+            return back()->withErrors(['msg' => 'Not found teacher!'])->withInput();
+        }
+        $data = $request->all();
+        $save = $teacher->update($data);
+        if($save){
+            return back()->with(['msg' => " Successfuly updated"]);
+        }else{
+            return back()->withErrors(['msg' => " Error happen saving!"]);
+        }
 
     }
 
-    public function update(Request $request)
+    public function edit($id)
     {
-
+        $teacher = Teacher::find($id);
+        if(!$teacher){
+            return back()->withErrors(['msg' => 'Not found teacher!']);
+        }
+        return view('admin.teacher.edit',compact('teacher'));
     }
-
-    public function edit()
+ 
+    public function delete($id)
     {
+        $teacher = Teacher::find($id);
+        if($teacher){
+            return back()->withErrors(['msg' => "Not found item!"]);
+        }
 
-    }
-
-    public function delete()
-    {
-        
+        $delete = $teacher->delete();
+        if($delete){
+            return redirect()->route('teacher.index')->with(['success' => "Item was deleted! "]);
+        }else{
+            return back()->withErrors(['msg' => "Item has not deleted!"]);
+        }
     }
 }

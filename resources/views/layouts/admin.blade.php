@@ -230,26 +230,6 @@
                 <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
-            <!-- <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul> -->
           </li>
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
@@ -480,11 +460,28 @@
           </li>
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="{{route('teacher.index')}}" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
+                Teacher
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('news.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                News
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('category.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-list-alt "></i>
+              <p>
+                Categories
               </p>
             </a>
           </li>
@@ -879,6 +876,9 @@
 <script src="{{asset('/admin-assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('/admin-assets/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
 <!-- AdminLTE App -->
 <script src="{{asset('/admin-assets/dist/js/adminlte.js')}}"></script>
 
