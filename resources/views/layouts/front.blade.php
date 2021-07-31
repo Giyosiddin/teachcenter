@@ -200,7 +200,7 @@
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
-        </div>/public/
+        </div>
         
     </header>
     

@@ -231,6 +231,56 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('teacher.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-calendar-alt"></i>
+              <p>
+                Teacher
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('news.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                News
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Courses
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('category.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-list-alt "></i>
+                  <p>
+                    Categories
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('course.index')}}" class="nav-link">
+                  <i class="fas fa-chalkboard-teacher nav-icon"></i>
+                  <p>Courses</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('course.index')}}" class="nav-link">
+                  <i class="fas fa-laptop-code nav-icon"></i>
+                  <p>Lessons</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -459,32 +509,7 @@
             </ul>
           </li>
           <li class="nav-header">EXAMPLES</li>
-          <li class="nav-item">
-            <a href="{{route('teacher.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
-              <p>
-                Teacher
-                <!-- <span class="badge badge-info right">2</span> -->
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('news.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                News
-                <!-- <span class="badge badge-info right">2</span> -->
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('category.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-list-alt "></i>
-              <p>
-                Categories
-              </p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon far fa-image"></i>

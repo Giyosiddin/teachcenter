@@ -58,7 +58,7 @@ class PostController extends Controller
         }
     }
 
-    public function destroy()
+    public function delete($id)
     {
         
     }

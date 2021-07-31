@@ -21,7 +21,6 @@ class CreateCoursesTranslationTable extends Migration
             $table->string('description')->nullable();
             $table->text('body')->nullable();
             $table->string('details')->nullable();
-            $table->timestamps();
         });
     }
 

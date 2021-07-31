@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
+use App\Repositories\LessonRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Lesson;
 
 class LessonController extends Controller
 {
+    private $lessonRepository;
+
+    public function __construct(LessonRepository $lessonRepository)
+    {
+        $this->lessonRepository = $lessonRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        $lessons = Lesson::all();
+        return view('admin.lesson.index', compact('lesson'));
     }
 
     /**
@@ -70,7 +80,7 @@ class LessonController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
+    } 
 
     /**
      * Remove the specified resource from storage.
