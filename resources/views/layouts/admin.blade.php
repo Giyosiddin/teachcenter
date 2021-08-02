@@ -274,7 +274,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('course.index')}}" class="nav-link">
+                <a href="{{route('lesson.index')}}" class="nav-link">
                   <i class="fas fa-laptop-code nav-icon"></i>
                   <p>Lessons</p>
                 </a>

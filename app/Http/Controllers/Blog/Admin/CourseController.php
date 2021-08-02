@@ -37,6 +37,7 @@ class CourseController extends Controller
             $validated = $request->validate([
                 'title' => 'required|max:255',
                 'body' => 'required',
+                'locale' => 'required',
             ]);
             $data = $request->all();
             $create = $this->courseRepository->createCourse($data);
@@ -62,6 +63,7 @@ class CourseController extends Controller
             $validated = $request->validate([
                 'title' => 'required|max:255',
                 'body' => 'required',
+                'locale' => 'required',
             ]);
             $data = $request->all();
             $update = $this->courseRepository->updateCourse($data, $course->id);
