@@ -2959,7 +2959,5 @@
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
- $(document).ready(function () {
-        $('.ckeditor').ckeditor();
-    });
+
 //# sourceMappingURL=adminlte.js.map

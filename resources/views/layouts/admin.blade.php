@@ -11,8 +11,12 @@
   <link rel="stylesheet" href="{{asset('/admin-assets/fontawesome-free/css/all.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('/admin-assets/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+  
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="{{asset('/admin-assets/dropzone/min/dropzone.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('/admin-assets/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/admin-assets/custom.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -908,6 +912,9 @@
 <script src="{{asset('/admin-assets/dist/js/adminlte.js')}}"></script>
 
 <!-- PAGE PLUGINS -->
+
+<!-- dropzonejs -->
+<script src="{{asset('/admin-assets/dropzone/min/dropzone.min.js')}}"></script>
 <!-- jQuery Mapael -->
 <!-- <script src="/admin/jquery-mapael/maps/usa_states.min.js"></script> -->
 
@@ -915,5 +922,6 @@
 <script src="{{asset('/admin-assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('/admin-assets/dist/js/pages/dashboard2.js')}}"></script>
+<script src="{{asset('/admin-assets/custom.js')}}"></script>
 </body>
 </html>

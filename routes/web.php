@@ -55,10 +55,11 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::match(['get','post'], 'course/create', 'CourseController@create')->name('course.create');
         Route::match(['get','post'], 'course/edit/{course}', 'CourseController@edit')->name('course.edit');
         Route::get('course/delete/{course}', 'CourseController@delete')->name('course.delete');
-        Route::get('lesson', 'LessonController@index')->name('lesson.index');
+        Route::get('lessons', 'LessonController@index')->name('lesson.index');
         Route::match(['get','post'], 'lesson/create', 'LessonController@create')->name('lesson.create');
         Route::match(['get','post'], 'lesson/edit/{lesson}', 'LessonController@edit')->name('lesson.edit');
-        Route::get('lesson/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');
+        Route::get('lesson/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');        
+        Route::get('lesson/show/{lesson}', 'LessonController@show')->name('lesson.show');
     });
 
 });

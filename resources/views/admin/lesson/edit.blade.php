@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,7 +45,7 @@
         </div>
         </div>
     @endif
-	  <form action="{{route('lesson.edit', $lesson->id)}}" method="POST">
+	  <form action="{{route('lesson.edit', $lesson->id)}}" method="POST" enctype="multipart/form-data">
      @csrf
       <div class="row">
         <div class="col-md-9">
@@ -130,18 +129,37 @@
             <div class="card-header">
               <h3 class="card-title">Others</h3>
             </div>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Photo</label>
-                <input type="file" name="image" id="inputEstimatedBudget" class="form-control">
+            <div class="card-body container">
+              <div class="img"><a class=""><img src="{{\Storage::url($lesson->image)}}" alt=""></a></div>
+              <div class="form-group row" >
+                <div class="dropzone col mt-2">
+                  <div><i class="fas fa-plus"></i> <span>Photo</span></div>
+                  <input type="file" name="image" id="image" class="form-control">
+                </div>
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 file"><i class="fas fa-times"></i> <span>Delete</span></a>
+                  {{-- <input type="file" name="image" id="image" class="form-control"> --}}
+                </div>
               </div>
-              <div class="form-group">
-                <label for="inputEstimatedBudget">First file</label>
-                <input type="file" name="file_first" id="inputEstimatedBudget" class="form-control">
+              <div class="img">@if(!empty($lesson->file_first)) <a class="file_name"><i class="fas fa-file"></i>
+              <span>{{basename(\Storage::url($lesson->file_first))}}</span></a>  @endif</div>
+              <div class="form-group row">
+                <div class="dropzone col mt-2"> <div><i class="fas fa-plus"></i> First file</div>
+                <input type="file" name="file_first" id="file_first" class="form-control"></div>
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 file"><i class="fas fa-times"></i><span>Delete</span></a>
+                </div>
               </div>              
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Second file</label>
-                <input type="file" name="file_second" id="inputEstimatedBudget" class="form-control">
+              <div class="img">@if(!empty($lesson->file_second)) <a  class="file_name"><i class="fas fa-file"></i>
+                <span>{{basename(\Storage::url($lesson->file_second))}}</span></a>  @endif</div>
+              <div class="form-group row">
+                <div class="dropzone col mt-2 ">
+                  <div><i class="fas fa-plus"></i> Second file</div>
+                  <input type="file" name="file_second" value="{{\Storage::path($lesson->file_second)}}" id="file_second" class="form-control">
+                </div>                
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 file"><i class="fas fa-times"></i><span>Delete</span></a>
+                </div>
               </div>                            
               <div class="form-group">
                 <label for="timeVideo">Time video</label>

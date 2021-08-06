@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-      		<h1>Categories</h1>
+      		<h1>Lessons</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-              <li class="breadcrumb-item active">Categories</li>
+              <li class="breadcrumb-item active">Lessons</li>
             </ol>
           </div>
         </div>
@@ -98,7 +98,7 @@
                           <span class="badge badge-success">Success</span>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="#">
+                          <a class="btn btn-primary btn-sm" href="{{route('lesson.show', $lesson->id)}}">
                               <i class="fas fa-folder">
                               </i>
                               View

@@ -67,7 +67,8 @@ class LessonController extends Controller
      */
     public function show($id)
     {
-        
+        $lesson = Lesson::find($id);
+        return view('admin.lesson.show', compact('lesson'));
     }
 
     /**
@@ -86,13 +87,14 @@ class LessonController extends Controller
         if($request->isMethod('get')){
             return view('admin.lesson.edit',compact('lesson','courses'));
         }else{
+            
+        // dd($request->file('image'));
             $validated = $request->validate([
                 'title' => 'required|max:255',
                 'body' => 'required',
                 'locale' => 'required',
             ]);
-            $data = $request->all();
-            $edit = $this->lessonRepository->editLesson($data,$id);
+            $edit = $this->lessonRepository->editLesson($request,$id);
             // dd($edit);
             if($edit){
                 return back()->with(['msg' => "Lesson had saved successfuly!"]);
