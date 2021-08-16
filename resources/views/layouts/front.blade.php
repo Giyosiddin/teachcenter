@@ -13,6 +13,8 @@
     
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="/front/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!--====== Slick css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/slick.css')}}">
@@ -43,6 +45,9 @@
     
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/responsive.css')}}">
+    
+    <!--====== Custom css ======-->
+    <link rel="stylesheet" href="{{asset('/front/css/custom.css')}}">
   
   
 </head>
@@ -70,144 +75,118 @@
     
     <header id="header-part">
        
-        <div class="header-top d-none d-lg-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header-contact text-lg-left text-center">
-                            <ul>
-                                <li><img src="/front/images/all-icon/map.png" alt="icon"><span>127/5 Mark street, New york</span></li>
-                                <li><img src="/front/images/all-icon/email.png" alt="icon"><span>info@yourmail.com</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header-opening-time text-lg-right text-center">
-                            <p>Opening Hours : Monday to Saturay - 8 Am to 5 Pm</p>
-                        </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- header top -->
-        
-        <div class="header-logo-support pt-30 pb-30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="logo">
-                            <a href="index-2.html">
-                                <img src="/front/images/logo.png" alt="Logo">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-8">
-                        <div class="support-button float-right d-none d-md-block">
-                            <div class="support float-left">
-                                <div class="icon">
-                                    <img src="/front/images/all-icon/support.png" alt="icon">
-                                </div>
-                                <div class="cont">
-                                    <p>Need Help? call us free</p>
-                                    <span>321 325 5678</span>
-                                </div>
-                            </div>
-                            <div class="button float-left">
-                                <a href="#" class="main-btn">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- header logo support -->
-        
-        <div class="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 col-md-10 col-sm-9 col-8">
-                        <nav class="navbar navbar-expand-lg">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto">
-                                    <li class="nav-item">
-                                        <a class="active" href="index-2.html">Home</a>
-                                        <ul class="sub-menu">
-                                            <li><a class="active" href="index-2.html">Home 01</a></li>
-                                            <li><a href="index-3.html">Home 02</a></li>
-                                            <li><a href="index-4.html">Home 03</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="about.html">About us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="courses.html">Courses</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="courses.html">Courses</a></li>
-                                            <li><a href="courses-singel.html">Course Singel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="events.html">Events</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="events.html">Events</a></li>
-                                            <li><a href="events-singel.html">Event Singel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="teachers.html">Our teachers</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="teachers.html">teachers</a></li>
-                                            <li><a href="teachers-singel.html">teacher Singel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="blog.html">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-singel.html">Blog Singel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="shop.html">Shop</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="shop-singel.html">Shop Singel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="contact.html">Contact</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                            <li><a href="contact-2.html">Contact Us 2</a></li>
-                                        </ul>
-                                    </li>
+        <!--  <div class="header-top d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="header-contact text-lg-left text-center">
+                                <ul>
+                                    <li><img src="images/all-icon/map.png" alt="icon"><span>127/5 Mark street, New york</span></li>
+                                    <li><img src="images/all-icon/email.png" alt="icon"><span>info@yourmail.com</span></li>
                                 </ul>
                             </div>
-                        </nav> <!-- nav -->
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-4">
-                        <div class="right-icon text-right">
-                            <ul>
-                                <li><a href="#" id="search"><i class="fa fa-search"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
-                            </ul>
-                        </div> <!-- right icon -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div>
-        
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="header-opening-time text-lg-right text-center">
+                                <p>Opening Hours : Monday to Saturay - 8 Am to 5 Pm</p>
+                            </div>
+                        </div>
+                 </div  -->
+         
+         <div class="header-logo-support pt-30 pb-30">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-lg-4 col-md-4">
+                         <div class="logo">
+                             <a href="index-2.html">
+                                 <img src="{{asset('front/images/logo.png')}}" alt="Logo">
+                             </a>
+                         </div>
+                     </div>
+                     <div class="col-lg-8 col-md-8">
+                         <div class="support-button float-right d-none d-md-block">
+                             <div class="support float-left">
+                                 <div class="icon">
+                                     <img src="{{asset('front/images/all-icon/support.png')}}" alt="icon">
+                                 </div>
+                                 <div class="cont">
+                                     <p>Qo'shimcha ma'lumotlar uchun bog'laning</p>
+                                     <span>90 353 44 35</span>
+                                 </div>
+                             </div>
+                             <div class="button float-left">
+                                 <a href="{{route('register')}}" class="main-btn">Registratsiya</a>
+                             </div>
+                         </div>
+                     </div>
+                 </div> <!-- row -->
+             </div> <!-- container -->
+         </div> <!-- header logo support --> 
+         
+         <div class="navigation">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-lg-10 col-md-10 col-sm-9 col-8">
+                         <nav class="navbar navbar-expand-lg">
+                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                 <span class="icon-bar"></span>
+                                 <span class="icon-bar"></span>
+                                 <span class="icon-bar"></span>
+                             </button>
+ 
+                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                 <ul class="navbar-nav mr-auto">
+                                     <li class="nav-item">
+                                         <a class="active" href="index-2.html">Asosiy sahifa</a>
+                                                                            </li>
+                                     <li class="nav-item">
+                                         <a href="about.html">Biz haqimizda</a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="about.html">Yangiliklar</a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="courses.html">Xizmatlar</a>
+                                         <ul class="sub-menu">
+                                             <li><a href="courses.html">Konsalting</a></li>
+                                             <li><a href="courses-singel.html">O'quv kurslari</a></li>
+                                         </ul>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="events.html">Online darslar</a>
+                                         <!-- <ul class="sub-menu">
+                                             <li><a href="events.html">Events</a></li>
+                                             <li><a href="events-singel.html">Event Singel</a></li>
+                                         </ul> -->
+                                     </li>
+                                     
+                                     <li class="nav-item">
+                                         <a href="contact.html">Bog'lanish</a>
+                                         
+                                     </li>
+                                 </ul>
+                             </div>
+                         </nav> <!-- nav -->
+                     </div>
+                     <div class="col-lg-2 col-md-2 col-sm-3 col-4">
+                         <div class="right-icon text-right">
+                             <ul>
+                                 <li><a href="#" id="search"><i class="fa fa-search"></i></a></li>
+                                
+                             </ul>
+                         </div> <!-- right icon -->
+                     </div>
+                    
+                 </div> <!-- row -->
+             </div> <!-- container -->
+         </div>
+         
     </header>
+     
+     <!--====== HEADER PART ENDS ======-->
     
-    <!--====== HEADER PART ENDS ======-->
-   
-    <!--====== SEARCH BOX PART START ======-->
-    
+     <!--====== SEARCH BOX PART START ======-->
+     
     <div class="search-box">
         <div class="serach-form">
             <div class="closebtn">
@@ -220,6 +199,7 @@
             </form>
         </div> <!-- serach form -->
     </div>
+     
     
     <!--====== SEARCH BOX PART ENDS ======-->
         
@@ -236,12 +216,12 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-about mt-40">
                             <div class="logo">
-                                <a href="#"><img src="/front/images/logo-2.png" alt="Logo"></a>
+                                <a href="#"><img src="{{asset('front/images/logo2.png')}}" alt="Logo"></a>
                             </div>
-                            <p>Gravida nibh vel velit auctor aliquetn quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate.</p>
+                            <p>Ushbu web sayt orqali konsalting va o'quv fanlaridan o'zingizga kerakli ma'lumotlarni olasiz.</p>
                             <ul class="mt-20">
                                 <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-telegram"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
@@ -250,28 +230,26 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="footer-link mt-40">
                             <div class="footer-title pb-25">
-                                <h6>Sitemap</h6>
+                                <h6>Menyu</h6>
                             </div>
                             <ul>
-                                <li><a href="index-2.html"><i class="fa fa-angle-right"></i>Home</a></li>
-                                <li><a href="about.html"><i class="fa fa-angle-right"></i>About us</a></li>
-                                <li><a href="courses.html"><i class="fa fa-angle-right"></i>Courses</a></li>
-                                <li><a href="blog.html"><i class="fa fa-angle-right"></i>News</a></li>
-                                <li><a href="events.html"><i class="fa fa-angle-right"></i>Event</a></li>
+                                <li><a href="index-2.html"><i class="fa fa-angle-right"></i>Asosiy sahifa</a></li>
+                                <li><a href="about.html"><i class="fa fa-angle-right"></i>Biz haqimizda</a></li>
+                                <li><a href="courses.html"><i class="fa fa-angle-right"></i>Yangiliklar</a></li>
+                                <li><a href="blog.html"><i class="fa fa-angle-right"></i>Konsalting</a></li>
+                                <li><a href="events.html"><i class="fa fa-angle-right"></i>O'quv kurslari</a></li>
                             </ul>
                             <ul>
-                                <li><a href="#"><i class="fa fa-angle-right"></i>Gallery</a></li>
-                                <li><a href="shop.html"><i class="fa fa-angle-right"></i>Shop</a></li>
-                                <li><a href="teachers.html"><i class="fa fa-angle-right"></i>Teachers</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i>Support</a></li>
-                                <li><a href="contact.html"><i class="fa fa-angle-right"></i>Contact</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i>Online darslae</a></li>
+                                <li><a href="shop.html"><i class="fa fa-angle-right"></i>Bog'lanish</a></li>
+                                
                             </ul>
                         </div> <!-- footer link -->
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="footer-link support mt-40">
                             <div class="footer-title pb-25">
-                                <h6>Support</h6>
+                                <h6>Yordam</h6>
                             </div>
                             <ul>
                                 <li><a href="#"><i class="fa fa-angle-right"></i>FAQS</a></li>
@@ -285,7 +263,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-address mt-40">
                             <div class="footer-title pb-25">
-                                <h6>Contact Us</h6>
+                                <h6>Bog'lanish</h6>
                             </div>
                             <ul>
                                 <li>
@@ -293,7 +271,7 @@
                                         <i class="fa fa-home"></i>
                                     </div>
                                     <div class="cont">
-                                        <p>143 castle road 517 district, kiyev port south Canada</p>
+                                        <p>Toshkent sh. Yunusobod t. Amir Temur 18-uy</p>
                                     </div>
                                 </li>
                                 <li>
@@ -301,7 +279,7 @@
                                         <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="cont">
-                                        <p>+3 123 456 789</p>
+                                        <p>90 353 44 35</p>
                                     </div>
                                 </li>
                                 <li>
@@ -309,7 +287,7 @@
                                         <i class="fa fa-envelope-o"></i>
                                     </div>
                                     <div class="cont">
-                                        <p>info@yourmail.com</p>
+                                        <p>info@classedu.uz</p>
                                     </div>
                                 </li>
                             </ul>
@@ -322,16 +300,12 @@
         <div class="footer-copyright pt-10 pb-25">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
-                        <div class="copyright text-md-left text-center pt-15">
-                            <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a> </p>
+                    <div class="col-md-12">
+                        <div class="copyright text-md-center text-center pt-15">
+                            <p><a>Barcha huquqlar himoyalangan © {{date('Y')}}</a> </p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="copyright text-md-right text-center pt-15">
-                           
-                        </div>
-                    </div>
+                   
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer copyright -->

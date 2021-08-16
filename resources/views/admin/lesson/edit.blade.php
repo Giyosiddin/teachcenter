@@ -50,19 +50,6 @@
       <div class="row">
         <div class="col-md-9">
             <div class="card card-primary card-tabs">
-              <!-- <div class="card-header p-0 pt-1">
-                <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Uz</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">RU</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">En</a>
-                  </li>
-                </ul>
-              </div> -->
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
@@ -88,36 +75,6 @@
                           </div>
                       </div>
                   </div>
-                <!--   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                    <div class="card-header">
-                        <h3 class="card-title">Рускый язик</h3>
-                      </div>
-                      <div class="card-body">
-                        <div class="form-group">
-                          <label for="inputName">Title</label>
-                          <input type="text" required="required" id="title_ru" required="required" name="title_ru" class="form-control">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputDescription">Excerpt</label>
-                          <textarea id="inputDescription" class="form-control" name="excerpt_ru" rows="4"></textarea>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                    <div class="card-header">
-                        <h3 class="card-title">English</h3>
-                      </div>
-                      <div class="card-body">
-                        <div class="form-group">
-                          <label for="inputName">Title</label>
-                          <input type="text" required="required" id="title_en" required="required" name="title_en" class="form-control">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputDescription">Excerpt</label>
-                          <textarea id="inputDescription" class="form-control" name="excerpt_en" rows="4"></textarea>
-                        </div>
-                      </div>
-                  </div> -->
                 </div>
               </div>
               <!-- /.card -->
@@ -135,30 +92,33 @@
                 <div class="dropzone col mt-2">
                   <div><i class="fas fa-plus"></i> <span>Photo</span></div>
                   <input type="file" name="image" id="image" class="form-control">
+                  <input type="hidden" name="delete_image" id="delete_image" value="@if(!empty($lesson->image)) {{$lesson->image}} @endif">
                 </div>
                 <div class="col mt-2 ">
-                  <a href="#" class="btn btn-success w-100 pt-1 file"><i class="fas fa-times"></i> <span>Delete</span></a>
-                  {{-- <input type="file" name="image" id="image" class="form-control"> --}}
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
                 </div>
               </div>
-              <div class="img">@if(!empty($lesson->file_first)) <a class="file_name"><i class="fas fa-file"></i>
-              <span>{{basename(\Storage::url($lesson->file_first))}}</span></a>  @endif</div>
+              <div class="img"> <a class="file_name">@if(!is_null($lesson->file_first))<i class="fas fa-file"></i>
+              <span>{{basename(\Storage::url($lesson->file_first))}}</span> @endif</a> </div>
               <div class="form-group row">
                 <div class="dropzone col mt-2"> <div><i class="fas fa-plus"></i> First file</div>
-                <input type="file" name="file_first" id="file_first" class="form-control"></div>
+                  <input type="file" name="file_first" id="file_first" class="form-control" value="test">
+                  <input type="hidden" name="delete_file_first" id="delete_file_first" value="@if(!empty($lesson->file_first)) {{$lesson->file_first}} @endif">
+                </div>
                 <div class="col mt-2 ">
-                  <a href="#" class="btn btn-success w-100 pt-1 file"><i class="fas fa-times"></i><span>Delete</span></a>
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
                 </div>
               </div>              
-              <div class="img">@if(!empty($lesson->file_second)) <a  class="file_name"><i class="fas fa-file"></i>
-                <span>{{basename(\Storage::url($lesson->file_second))}}</span></a>  @endif</div>
+              <div class="img"> <a  class="file_name">@if(!is_null($lesson->file_second))<i class="fas fa-file"></i>
+                <span>{{basename(\Storage::url($lesson->file_second))}}</span>  @endif</a></div>
               <div class="form-group row">
                 <div class="dropzone col mt-2 ">
                   <div><i class="fas fa-plus"></i> Second file</div>
                   <input type="file" name="file_second" value="{{\Storage::path($lesson->file_second)}}" id="file_second" class="form-control">
+                  <input type="hidden" name="delete_file_second" id="delete_file_second" value="@if(!empty($lesson->file_second)){{$lesson->file_second}} @endif">
                 </div>                
                 <div class="col mt-2 ">
-                  <a href="#" class="btn btn-success w-100 pt-1 file"><i class="fas fa-times"></i><span>Delete</span></a>
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
                 </div>
               </div>                            
               <div class="form-group">

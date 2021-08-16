@@ -13,8 +13,9 @@ class CourseRepository {
 		$this->course = $course;
 	}
 
-	public function createCourse($data)
+	public function createCourse($request)
 	{
+		$data = $request->all();
 		$course_data = [
 				'teacher_id' => $data['teacher_id'],
 				'category_id' => $data['category_id'],
@@ -29,14 +30,22 @@ class CourseRepository {
 			'body' => $data['body'],
 			'details' => $data['details'],
 		];
+		if($request->hasFile('image')){			
+			$ext_image = $request->file('image')->extension();
+			$image = $request->file('image')->storeAs('public/courses',$course->id.'.'.$ext_image);
+			$course->image = $image;
+		}
+		
+		$course->save();
 		$course_translation = CourseTranslation::create($course_translation);
 		if($course){
 			return $course;
 		}
 	}
 
-	public function updateCourse($data, $id)
+	public function updateCourse($request, $id)
 	{
+		$data = $request->all();
 		$course = Course::find($id);
 
 		$course_data = [
@@ -53,6 +62,14 @@ class CourseRepository {
 			'details' => $data['details'],
 		];
 		$course->translation->update($course_translation);
+		if($request->hasFile('image')){			
+			$ext_image = $request->file('image')->extension();
+			$image = $request->file('image')->storeAs('public/courses',$course->id.'.'.$ext_image);
+			$course->image = $image;
+		}else{
+			$course->image = $request->delete_image;
+		}
+		$course->save();
 		if($course){
 			return $course;
 		}

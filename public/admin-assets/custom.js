@@ -45,10 +45,11 @@ $(function() {
 //     }
 // });
 
-$('a.file').on('click', function(e){
+$('a.delete_file').on('click', function(e){
   e.preventDefault();
   $(this).parent().parent().prev('.img').children('a').children().remove();
-  $(this).parent().prev().children('input').type ='text';
-  $(this).parent().prev().children('input').val('deleted');
+  $(this).parent().prev().children('input[type="hidden"]').val('');
+  $(this).parent().prev().children('input[type="file"]').val('');
+  // $(this).parent().prev().children('input').val('deleted');
 // alert( $(this).parent().parent().prev('.img').children('a'));
 });

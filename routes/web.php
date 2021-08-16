@@ -60,6 +60,8 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::match(['get','post'], 'lesson/edit/{lesson}', 'LessonController@edit')->name('lesson.edit');
         Route::get('lesson/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');        
         Route::get('lesson/show/{lesson}', 'LessonController@show')->name('lesson.show');
+        Route::get('exams','ExamController@exams')->name('admin.exams');
+        Route::match(['get', 'post'], 'exams/create', 'ExamController@createExam')->name('admin.exams.create');
     });
 
 });

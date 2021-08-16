@@ -26,15 +26,15 @@
   <section class="content">
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
     @endif
-	  <form action="{{route('course.create')}}" method="POST">
+	  <form action="{{route('course.create')}}" method="POST" enctype="multipart/form-data">
      @csrf
       <div class="row">
         <div class="col-md-9">
@@ -119,10 +119,16 @@
               <h3 class="card-title">Others</h3>
             </div>
             <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Photo</label>
-                <input type="file" name="image" id="inputEstimatedBudget" class="form-control">
-              </div>              
+              <div class="img"><a class=""><img src="" alt=""></a></div>
+              <div class="form-group row" >
+                <div class="dropzone col mt-2">
+                  <div><i class="fas fa-plus"></i> <span>Photo</span></div>
+                  <input type="file" name="image" id="image" class="form-control">
+                </div>
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
+                </div>
+              </div>             
               <div class="form-group">
                   <label>Teacher</label>
                   <select class="form-control select2" name="teacher_id" style="width: 100%;">
@@ -151,7 +157,7 @@
                   </select>
               </div>              
               <div class="form-group">
-                <input type="submit" value="Add category" class="btn btn-success float-right">
+                <input type="submit" value="Add course" class="btn btn-success float-right">
               </div>
             </div>
             <!-- /.card-body -->

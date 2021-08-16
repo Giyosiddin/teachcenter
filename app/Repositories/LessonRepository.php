@@ -13,12 +13,10 @@ class LessonRepository {
 		$this->lesson = $lesson;
 	}
 
-	public function createLesson($data)
-	{
+	public function createLesson($request)
+	{				
+		$data = $request->all();
 		$lesson_data = [
-			'image' => $data['image'],
-			'file_first' => $data['file_first'],
-			'file_second' => $data['file_second'],
 			'video' => $data['video'],
 			'time' => $data['time'],
 			'course_id' => $data['course_id']
@@ -32,12 +30,32 @@ class LessonRepository {
 			'lesson_id' => $lesson->id
 		];
 		$lessonTranslation = $lesson->translation()->create($trans_data);
+		
+		if($request->hasFile('image')){			
+			$ext_image = $request->file('image')->extension();
+			$image = $request->file('image')->storeAs('public/lessons',$lesson->id.'.'.$ext_image);
+			$lesson->image = $image;
+		}
+		if($request->hasFile('file_first')){
+			$ext_file1 = $request->file('file_first')->extension();
+			$name_file1 = $request->file('file_first')->getClientOriginalName();
+			$file1 = $request->file('file_first')->storeAs('public/files',$name_file1.'.'.$ext_file1);
+			$lesson->file_first = $file1;
+		}
+		if($request->hasFile('file_second')){
+			$ext_file2 = $request->file('file_second')->extension();
+			$name_file2 = $request->file('file_second')->getClientOriginalName();
+			$file2 = $request->file('file_second')->storeAs('public/files',$name_file2.'.'.$ext_file2);
+			$lesson->file_second = $file2;
+		}
+		$lesson->save();
 		return ['lesson' => $lesson, 'lessonTranslation' => $lessonTranslation];
 	}
 
 	public function editLesson($request, $id)
 	{
-		dd($request->file_second);
+		// dump($request->delete_file_first);
+		// dd($request->delete_file_second);
 		$lesson = Lesson::find($id);		
 		$data = $request->all();
 		$lesson_data = [
@@ -64,20 +82,26 @@ class LessonRepository {
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/lessons',$lesson->id.'.'.$ext_image);
 			$lesson->image = $image;
-			if($request->hasFile('file_first')){
-				$ext_file1 = $request->file('file_first')->extension();
-				$name_file1 = $request->file('file_first')->getClientOriginalName();
-				$file1 = $request->file('file_first')->storeAs('public/files',$name_file1.'.'.$ext_file1);
-				$lesson->file_first = $file1;
-			}
-			if($request->hasFile('file_second')){
-				$ext_file2 = $request->file('file_second')->extension();
-				$name_file2 = $request->file('file_second')->getClientOriginalName();
-				$file2 = $request->file('file_second')->storeAs('public/files',$name_file2.'.'.$ext_file2);
-				$lesson->file_second = $file2;
-			}
-			$lesson->save();
+		}else{
+			$lesson->image = $request->delete_image;
 		}
+		if($request->hasFile('file_first')){
+			$ext_file1 = $request->file('file_first')->extension();
+			$name_file1 = $request->file('file_first')->getClientOriginalName();
+			$file1 = $request->file('file_first')->storeAs('public/files',$name_file1.'.'.$ext_file1);
+			$lesson->file_first = $file1;
+		}else{
+			$lesson->file_first = $request->delete_file_first;
+		}
+		if($request->hasFile('file_second')){
+			$ext_file2 = $request->file('file_second')->extension();
+			$name_file2 = $request->file('file_second')->getClientOriginalName();
+			$file2 = $request->file('file_second')->storeAs('public/files',$name_file2.'.'.$ext_file2);
+			$lesson->file_second = $file2;
+		}else{
+			$lesson->file_second = $request->delete_file_second;
+		}
+		$lesson->save();
 		return true;
 	}
 }

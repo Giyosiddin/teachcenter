@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLessonsTranslationTable extends Migration
+class CreateResultsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateLessonsTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('lessons_translation', function (Blueprint $table) {
+        Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('lesson_id');
-            $table->string('locale');
-            $table->string('title');
-            $table->longText('description')->nullable();
-            $table->text('body')->nullable();
+            $table->string('user_id');
+            $table->string('exam_id');
+            $table->string('total_points');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateLessonsTranslationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons_translation');
+        Schema::dropIfExists('results');
     }
 }

@@ -1,0 +1,5 @@
+.singel-course .thum .image img {
+    height: 251px;
+    /* width: auto; */
+    object-fit: cover;
+}

@@ -36,11 +36,11 @@ class CourseController extends Controller
 
             $validated = $request->validate([
                 'title' => 'required|max:255',
+                'description' => 'required|max:255',
                 'body' => 'required',
                 'locale' => 'required',
             ]);
-            $data = $request->all();
-            $create = $this->courseRepository->createCourse($data);
+            $create = $this->courseRepository->createCourse($request);
             if($create){
                 return redirect()->route('course.edit',$create->id)->with(['msg' => "Course has been created successfuly!"]);
                 // dd();
@@ -50,23 +50,22 @@ class CourseController extends Controller
 
     public function edit(Request $request, $id)
     {
-        // dd($id);
         $course = Course::find($id);
         $categories = Category::all();
         $teachers = Teacher::all();
         if(!$course){
-            return back()->withErrors(['msg' => "Course not found!"])->withInput();
+            return redirect()->route('course.index')->withErrors(['msg' => "Course not found!"])->withInput();
         }
         if($request->isMethod('get')){
             return view('admin.course.edit', compact('course','teachers','categories'));
         }else{
             $validated = $request->validate([
                 'title' => 'required|max:255',
+                'description' => 'required|max:255',
                 'body' => 'required',
                 'locale' => 'required',
             ]);
-            $data = $request->all();
-            $update = $this->courseRepository->updateCourse($data, $course->id);
+            $update = $this->courseRepository->updateCourse($request, $course->id);
             if($update){
                 return redirect()->route('course.edit',$course->id)->with(['msg' => "Course has been created successfuly!"]);
             }        

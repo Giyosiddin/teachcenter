@@ -146,24 +146,24 @@ p {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	border: 1px solid #ffc600;
+	border: 1px solid #009846;
 	padding: 0 35px;
 	font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 	line-height: 50px;
 	border-radius: 5px;
-    color: #07294d;
+    color: #e7e9ea;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     z-index: 5;
     -webkit-transition: 0.4s ease-in-out;
     transition: 0.4s ease-in-out;
-    background-color: #ffc600;
+    background-color: #009846;
 }
 .main-btn:hover{
-    color: #ffc600;
+    color: #009846;
     border-color: #07294d;
     background-color: #07294d;
 }
@@ -405,7 +405,7 @@ p {
 /*===== Header top =====*/
 
 .header-top{
-    background-color: #07294d;
+    background-color: #07294db3;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -540,14 +540,14 @@ p {
 
 .navigation .navbar .navbar-nav > li > a.active,
 .navigation .navbar .navbar-nav > li > a:hover{
-    color: #ffc600;
+    color: #009846;
 }
 
 .navigation .navbar .navbar-nav li .sub-menu{
     position: absolute;
     top: 110%;
     left: 0;
-    background-color: #07294d;
+    background-color: #07294d94;
     width: 200px;
     opacity: 0;
     visibility: hidden;
@@ -573,7 +573,7 @@ p {
 .navigation .navbar .navbar-nav li .sub-menu li a.active,
 .navigation .navbar .navbar-nav li .sub-menu li a:hover{
     padding-left: 20px;
-    color: #ffc600;
+    color: #22a55e;
 }
 
 .sub-nav-toggler{
@@ -635,7 +635,7 @@ p {
 .right-icon ul li a span{
     font-size: 12px;
     color: #fff;
-    background-color: #ffc600;
+    background-color: #22a55e;
     border-radius: 50%;
     padding: 0px 4px;
     position: absolute;
@@ -697,7 +697,7 @@ p {
 }
 .navigation-3.sticky .navbar .navbar-nav > li > a.active,
 .navigation-3.sticky .navbar .navbar-nav > li > a:hover{
-    color: #ffc600;
+    color: #26a762;
 }
 
 .navigation-3 .navbar .navbar-toggler .icon-bar{
@@ -1198,14 +1198,14 @@ p {
 }
 .singel-course .thum .price span{
     font-size: 14px;
-    color: #07294d;
+    color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     width: 55px;
     height: 55px;
     line-height: 55px;
     border-radius: 50%;
-    background-color: #ffc600;
+    background-color: #22a55e;
     text-align: center;
 }
 .singel-course .cont{
@@ -1224,7 +1224,7 @@ p {
 }
 .singel-course .cont ul li > i{
     font-size: 13px;
-    color: #ffc600;
+    color:#ffc600;	
 }
 
 .singel-course .cont span{
@@ -1382,6 +1382,11 @@ p {
     overflow: hidden;
     display: inline-block;
     padding-right: 30px;
+    color: #22a55e;
+    font-size: 48px;
+}
+.section-title h2 {
+	color: #22a55e;
 }
 .feature ul li .singel-feature .cont {
 	width: 78%;
@@ -1819,7 +1824,7 @@ p {
     width: 40px;
     height: 40px;
     line-height: 35px;
-    background-color: #ffc600;
+    background-color: #22a55e;
     color: #fff;
     font-size: 28px;
     border-radius: 5px;
@@ -2285,7 +2290,7 @@ p {
     color: #fff;
 }
 .category-form-3 .main-btn:hover{
-    color: #ffc600;
+    color: #009846;
     border-color: #07294d;
 }
 
@@ -2309,7 +2314,7 @@ p {
     padding: 0;
 }
 .page-banner-cont .breadcrumb .breadcrumb-item {
-	color: #ffc600;
+	color: #009846;
 	font-size: 18px;
 	font-weight: 600;
 	margin-bottom: 2px;
@@ -2379,7 +2384,7 @@ p {
 }
 
 .courses-top-search .nav .nav-item a.active{
-    color: #ffc600;
+    color: #009846;
 }
 
 .courses-search{
@@ -2433,8 +2438,8 @@ p {
 }
 .courses-pagination .pagination .page-item a.active,
 .courses-pagination .pagination .page-item a:hover{
-    background-color: #ffc600;
-    border-color: #ffc600;
+    background-color: #009846;
+    border-color: #009846;
 }
 
 
@@ -2503,7 +2508,7 @@ p {
 }
 .corses-singel-left .course-terms ul li .review ul li a {
     font-size: 14px;
-    color: #ffc600;
+    color: #009846;
 }
 .corses-singel-left .course-terms ul li .review ul li.rating{
     font-size: 14px;
@@ -2615,7 +2620,7 @@ p {
 }
 
 .curriculam-cont .accordion .card .card-header a ul li > i{
-    color: #ffc600;
+    color: #009846;
     font-size: 15px;
     margin-right: 5px;
 }
@@ -2759,7 +2764,7 @@ p {
 .reviews-cont ul li .singel-reviews .reviews-description .rating ul li{
     display: inline-block;
     font-size: 15px;
-    color: #ffc600;
+    color: #009846;
 }
 .reviews-cont ul li .singel-reviews .reviews-description .rating span{
     font-size: 15px;
@@ -2808,7 +2813,7 @@ p {
 
 .reviews-cont .reviews-form .form-singel .rate:hover,
 .reviews-cont .reviews-form .form-singel .rate.selected {
-    color: #ffc600;
+    color: #009846;
 }
 
 .reviews-cont .reviews-form .form-singel .rate .rate-item:hover ~ .rate-item,
@@ -2845,7 +2850,7 @@ p {
 }
 
 .course-features ul li i{
-    color: #ffc600;
+    color: #009846;
     margin-right: 8px;
 }
 .course-features ul li span{
@@ -2863,7 +2868,7 @@ p {
     margin-top: 12px;
 }
 .course-features .price-button span b{
-    color: #ffc600;
+    color: #009846;
 }
 .course-features .price-button .main-btn{
     float: right;
@@ -2912,13 +2917,13 @@ p {
     transition: all 0.4s linear;
 }
 .You-makelike .singel-makelike .cont h4:hover{
-    color: #ffc600;
+    color: #009846;
 }
 
 .You-makelike .singel-makelike .cont ul li {
     display: inline-block;
     margin-right: 15px;
-    color: #ffc600;
+    color: #009846;
 }
 .You-makelike .singel-makelike .cont ul li a{
     font-size: 14px;
@@ -2967,7 +2972,7 @@ p {
 	margin-right: 20px;
 }
 .singel-event-list .event-cont span i {
-	color: #ffc600;
+	color:#009846;
 	margin-right: 3px;
 }
 .singel-event-list .event-cont a {
@@ -2982,7 +2987,7 @@ p {
     transition: all 0.4s linear;
 }
 .singel-event-list .event-cont a:hover h4 {
-    color: #ffc600;
+    color: #009846;
 }
 
 
@@ -3009,7 +3014,7 @@ p {
 }
 
 .events-left span i {
-	color: #ffc600;
+	color: #009846;
 	margin-right: 3px;
 }
 
@@ -3035,7 +3040,7 @@ p {
 .events-coundwon .count-down-time .singel-count{}
 .events-coundwon .count-down-time .singel-count .number {
 	font-size: 24px;
-	color: #ffc600;
+	color: #009846;
 }
 .events-coundwon .count-down-time .singel-count .title{
     font-size: 13px;
@@ -3064,7 +3069,7 @@ p {
 }
 .events-address ul li .singel-address .icon i{
     font-size: 15px;
-    color: #ffc600;
+    color: #009846;
 }
 .events-address ul li .singel-address .cont{
     padding-left: 23px;
@@ -3206,7 +3211,7 @@ p {
     transition: all 0.4s linear;
 }
 .singel-blog .blog-cont a:hover h3{
-    color: #ffc600;
+    color: #009846;
 }
 
 .singel-blog .blog-cont ul {
@@ -3224,7 +3229,7 @@ p {
     color: #8a8a8a;
 }
 .singel-blog .blog-cont ul li a i{
-    color: #ffc600;
+    color: #009846;
     margin-right: 5px;
 }
 .singel-blog .blog-cont p{}
@@ -3286,7 +3291,7 @@ p {
     transition: all 0.4s linear;
 }
 .saidbar .categories ul li a:hover{
-    color: #ffc600;
+    color: #009846;
 }
 
 .saidbar .saidbar-post{
@@ -3323,7 +3328,7 @@ p {
     transition: all 0.4s linear;
 }
 .saidbar .saidbar-post ul li a .singel-post .cont h6:hover{
-    color: #ffc600;
+    color: #009846;
 }
 
 .saidbar .saidbar-post ul li a .singel-post .cont span{
@@ -3360,7 +3365,7 @@ p {
 }
 
 .blog-details .cont ul li a i{
-    color: #ffc600;
+    color: #009846;
     margin-right: 5px;
 }
 
@@ -3502,7 +3507,7 @@ p {
     color: #8a8a8a;
 }
 .shop-top-search .nav .nav-item a.active {
-	color: #ffc600;
+	color: #009846;
 }
 .shop-top-search .shop-select {
 	display: inline-block;

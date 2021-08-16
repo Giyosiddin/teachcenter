@@ -20,8 +20,14 @@ class PostController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             $data['slug'] = Str::slug($request->title_en);
-            $create = Post::create($data);
-            if($create){
+            $post = Post::create($data);
+            if($request->hasFile('image')){			
+                $ext_image = $request->file('image')->extension();
+                $image = $request->file('image')->storeAs('public/news',$post->id.'.'.$ext_image);
+                $post->image = $image;
+            }
+            if($post){
+                $post->save();
                 return redirect()->route('news.index')->with(['msg' => 'Post successfuly created!']);
             }else{
                 return back()->withErrors(['msg'=> 'Post successfuly created!'])->withInput();
@@ -30,12 +36,6 @@ class PostController extends Controller
 
             return view('admin.news.add');
         }
-    }
-
-    public function show($id)
-    {
-        $post = Post::find($id);
-        return view('admin.news.show', compact('post'));
     }
 
     public function edit(Request $request, $id)
@@ -58,8 +58,19 @@ class PostController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $post = Post::find($id);
+        return view('admin.news.show', compact('post'));
+    }
+
     public function delete($id)
     {
+        $post = Post::find($id);
+        $delete = $post->delete();
+        if($delete){
+            return redirect()->route('news.index')->with(['msg' => "Post have been deleted successfuly!"]);
+        }
         
     }
 }

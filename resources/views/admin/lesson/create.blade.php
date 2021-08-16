@@ -46,7 +46,7 @@
         </div>
         </div>
     @endif
-	  <form action="{{route('lesson.create')}}" method="POST">
+	  <form action="{{route('lesson.create')}}" method="POST" enctype="multipart/form-data">
      @csrf
       <div class="row">
         <div class="col-md-9">
@@ -131,17 +131,34 @@
               <h3 class="card-title">Others</h3>
             </div>
             <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Photo</label>
-                <input type="file" name="image" id="inputEstimatedBudget" class="form-control">
+              <div class="img"><a class=""><img src="" alt=""></a></div>
+              <div class="form-group row" >
+                <div class="dropzone col mt-2">
+                  <div><i class="fas fa-plus"></i> <span>Photo</span></div>
+                  <input type="file" name="image" id="image" class="form-control">
+                </div>
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="inputEstimatedBudget">First file</label>
-                <input type="file" name="file_first" id="inputEstimatedBudget" class="form-control">
+              <div class="img"><a class="file_name"></a></div>
+              <div class="form-group row">
+                <div class="dropzone col mt-2"> <div><i class="fas fa-plus"></i> First file</div>
+                  <input type="file" name="file_first" id="file_first" class="form-control" value="test">
+                </div>
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
+                </div>
               </div>              
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Second file</label>
-                <input type="file" name="file_second" id="inputEstimatedBudget" class="form-control">
+              <div class="img"><a class="file_name"></a></div>
+              <div class="form-group row">
+                <div class="dropzone col mt-2 ">
+                  <div><i class="fas fa-plus"></i> Second file</div>
+                  <input type="file" name="file_second" id="file_second" class="form-control">
+                </div>                
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
+                </div>
               </div>                            
               <div class="form-group">
                 <label for="timeVideo">Time video</label>

@@ -44,8 +44,7 @@ class LessonController extends Controller
                 'body' => 'required',
                 'locale' => 'required',
             ]);
-            $data = $request->all();
-            $create = $this->lessonRepository->createLesson($data);
+            $create = $this->lessonRepository->createLesson($request);
             if($create['lesson']){
                 if($create['lessonTranslation']){
                     return redirect()->route('lesson.edit', $create['lesson']->id)->with(['msg' => 'Lesson created seccessfuly!']);
@@ -82,7 +81,7 @@ class LessonController extends Controller
         $lesson = Lesson::find($id);
         $courses = Course::all();
         if(!$lesson){
-            return back()->withErrors('Lesson not found!', 'msg');
+            return redirect()->route('lesson.index')->withErrors('Lesson not found!', 'msg');
         }
         if($request->isMethod('get')){
             return view('admin.lesson.edit',compact('lesson','courses'));
