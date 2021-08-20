@@ -13,7 +13,7 @@
                             <h2>Biz doim aloqadamiz</h2>
                         </div> <!-- section title -->
                         <div class="main-form pt-45">
-                            <form id="contact-form" action="#" method="post" data-toggle="validator">
+                            <form id="contact-form" action="{{route('send.message')}}" method="post" data-toggle="validator">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="singel-form form-group">

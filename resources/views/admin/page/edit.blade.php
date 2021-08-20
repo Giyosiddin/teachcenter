@@ -146,7 +146,7 @@
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
                 </div>
                 </div>              
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="inputStatus">Slug</label>
                   <input type="text" value="{{$page->slug}}" name="slug" class="form-control">
                 </div>
@@ -157,6 +157,7 @@
                       <option @if ($page->template=='home') selected="selected" @endif value="home">Home</option>
                       <option @if ($page->template=='about') selected="selected" @endif value="about">About</option>
                       <option @if ($page->template=='contacts') selected="selected" @endif value="contacts">Contacts</option>
+                      <option @if ($page->template=='form-page') selected="selected" @endif value="form-page">Form page</option>
                     </select>
                 </div>    
                 <div class="form-group">
@@ -176,10 +177,10 @@
                     <option @if ($page->position_menu=='footer1') selected="selected" @endif value="footer1">Footer one</option>
                     <option @if ($page->position_menu=='footer2') selected="selected" @endif value="footer2">Footer teo</option>
                   </select>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Save page" class="btn btn-success float-right">
-              </div>
+                </div> --}}
+                <div class="form-group">
+                  <input type="submit" value="Save page" class="btn btn-success float-right">
+                </div>
             </div>
             <!-- /.card-body -->
           </div>

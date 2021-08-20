@@ -32,7 +32,7 @@ class CreatePagesTable extends Migration
             $table->text('meta_keywords_uz')->nullable();
             $table->text('meta_keywords_ru')->nullable();
             $table->text('meta_keywords_en')->nullable();
-            $table->enum('template', ['about','contacts','home','default'])->default('default');
+            $table->enum('template', ['about','contacts','home','form-page','default'])->default('default');
             $table->timestamps();
         });
     }

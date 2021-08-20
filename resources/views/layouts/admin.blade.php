@@ -173,7 +173,7 @@
                         <form id="logout-form" action="{{ route('logout',app()->getLocale()) }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form></p>
-                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                    {{-- <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p> --}}
                   </div>
                 </div>
                 <!-- Message End -->
@@ -302,6 +302,15 @@
               <i class="nav-icon fas fa-pager"></i>
               <p>
                 Pages
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.appels')}}" class="nav-link">
+              <i class="nav-icon fas fa-phone"></i>
+              <p>
+                Appels
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>

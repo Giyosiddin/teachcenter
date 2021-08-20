@@ -170,11 +170,11 @@
                                          <a href="#">Xizmatlar</a>
                                          <ul class="sub-menu">
                                              <li><a href="/consalting">Konsalting</a></li>
-                                             <li><a href="{{route('courses')}}" class="{{ (Route::currentRouteName() == 'courses') ? 'active' : '' }}">O'quv kurslari</a></li>
+                                             <li><a href="/courses" class="{{ (Route::currentRouteName() == 'courses') ? 'active' : '' }}">O'quv kurslari</a></li>
                                          </ul>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="{{route('courses')}}" class="{{ (Route::currentRouteName() == 'courses') ? 'active' : '' }}">Online darslar</a>
+                                         <a href="{{route('online-courses')}}" class="{{ (Route::currentRouteName() == 'online-courses') ? 'active' : '' }}">Online darslar</a>
                                          <!-- <ul class="sub-menu">
                                              <li><a href="events.html">Events</a></li>
                                              <li><a href="events-singel.html">Event Singel</a></li>
@@ -193,8 +193,16 @@
                          <div class="right-icon text-right">
                              <ul>
                                  <li><a href="#" id="search"><i class="fa fa-search"></i></a></li>
-                                
-                             </ul>
+                            </ul>
+                            {{-- <div class="dropdown">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li>
+                                    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        {{ $properties['native'] }}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </div> --}}
                          </div> <!-- right icon -->
                      </div>
                     
@@ -258,7 +266,7 @@
                                 <li><a href="{{route('about')}}"><i class="fa fa-angle-right"></i>Biz haqimizda</a></li>
                                 <li><a href="{{route('news')}}"><i class="fa fa-angle-right"></i>Yangiliklar</a></li>
                                 <li><a href="/consalting"><i class="fa fa-angle-right"></i>Konsalting</a></li>
-                                <li><a href="{{route('courses')}}"><i class="fa fa-angle-right"></i>Online darslar</a></li>
+                                <li><a href="{{route('online-courses')}}"><i class="fa fa-angle-right"></i>Online darslar</a></li>
                             </ul>
                         </div> <!-- footer link -->
                     </div>
@@ -268,8 +276,8 @@
                                 <h6>Yordam</h6>
                             </div>
                             <ul>
-                                <li><a href="#"><i class="fa fa-angle-right"></i>FAQS</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i>Privacy</a></li>
+                                <li><a href="/faq"><i class="fa fa-angle-right"></i>FAQS</a></li>
+                                <li><a href="/privacy"><i class="fa fa-angle-right"></i>Maxfiylik</a></li>
                                 <li><a href="#"><i class="fa fa-angle-right"></i>Policy</a></li>
                                 <li><a href="{{route('contact')}}"><i class="fa fa-angle-right"></i>Bog'lanish</a></li>
                             </ul>

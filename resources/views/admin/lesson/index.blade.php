@@ -98,11 +98,11 @@
                           <span class="badge badge-success">Success</span>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="{{route('lesson.show', $lesson->id)}}">
+                          {{-- <a class="btn btn-primary btn-sm" href="{{route('lesson.show', $lesson->id)}}">
                               <i class="fas fa-folder">
                               </i>
                               View
-                          </a>
+                          </a> --}}
                           <a class="btn btn-info btn-sm" href="{{route('lesson.edit', $lesson->id)}}">
                               <i class="fas fa-pencil-alt">
                               </i>

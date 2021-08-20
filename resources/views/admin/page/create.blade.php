@@ -144,7 +144,7 @@
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
                 </div>
                 </div>              
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="inputStatus">Slug</label>
                   <input type="text" name="slug" class="form-control">
                 </div>
@@ -155,6 +155,7 @@
                       <option value="home">Home</option>
                       <option value="about">About</option>
                       <option value="contacts">Contacts</option>
+                      <option value="form-page">Form page</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -165,18 +166,19 @@
                     <option value="{{$parent->id}}">{{$parent->title_uz}}</option>
                     @endforeach
                   </select>
-              </div>             
-              <div class="form-group">
-                <label>Position of menus</label>
-                <select class="form-control select2" name="position_menu" style="width: 100%;">
-                  <option value=""> -- Default -- </option>
-                  <option value="header">Header</option>
-                  <option value="footer1">Footer one</option>
-                  <option value="footer2">Footer teo</option>
-                </select>
-              <div class="form-group">
-                <input type="submit" value="Add page" class="btn btn-success float-right">
-              </div>
+                </div>             
+                <div class="form-group">
+                  <label>Position of menus</label>
+                  <select class="form-control select2" name="position_menu" style="width: 100%;">
+                    <option value=""> -- Default -- </option>
+                    <option value="header">Header</option>
+                    <option value="footer1">Footer one</option>
+                    <option value="footer2">Footer teo</option>
+                  </select>
+                </div> --}}
+                <div class="form-group">
+                  <input type="submit" value="Add page" class="btn btn-success float-right">
+                </div>
             </div>
             <!-- /.card-body -->
           </div>

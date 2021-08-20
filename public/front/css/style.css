@@ -3790,8 +3790,13 @@ p.form-message.error {
 }
 
 
-
-
+.cont ul, .cont ol {
+    padding: inherit;
+    list-style-type: auto;
+}
+.cont blockquote{
+    margin: revert;
+}
 
 
 

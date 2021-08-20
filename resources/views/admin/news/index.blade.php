@@ -97,11 +97,11 @@
                           <img src="{{\Storage::url($post->image)}}" width="200px" alt="">
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="{{route('news.show', $post->id)}}">
+                          {{-- <a class="btn btn-primary btn-sm" href="{{route('news.show', $post->id)}}">
                               <i class="fas fa-folder">
                               </i>
                               View
-                          </a>
+                          </a> --}}
                           <a class="btn btn-info btn-sm" href="{{route('news.edit', $post->id)}}">
                               <i class="fas fa-pencil-alt">
                               </i>
