@@ -55,16 +55,13 @@
                       <th style="width: 20%">
                           Full Name
                       </th>
-                      <th style="width: 30%">
-                          Team Members
-                      </th>
                       <th>
-                          Project Progress
+                         Status
                       </th>
                       <th style="width: 8%" class="text-center">
-                          Status
+                          Photo
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 30%">
                       </th>
                   </tr>
               </thead>
@@ -78,38 +75,16 @@
                           <a>
                               {{$teacher->name_uz}}
                           </a>
-                          <br/>
-                          <small>
-                              Created 01.01.2019
-                          </small>
                       </td>
-                      <td>
-                          <ul class="list-inline">
-                              <li class="list-inline-item">
-                                  <img alt="Avatar" class="table-avatar" src="/admin/img/avatar.png">
-                              </li>
-                              <li class="list-inline-item">
-                                  <img alt="Avatar" class="table-avatar" src="/admin/img/avatar2.png">
-                              </li>
-                              <li class="list-inline-item">
-                                  <img alt="Avatar" class="table-avatar" src="/admin/img/avatar3.png">
-                              </li>
-                              <li class="list-inline-item">
-                                  <img alt="Avatar" class="table-avatar" src="/admin/img/avatar4.png">
-                              </li>
-                          </ul>
-                      </td>
+                     
                       <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-                              </div>
+                          <div class="m">
+                            {{$teacher->position_uz}}
                           </div>
-                          <small>
-                             {{$teacher->position_uz}}
-                          </small>
+                         
                       </td>
                       <td class="project-state">
-                          <span class="badge badge-success">Success</span>
+                         <img src="{{\Storage::url($teacher->image)}}" alt="" width="100px">
                       </td>
                       <td class="project-actions text-right">
                           <a class="btn btn-primary btn-sm" href="{{route('teacher.show', $teacher->id)}}">

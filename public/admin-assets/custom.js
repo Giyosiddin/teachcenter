@@ -12,7 +12,7 @@ $(function() {
       var file = this.files[0];
       var cont = $(this).parent();
       cont.removeClass('hover');
-      
+      $(this).next('input[type="hidden"]').val('');
       if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
         return alert('File type not allowed.');
       }

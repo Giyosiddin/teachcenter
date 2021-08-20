@@ -20,8 +20,15 @@ class CategoryController extends Controller
             return view('admin.category.create');
         }else{
             $data = $request->all();
-            $save = Category::create($data);
-            if($save){
+            $category = Category::create($data);
+            if($request->hasFile('image')){			
+                $ext_image = $request->file('image')->extension();
+                $image = $request->file('image')->storeAs('public/categories',$category->id.'.'.$ext_image);
+                $category->image = $image;
+            }
+            
+            $category->save();
+            if($category){
                 return redirect()->route('category.index')->with(['msg' => 'Category has been created successfuly!']);
             }else{
                 return back()->withErrors(['msg' => 'Category not created, there was error!'])->withInput();
@@ -37,7 +44,21 @@ class CategoryController extends Controller
         if($request->isMethod('get')){
             return view('admin.category.edit', compact('category'));
         }else{
-
+            $data = $request->all();
+            $save = $category->update($data);
+            if($request->hasFile('image')){			
+                $ext_image = $request->file('image')->extension();
+                $image = $request->file('image')->storeAs('public/categories',$category->id.'.'.$ext_image);
+                $category->image = $image;
+            }else{
+                $category->image = $request->delete_image;
+            }
+            $category->save();
+            if($save){
+                return back()->with(['msg' => 'Post has been updated successfuly!']);
+            }else{
+                return back()->withErrors(['msg' => 'Post has not been updated, something went wrong.'])->withInput();
+            }
         }
     }
 }

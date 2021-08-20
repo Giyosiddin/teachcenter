@@ -25,6 +25,12 @@ class TeacherController extends Controller
         // dd($request->all());
         $data = $request->all();
         $teacher = Teacher::create($data);
+        if($request->hasFile('image')){			
+            $ext_image = $request->file('image')->extension();
+            $image = $request->file('image')->storeAs('public/teachers',$teacher->id.'.'.$ext_image);
+            $teacher->image = $image;
+            $teacher->save();
+        }
         if($teacher){
             return redirect()->route('teacher.index')->with(['success' => 'Has been created!']);
         }else{
@@ -40,6 +46,14 @@ class TeacherController extends Controller
         }
         $data = $request->all();
         $save = $teacher->update($data);
+        if($request->hasFile('image')){			
+			$ext_image = $request->file('image')->extension();
+			$image = $request->file('image')->storeAs('public/teachers',$id.'.'.$ext_image);
+			$teacher->image = $image;
+		}else{
+			$teacher->image = $request->delete_image;
+		}
+        $teacher->save();
         if($save){
             return back()->with(['msg' => " Successfuly updated"]);
         }else{

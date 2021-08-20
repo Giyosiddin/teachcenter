@@ -9,7 +9,12 @@ class Teacher extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    // protected $guarded = [];
 
     public $timestamps = false;
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

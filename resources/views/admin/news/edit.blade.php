@@ -24,7 +24,7 @@
 
     <!-- Main content -->
     <section class="content">
-	<form action="{{route('news.add')}}" method="POST" enctype="multipart/form-data">
+	<form action="{{route('news.edit',$post->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
       <div class="row">
         <div class="col-md-9">
@@ -118,6 +118,7 @@
                 <div class="dropzone col mt-2">
                   <div><i class="fas fa-plus"></i> <span>Photo</span></div>
                   <input type="file" name="image" id="image" class="form-control">
+                  <input type="hidden" name="delete_image" id="delete_image" value="@if(!empty($post->image)) {{$post->image}} @endif">
                 </div>
                 <div class="col mt-2 ">
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
@@ -126,6 +127,10 @@
                 <div class="form-group">
                   <label for="inputStatus">Slug</label>
                   <input type="text" name="slug" value="{{$post->slug}}" class="form-control">
+                </div>        
+                <div class="form-group">
+                  <label for="inputStatus">Slide in home page</label>
+                  <input type="checkbox" name="for_slider" @if($post->for_slider=='1') checked @endif class="form-control">
                 </div>
               <div class="form-group">
                 <input type="submit" value="Edit news" class="btn btn-success float-right">

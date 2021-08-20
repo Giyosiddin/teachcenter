@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
    
     <!--====== Required meta tags ======-->
@@ -8,8 +8,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <!--====== Title ======-->
-    <title>Edubin - LMS Education HTML Template</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Classs Education') }}</title>
     
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="/front/images/favicon.png" type="image/png">
@@ -98,7 +101,7 @@
                  <div class="row">
                      <div class="col-lg-4 col-md-4">
                          <div class="logo">
-                             <a href="index-2.html">
+                             <a href="{{route('home')}}">
                                  <img src="{{asset('front/images/logo.png')}}" alt="Logo">
                              </a>
                          </div>
@@ -114,9 +117,27 @@
                                      <span>90 353 44 35</span>
                                  </div>
                              </div>
+                             @guest
                              <div class="button float-left">
+                                 <a href="{{route('login')}}" class="main-btn">Kirish</a>
                                  <a href="{{route('register')}}" class="main-btn">Registratsiya</a>
                              </div>
+                             @endguest
+                             @auth
+                             <div class="button float-left">
+                                <a class="main-btn" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                 {{ __('Chiqish') }}
+                             </a>
+
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                 @csrf
+                             </form>
+                                {{-- <a href="{{route('login')}}" class="main-btn">Kirish</a> --}}
+                            </div>
+                            @endauth
+                            
                          </div>
                      </div>
                  </div> <!-- row -->
@@ -137,23 +158,23 @@
                              <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                  <ul class="navbar-nav mr-auto">
                                      <li class="nav-item">
-                                         <a class="active" href="index-2.html">Asosiy sahifa</a>
+                                         <a class="{{ (Route::currentRouteName() == 'home') ? 'active' : '' }}" href="{{route('home')}}">Asosiy sahifa</a>
                                                                             </li>
                                      <li class="nav-item">
-                                         <a href="about.html">Biz haqimizda</a>
+                                         <a class="{{ (Route::currentRouteName() == 'about') ? 'active' : '' }}" href="{{route('about')}}">Biz haqimizda</a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="about.html">Yangiliklar</a>
+                                         <a class="{{ (Route::currentRouteName() == 'news') ? 'active' : '' }}" href="{{route('news')}}">Yangiliklar</a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="courses.html">Xizmatlar</a>
+                                         <a href="#">Xizmatlar</a>
                                          <ul class="sub-menu">
-                                             <li><a href="courses.html">Konsalting</a></li>
-                                             <li><a href="courses-singel.html">O'quv kurslari</a></li>
+                                             <li><a href="/consalting">Konsalting</a></li>
+                                             <li><a href="{{route('courses')}}" class="{{ (Route::currentRouteName() == 'courses') ? 'active' : '' }}">O'quv kurslari</a></li>
                                          </ul>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="events.html">Online darslar</a>
+                                         <a href="{{route('courses')}}" class="{{ (Route::currentRouteName() == 'courses') ? 'active' : '' }}">Online darslar</a>
                                          <!-- <ul class="sub-menu">
                                              <li><a href="events.html">Events</a></li>
                                              <li><a href="events-singel.html">Event Singel</a></li>
@@ -161,7 +182,7 @@
                                      </li>
                                      
                                      <li class="nav-item">
-                                         <a href="contact.html">Bog'lanish</a>
+                                         <a href="{{route('contact')}}" class="{{ (Route::currentRouteName() == 'contact') ? 'active' : '' }}">Bog'lanish</a>
                                          
                                      </li>
                                  </ul>
@@ -233,16 +254,11 @@
                                 <h6>Menyu</h6>
                             </div>
                             <ul>
-                                <li><a href="index-2.html"><i class="fa fa-angle-right"></i>Asosiy sahifa</a></li>
-                                <li><a href="about.html"><i class="fa fa-angle-right"></i>Biz haqimizda</a></li>
-                                <li><a href="courses.html"><i class="fa fa-angle-right"></i>Yangiliklar</a></li>
-                                <li><a href="blog.html"><i class="fa fa-angle-right"></i>Konsalting</a></li>
-                                <li><a href="events.html"><i class="fa fa-angle-right"></i>O'quv kurslari</a></li>
-                            </ul>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-angle-right"></i>Online darslae</a></li>
-                                <li><a href="shop.html"><i class="fa fa-angle-right"></i>Bog'lanish</a></li>
-                                
+                                <li><a href="{{route('home')}}"><i class="fa fa-angle-right"></i>Asosiy sahifa</a></li>
+                                <li><a href="{{route('about')}}"><i class="fa fa-angle-right"></i>Biz haqimizda</a></li>
+                                <li><a href="{{route('news')}}"><i class="fa fa-angle-right"></i>Yangiliklar</a></li>
+                                <li><a href="/consalting"><i class="fa fa-angle-right"></i>Konsalting</a></li>
+                                <li><a href="{{route('courses')}}"><i class="fa fa-angle-right"></i>Online darslar</a></li>
                             </ul>
                         </div> <!-- footer link -->
                     </div>
@@ -255,8 +271,7 @@
                                 <li><a href="#"><i class="fa fa-angle-right"></i>FAQS</a></li>
                                 <li><a href="#"><i class="fa fa-angle-right"></i>Privacy</a></li>
                                 <li><a href="#"><i class="fa fa-angle-right"></i>Policy</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i>Support</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i>Documentation</a></li>
+                                <li><a href="{{route('contact')}}"><i class="fa fa-angle-right"></i>Bog'lanish</a></li>
                             </ul>
                         </div> <!-- support -->
                     </div>

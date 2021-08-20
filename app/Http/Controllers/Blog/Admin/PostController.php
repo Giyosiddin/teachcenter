@@ -19,8 +19,10 @@ class PostController extends Controller
     {
         if($request->isMethod('post')){
             $data = $request->all();
-            $data['slug'] = Str::slug($request->title_en);
+            $data['slug'] = $this->createSlug($request->title_en);
+            $data['for_slider'] = $request->for_slider ? '1': '0';
             $post = Post::create($data);
+            
             if($request->hasFile('image')){			
                 $ext_image = $request->file('image')->extension();
                 $image = $request->file('image')->storeAs('public/news',$post->id.'.'.$ext_image);
@@ -49,7 +51,18 @@ class PostController extends Controller
             return view('admin.news.edit', compact('post'));
         }else{
             $data = $request->all();
+            $data['slug'] = $this->createSlug($request->title_en, $id);
+            $data['for_slider'] = $request->for_slider ? '1': '0';
+            // dd($data);
             $save = $post->update($data);
+            if($request->hasFile('image')){			
+                $ext_image = $request->file('image')->extension();
+                $image = $request->file('image')->storeAs('public/posts',$post->id.'.'.$ext_image);
+                $post->image = $image;
+            }else{
+                $post->image = $request->delete_image;
+            }
+            $post->save();
             if($save){
                 return back()->with(['msg' => 'Post has been updated successfuly!']);
             }else{
@@ -72,5 +85,30 @@ class PostController extends Controller
             return redirect()->route('news.index')->with(['msg' => "Post have been deleted successfuly!"]);
         }
         
+    }
+    public function createSlug($title, $id = 0)
+    {
+        $slug = Str::slug($title);
+        $allSlugs = $this->getRelatedSlugs($slug, $id);
+        if (! $allSlugs->contains('slug', $slug)){
+            return $slug;
+        }
+
+        $i = 1;
+        $is_contain = true;
+        do {
+            $newSlug = $slug . '-' . $i;
+            if (!$allSlugs->contains('slug', $newSlug)) {
+                $is_contain = false;
+                return $newSlug;
+            }
+            $i++;
+        } while ($is_contain);
+    }
+    protected function getRelatedSlugs($slug, $id = 0)
+    {
+        return Post::select('slug')->where('slug', 'like', $slug.'%')
+        ->where('id', '<>', $id)
+        ->get();
     }
 }

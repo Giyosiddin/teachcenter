@@ -89,12 +89,12 @@
                           </div>
                       </td>
                       <td class="project_progress">
-                          <p>
+                          <p style="max-width: 500px">
                              {{$post->excerpt_uz}}
                           </p>
                       </td>
                       <td class="project-state">
-                          <span class="badge badge-success">Success</span>
+                          <img src="{{\Storage::url($post->image)}}" width="200px" alt="">
                       </td>
                       <td class="project-actions text-right">
                           <a class="btn btn-primary btn-sm" href="{{route('news.show', $post->id)}}">
@@ -107,7 +107,7 @@
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="{{route('news.index', $post->id)}}">
+                          <a class="btn btn-danger btn-sm" href="{{route('news.delete', $post->id)}}">
                               <i class="fas fa-trash">
                               </i>
                               Delete

@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="card-body p-0">
-          <table class="table table-striped projects">
+          <table class="table table-striped projects ">
               <thead>
                   <tr>
                       <th style="width: 1%">
@@ -59,7 +59,7 @@
                           Excerpt
                       </th>
                       <th>
-                          Photo
+                          Icon
                       </th>
                       <th style="width: 20%">
                       </th>
@@ -85,8 +85,8 @@
                              {{$category->excerpt_uz}}
                           </p>
                       </td>
-                      <td class="project-state">
-                          <span class="badge badge-success">Success</span>
+                      <td class="project-state table-active">
+                          <img src="{{\Storage::url($category->image)}}" alt="">
                       </td>
                       <td class="project-actions text-right">
                         <!--   <a class="btn btn-primary btn-sm" href="#">

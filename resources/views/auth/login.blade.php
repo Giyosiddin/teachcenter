@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in (v2)</title>
+  <title>Class-Education | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -19,10 +19,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="/admin-assets/index2.html" class="h1"><b>Admin</b>LTE</a>
+      <a href="{{route('home')}}" class="h1"><b>Class</b>EDU</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Shaxsiy kabinetingizga kirin</p>
 
       <form action="{{ route('login') }}" method="post">
          @csrf
@@ -57,24 +57,24 @@
             <div class="icheck-primary">
               <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
               <label for="remember">
-                Remember Me
+                Eslab qol
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Kirish</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
       <p class="mb-1">
             <a href="{{ route('password.request') }}">
-                {{ __('Forgot Your Password?') }}
+                Parolni unutdingizmi?
             </a>
       </p>
       <p class="mb-0">
-        <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+        <a href="{{ route('register') }}" class="text-center">Ro'yxatdan o'tish.</a>
       </p>
     </div>
     <!-- /.card-body -->

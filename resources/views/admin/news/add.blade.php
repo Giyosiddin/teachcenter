@@ -123,10 +123,14 @@
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
                 </div>
               </div>              
-                <div class="form-group">
-                  <label for="inputStatus">Slug</label>
-                  <input type="text" name="slug" class="form-control">
-                </div>
+              <div class="form-group">
+                <label for="inputStatus">Slug</label>
+                <input type="text" name="slug" class="form-control">
+              </div>              
+              <div class="form-group">
+                <label for="inputStatus">Slide in home page</label>
+                <input type="checkbox" name="for_slider" class="form-control">
+              </div>
               <div class="form-group">
                 <input type="submit" value="Add news" class="btn btn-success float-right">
               </div>

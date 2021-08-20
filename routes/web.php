@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +27,16 @@ Auth::routes();
 Route::group(['namespace' => 'Blog\Front'], function(){
 
     Route::get('/', 'MainController@home')->name('home');
+    
+    Route::get('/about', 'MainController@about')->name('about');
+    
+    Route::get('/courses', 'MainController@courses')->name('courses');
+    Route::get('/course/{id}', 'MainController@course')->name('in.course');
+    Route::get('/course/{course_id}/{lesson}', 'MainController@lesson')->name('in.lesson');
+    Route::get('/contact', 'MainController@contact')->name('contact');
+    Route::get('/news', 'MainController@news')->name('news');
+    Route::get('news/{slug}', 'MainController@inNews')->name('in.news');
+    Route::get('/{slug}', 'MainController@page')->name('page');
 });
 
 
@@ -46,7 +57,7 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::match(['get','post'], 'news/add', 'PostController@add')->name('news.add');
         Route::match(['get','post'], 'news/edit/{post}', 'PostController@edit')->name('news.edit');
         Route::get('news/show/{post}', 'PostController@show')->name('news.show');
-        Route::delete('news/delete/{id}', 'PostController@delete')->name('news.delete');
+        Route::get('news/delete/{id}', 'PostController@delete')->name('news.delete');
         Route::get('categories', 'CategoryController@index')->name('category.index');
         Route::match(['get','post'], 'category/create', 'CategoryController@create')->name('category.create');
         Route::match(['get','post'], 'category/edit/{category}', 'CategoryController@edit')->name('category.edit');
@@ -62,6 +73,50 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('lesson/show/{lesson}', 'LessonController@show')->name('lesson.show');
         Route::get('exams','ExamController@exams')->name('admin.exams');
         Route::match(['get', 'post'], 'exams/create', 'ExamController@createExam')->name('admin.exams.create');
+        
+        Route::get('testimonials','TestimonialController@index')->name('admin.testimonials');
+        Route::match(['get', 'post'], 'testimonials/create', 'TestimonialController@create')->name('admin.testimonials.create');
+        Route::match(['get', 'post'], 'testimonials/edit/{id}', 'TestimonialController@edit')->name('admin.testimonials.edit');
+        Route::get('testimonial/delete/{id}', 'TestimonialController@delete')->name('testimonial.delete');
+        Route::get('page','PageController@index')->name('admin.page');
+        Route::match(['get', 'post'], 'page/create', 'PageController@create')->name('admin.page.create');
+        Route::match(['get', 'post'], 'page/edit/{id}', 'PageController@edit')->name('admin.page.edit');
     });
 
+});
+
+
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return '<h1>Cache facade value cleared</h1>';
+});
+
+//Reoptimized class loader:
+Route::get('/optimize', function() {
+    $exitCode = Artisan::call('optimize');
+    return '<h1>Reoptimized class loader</h1>';
+});
+
+//Route cache:
+Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return '<h1>Routes cached</h1>';
+});
+
+//Clear Route cache:
+Route::get('/route-clear', function() {
+    $exitCode = Artisan::call('route:clear');
+    return '<h1>Route cache cleared</h1>';
+});
+
+//Clear View cache:
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return '<h1>View cache cleared</h1>';
+});
+
+//Clear Config cache:
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return '<h1>Clear Config cleared</h1>';
 });

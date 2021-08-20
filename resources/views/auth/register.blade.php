@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Register (v2)</title>
+  <title>Class-Education | Ro'yxatdan o'tish</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -18,10 +18,10 @@
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+      <a href="../../index2.html" class="h1"><b>Class</b>-EDU</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="login-box-msg">Ro'yxatdan o'ting</p>
 
        <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -74,7 +74,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
+          <div class="col-7">
             <div class="icheck-primary">
               <input type="checkbox" id="agreeTerms" name="terms" value="agree">
               <label for="agreeTerms">
@@ -83,14 +83,14 @@
             </div>
           </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          <div class="col-5">
+            <button type="submit" class="btn btn-primary btn-block">Ro'yxatdan o'tish</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <a href="{{route('login')}}" class="text-center">I already have a membership</a>
+      <a href="{{route('login')}}" class="text-center">Men ro'yxatdan o'tganman</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

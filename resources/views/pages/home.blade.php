@@ -3,13 +3,14 @@
 @section('content')
 
 <section id="slider-part" class="slider-active">
-    <div class="single-slider bg_cover pt-150" style="background-image: url({{asset('front/images/slider/s-1.jpg')}})" data-overlay="4">
+    @foreach ($slider as $slide)
+    <div class="single-slider bg_cover pt-150" style="background-image: url({{\Storage::url($slide->image)}})" data-overlay="4">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont">
-                        <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right theme for education</h1>
-                        <p data-animation="fadeInUp" data-delay="1.3s">Donec vitae sapien ut libearo venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt  Sed fringilla mauri amet nibh.</p>
+                        <h1 data-animation="bounceInLeft" data-delay="1s">{{$slide->title}}</h1>
+                        <p data-animation="fadeInUp" data-delay="1.3s">{{$slide->excerpt}}</p>
                         <ul>
                             <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Batafsil</a></li>
                            
@@ -19,40 +20,9 @@
             </div> <!-- row -->
         </div> <!-- container -->
     </div> <!-- single slider -->
-    
-    <div class="single-slider bg_cover pt-150" style="background-image: url({{asset('front/images/slider/s-2.jpg')}})" data-overlay="4">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-9">
-                    <div class="slider-cont">
-                        <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right theme for education</h1>
-                        <p data-animation="fadeInUp" data-delay="1.3s">Donec vitae sapien ut libearo venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt  Sed fringilla mauri amet nibh.</p>
-                        <ul>
-                            <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Batafsil</a></li>
-                           
-                        </ul>
-                    </div>
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </div> <!-- single slider -->
-    
-    <div class="single-slider bg_cover pt-150" style="background-image: url({{asset('front/images/slider/s-3.jpg')}})" data-overlay="4">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-9">
-                    <div class="slider-cont">
-                        <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right theme for education</h1>
-                        <p data-animation="fadeInUp" data-delay="1.3s">Donec vitae sapien ut libearo venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt  Sed fringilla mauri amet nibh.</p>
-                        <ul>
-                            <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Batafsil</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </div> <!-- single slider -->
+        
+    @endforeach
+  
 </section>
 
 <!--====== SLIDER PART ENDS ======-->
@@ -65,11 +35,31 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="category-text pt-40">
-                        <h2>Konsalting xizmati yo'nalishlar</h2>
+                        <h2>Online kurslar yo'nalishlari</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-8 offset-2">
                     <div class="row category-slied mt-40">
+                        @php
+                         $i=1   
+                        @endphp
+                        @foreach($categories as $category)
+                        <div class="col-lg-4">
+                            <a href="#">
+                                <span class="singel-category text-center color-<?=$i; ?>">
+                                    <span class="icon">
+                                        <img src="{{\Storage::url($category->image)}}" alt="Icon">
+                                    </span>
+                                    <span class="cont">
+                                        <span>{{$category->title}}</span>
+                                    </span>
+                                </span> <!-- singel category -->
+                            </a>
+                        </div>
+                        @php
+                            if($i<3){ $i++; }else{ $i=1;}
+                        @endphp
+                        @endforeach
                         <div class="col-lg-4">
                             <a href="#">
                                 <span class="singel-category text-center color-1">
@@ -82,66 +72,7 @@
                                 </span> <!-- singel category -->
                             </a>
                         </div>
-                        <div class="col-lg-4">
-                            <a href="#">
-                                <span class="singel-category text-center color-2">
-                                    <span class="icon">
-                                        <img src="{{asset('front/images/all-icon/ctg-2.png')}}" alt="Icon">
-                                    </span>
-                                    <span class="cont">
-                                        <span>Biznes</span>
-                                    </span>
-                                </span> <!-- singel category -->
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="#">
-                                <span class="singel-category text-center color-3">
-                                    <span class="icon">
-                                        <img src="{{asset('front/images/all-icon/ctg-3.png')}}" alt="Icon">
-                                    </span>
-                                    <span class="cont">
-                                        <span>Gumanitar</span>
-                                    </span>
-                                </span> <!-- singel category -->
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="#">
-                                <span class="singel-category text-center color-1">
-                                    <span class="icon">
-                                        <img src="{{asset('front/images/all-icon/ctg-1.png')}}" alt="Icon">
-                                    </span>
-                                    <span class="cont">
-                                        <span>Language</span>
-                                    </span>
-                                </span> <!-- singel category -->
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="#">
-                                <span class="singel-category text-center color-2">
-                                    <span class="icon">
-                                        <img src="{{asset('front/images/all-icon/ctg-2.png')}}" alt="Icon">
-                                    </span>
-                                    <span class="cont">
-                                        <span>Business</span>
-                                    </span>
-                                </span> <!-- singel category -->
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="#">
-                                <span class="singel-category text-center color-3">
-                                    <span class="icon">
-                                        <img src="{{asset('front/images/all-icon/ctg-3.png')}}" alt="Icon">
-                                    </span>
-                                    <span class="cont">
-                                        <span>Literature</span>
-                                    </span>
-                                </span> <!-- singel category -->
-                            </a>
-                        </div>
+                        
                     </div> <!-- category slied -->
                 </div>
             </div> <!-- row -->
@@ -162,8 +93,8 @@
                     <h2>Class education</h2> <strong>O'quv-konsalting markazi</strong>
                 </div> <!-- section title -->
                 <div class="about-cont">
-                    <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris. <br> <br> auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris</p>
-                    <a href="#" class="main-btn mt-55">Batafsil</a>
+                    <p>{{$about->excerpt}}</p>
+                    <a href="{{route('about')}}" class="main-btn mt-55">Batafsil</a>
                 </div>
             </div> <!-- about cont -->
            <!--  <div class="col-lg-6 offset-lg-1">
@@ -228,155 +159,47 @@
             </div>
         </div> <!-- row -->
         <div class="row course-slied mt-30">
+            @foreach ($courses as $course)
+                
             <div class="col-lg-4">
                 <div class="singel-course">
                     <div class="thum">
                         <div class="image">
-                            <img src="{{asset('front/images/course/cu-3.jpg')}}" alt="Course">
+                            <img src="{{\Storage::url($course->image)}}" alt="Course">
                         </div>
-                        <div class="price">
+                        {{-- <div class="price">
                             <span>Tekin</span>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="cont">
-                        <ul>
+                       {{--  <ul>
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(14 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Ingliz tili fani</h4></a>
+                        </ul>--}}
+                        <div>Kategoriya({{$course->category->title_uz}})</div> <br>
+                        <a href="{{route('in.course', $course->id)}}"><h4>{{$course->translation->title}}</h4></a>
                         <div class="course-teacher">
                             <div class="thum">
-                                <a href="#"><img src="{{asset('front/images/course/teacher/t-4.jpg')}}" alt="teacher"></a>
+                                <a href="#">@if($course->teacher) <img src="{{\Storage::url($course->teacher->image)}}" alt="teacher"> @endif</a>
                             </div>
                             <div class="name">
-                                <a href="#"><h6>O'qituvchi(ism-Familiya)</h6></a>
+                                <a href="#"><h6><small>O'qituvchi</small>@if($course->teacher) {{$course->teacher->name_uz}} @endif</h6></a>
                             </div>
-                            <div class="admin">
+                            {{-- <div class="admin">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
                                     <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div> <!-- singel course -->
             </div>
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="{{asset('front/images/course/cu-2.jpg')}}" alt="Course">
-                        </div>
-                        <div class="price">
-                            <span>Tekin</span>
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Fizika fani - Mexanika</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="{{asset('front/images/course/teacher/t-2.jpg')}}" alt="teacher"></a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6>O'qituvchi(Ism-familiya)</h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="{{asset('front/images/course/cu-1.jpg')}}" alt="Course">
-                        </div>
-                        <div class="price">
-                            <span>Tekin</span>
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Matematika fani</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="{{asset('front/images/course/teacher/t-3.jpg')}}" alt="teacher"></a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6>O'qituvchi(Ism-familiya)</h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
-           
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="{{asset('front/images/course/cu-5.jpg')}}" alt="Course">
-                        </div>
-                        <div class="price">
-                            <span>Free</span>
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Kimyo fani -  boshlang'ich</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="{{asset('front/images/course/teacher/t-5.jpg')}}" alt="teacher"></a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6>O'qituvchi(Ism familiya) </h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
+            @endforeach
+          
         </div> <!-- course slied -->
     </div> <!-- container -->
 </section>
@@ -473,56 +296,25 @@
                 </div> <!-- section title -->
                 <div class="teachers-cont">
                     <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris. <br> <br> auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris</p>
-                    <a href="#" class="main-btn mt-55">Batafsil</a>
+                    {{-- <a href="#" class="main-btn mt-55">Batafsil</a> --}}
                 </div> <!-- teachers cont -->
             </div>
             <div class="col-lg-6 offset-lg-1">
                 <div class="teachers mt-20">
                     <div class="row">
+                        @foreach ($teachers as $teacher)
                         <div class="col-sm-6">
                             <div class="singel-teachers mt-30 text-center">
                                 <div class="image">
-                                    <img src="{{asset('front/images/teachers/t-1.jpg')}}" alt="Teachers">
+                                    <img src="{{\Storage::url($teacher->image)}}" alt="Teachers">
                                 </div>
                                 <div class="cont">
-                                    <a href="teachers-singel.html"><h6>Ism Familiya</h6></a>
-                                    <span>Matematika</span>
+                                    <a href="teachers-singel.html"><h6>{{$teacher->name}}</h6></a>
+                                    <span>{{$teacher->position}}</span>
                                 </div>
                             </div> <!-- singel teachers -->
                         </div>
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
-                                <div class="image">
-                                    <img src="{{asset('front/images/teachers/t-2.jpg')}}" alt="Teachers">
-                                </div>
-                                <div class="cont">
-                                    <a href="teachers-singel.html"><h6>Ism Familiya</h6></a>
-                                    <span>Kimyo</span>
-                                </div>
-                            </div> <!-- singel teachers -->
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
-                                <div class="image">
-                                    <img src="{{asset('front/images/teachers/t-5.jpg')}}" alt="Teachers">
-                                </div>
-                                <div class="cont">
-                                    <a href="teachers-singel.html"><h6>Ism Familiya</h6></a>
-                                    <span>Fizika</span>
-                                </div>
-                            </div> <!-- singel teachers -->
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
-                                <div class="image">
-                                    <img src="{{asset('front/images/teachers/t-6.jpg')}}" alt="Teachers">
-                                </div>
-                                <div class="cont">
-                                   <a href="teachers-singel.html"><h6>Ism Familiya</h6></a>
-                                    <span>Ingliz tili</span>
-                                </div>
-                            </div> <!-- singel teachers -->
-                        </div>
+                        @endforeach
                     </div> <!-- row -->
                 </div> <!-- teachers -->
             </div>
@@ -551,54 +343,23 @@
             </div>
         </div> <!-- row -->
         <div class="row testimonial-slied mt-40">
+            @foreach ($testimonials as $item)                
             <div class="col-lg-6">
                 <div class="singel-testimonial">
                     <div class="testimonial-thum">
-                        <img src="{{asset('front/images/testimonial/t-1.jpg')}}" alt="Testimonial">
+                        <img src="{{\Storage::url($item->image)}}" alt="Testimonial">
                         <div class="quote">
                             <i class="fa fa-quote-right"></i>
                         </div>
                     </div>
                     <div class="testimonial-cont">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <h6>Ism Familiya</h6>
-                        <span>Yo'nalishi</span>
+                          <p>{{$item->text_uz}}</p>
+                        <h6>{{$item->name}}</h6>
+                        <span>{{$item->direction}}</span>
                     </div>
                 </div> <!-- singel testimonial -->
             </div>
-            <div class="col-lg-6">
-                <div class="singel-testimonial">
-                    <div class="testimonial-thum">
-                        <img src="{{asset('front/images/testimonial/t-2.jpg')}}" alt="Testimonial">
-                        <div class="quote">
-                            <i class="fa fa-quote-right"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-cont">
-                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <h6>Ism Familiya</h6>
-                        <span>Yo'nalishi</span>
-                    </div>
-                </div> <!-- singel testimonial -->
-            </div>
-            <div class="col-lg-6">
-                <div class="singel-testimonial">
-                    <div class="testimonial-thum">
-                        <img src="{{asset('front/images/testimonial/t-3.jpg')}}" alt="Testimonial">
-                        <div class="quote">
-                            <i class="fa fa-quote-right"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-cont">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <h6>Ism Familiya</h6>
-                        <span>Yo'nalishi</span>
-                    </div>
-                </div> <!-- singel testimonial -->
-            </div>
+            @endforeach
         </div> <!-- testimonial slied -->
     </div> <!-- container -->
 </section>

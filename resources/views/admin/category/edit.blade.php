@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1> Add category</h1>
+            <h1> Edit category</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,7 @@
 
     <!-- Main content -->
     <section class="content">
-	<form action="{{route('category.create')}}" method="POST">
+	<form action="{{route('category.edit', $category->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
       <div class="row">
         <div class="col-md-9">
@@ -101,12 +101,19 @@
               <h3 class="card-title">Others</h3>
             </div>
             <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Photo</label>
-                <input type="file" name="image" id="inputEstimatedBudget" class="form-control">
+              <div class="img"><a class=""><img src="{{\Storage::url($category->image)}}" alt="" style="background: darkcyan;"></a></div>
+              <div class="form-group row" >
+                <div class="dropzone col mt-2">
+                  <div><i class="fas fa-plus"></i> <span>Photo</span></div>
+                  <input type="file" name="image" id="image" class="form-control">
+                  <input type="hidden" name="delete_image" id="delete_image" value="@if(!empty($category->image)) {{$category->image}} @endif">
+                </div>
+                <div class="col mt-2 ">
+                  <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
+                </div>
               </div>              
               <div class="form-group">
-                <input type="submit" value="Add category" class="btn btn-success float-right">
+                <input type="submit" value="Save category" class="btn btn-success float-right">
               </div>
             </div>
             <!-- /.card-body -->
