@@ -57,8 +57,9 @@
                         <div class="section-title">
                             <h5>Bog'lanish</h5>
                              <h2>
+                                
                             @php
-                                if (Request::is('*/consalting'))
+                                if (\Request::path() == 'consalting')
                                     {
                                        echo "Konsalting xizmati uchun ariza jo'nating";
                                     }else{
@@ -83,7 +84,7 @@
                                             <div class="help-block with-errors"></div>
                                         </div> <!-- singel form -->
                                     </div>
-                                    @if (Request::is('*/consalting'))
+                                    @if (\Request::path() == 'consalting')
                                     <input type="hidden" name="type" value="consalting">
                                     <div class="col-md-6">
                                         <div class="singel-form form-group">
@@ -95,7 +96,7 @@
                                     <input type="hidden" name="type" value="course">
                                     <div class="col-md-6">
                                         <div class="singel-form form-group">
-                                            <input name="email" type="email" placeholder="Email" data-error="Valid email is required." required="required">
+                                            <input name="email" type="email" placeholder="Email" data-error="Valid email is required.">
                                             <div class="help-block with-errors"></div>
                                         </div> <!-- singel form -->
                                     </div>

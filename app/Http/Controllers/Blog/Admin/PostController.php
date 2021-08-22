@@ -12,7 +12,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(10);
-        return view('admin.news.index', compact('posts'));
+        return view('admin.study-abroad.index', compact('posts'));
     }
 
     public function add(Request $request)
@@ -25,18 +25,18 @@ class PostController extends Controller
             
             if($request->hasFile('image')){			
                 $ext_image = $request->file('image')->extension();
-                $image = $request->file('image')->storeAs('public/news',$post->id.'.'.$ext_image);
+                $image = $request->file('image')->storeAs('public/study-abroad',$post->id.'.'.$ext_image);
                 $post->image = $image;
             }
             if($post){
                 $post->save();
-                return redirect()->route('news.index')->with(['msg' => 'Post successfuly created!']);
+                return redirect()->route('study-abroad.index')->with(['msg' => 'Post successfuly created!']);
             }else{
                 return back()->withErrors(['msg'=> 'Post successfuly created!'])->withInput();
             }
         }else{
 
-            return view('admin.news.add');
+            return view('admin.study-abroad.add');
         }
     }
 
@@ -48,7 +48,7 @@ class PostController extends Controller
         }
 
         if($request->isMethod('get')){
-            return view('admin.news.edit', compact('post'));
+            return view('admin.study-abroad.edit', compact('post'));
         }else{
             $data = $request->all();
             $data['slug'] = $this->createSlug($request->title_en, $id);
@@ -74,7 +74,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('admin.news.show', compact('post'));
+        return view('admin.study-abroad.show', compact('post'));
     }
 
     public function delete($id)
@@ -82,7 +82,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $delete = $post->delete();
         if($delete){
-            return redirect()->route('news.index')->with(['msg' => "Post have been deleted successfuly!"]);
+            return redirect()->route('study-abroad.index')->with(['msg' => "Post have been deleted successfuly!"]);
         }
         
     }

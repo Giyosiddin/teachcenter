@@ -44,7 +44,7 @@
           <div class="card-tools">
             <ul class="nav nav-tabs" id="for-course-tab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="for-consaltion-tab" data-toggle="pill" href="#for-consaltion" role="tab" aria-controls="for-consaltion" aria-selected="true">For consaltiong</a>
+                  <a class="nav-link active" id="for-consalting-tab" data-toggle="pill" href="#for-consalting" role="tab" aria-controls="for-consalting" aria-selected="true">For consaltiong</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="for-course-tab" data-toggle="pill" href="#for-course" role="tab" aria-controls="for-course" aria-selected="false">For course</a>

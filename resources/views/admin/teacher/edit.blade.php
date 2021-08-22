@@ -137,7 +137,7 @@
                 </div>
               </div>  
               <div class="form-group">
-                <input type="submit" value="Add teacher" class="btn btn-success float-right">
+                <input type="submit" value="Save teacher" class="btn btn-success float-right">
               </div>
             </div>
             <!-- /.card-body -->

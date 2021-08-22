@@ -11,6 +11,14 @@ class Course extends Model
     use HasFactory;
 
     public $guarded = [];
+    protected $fillable =[
+        'id',
+        'teacher_id',
+        'category_id',
+        'image',
+        'created_at',
+        'updated_at'
+    ];
 
     public function translation()
     {

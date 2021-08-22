@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="category-text pt-40">
-                        <h2>Online kurslar yo'nalishlari</h2>
+                        <h2>Kurslar yo'nalishlari</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-8 offset-2">
@@ -153,8 +153,8 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="section-title pb-45">
-                    <h5>Video darsliklar</h5>
-                    <h2>Tanlangan darsliklar</h2>
+                    <h5>Video darslar</h5>
+                    <h2>Tanlangan darslar</h2>
                 </div> <!-- section title -->
             </div>
         </div> <!-- row -->

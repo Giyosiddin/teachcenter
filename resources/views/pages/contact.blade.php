@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="singel-form form-group">
-                                            <input name="email" type="email" placeholder="Email" data-error="Valid email is required." required="required">
+                                            <input name="email" type="email" placeholder="Email" >
                                             <div class="help-block with-errors"></div>
                                         </div> <!-- singel form -->
                                     </div>

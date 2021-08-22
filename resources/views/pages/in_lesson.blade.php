@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Bosh sahifa</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('courses')}}">Online darslar</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('online-courses')}}">Online darslar</a></li>
                             <li class="breadcrumb-item"><a href="{{route('in.course',$lesson->course->id)}}">{{$lesson->course->translation->title}}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{$lesson->translation->title}}</li>
                         </ol>

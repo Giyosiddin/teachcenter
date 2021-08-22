@@ -31,11 +31,11 @@ class FrontController extends FrontBaseController
         return view('pages.home',compact('testimonials', 'teachers', 'courses','posts','categories','slider','about'));
     }
 
-    public function news()
+    public function studyAbroad()
     {
         $posts = Post::select('title_'.app()->getLocale().' as title',
         'excerpt_'.app()->getLocale().' as excerpt', 'slug', 'image')->paginate(12);
-        return view('pages.news', compact('posts'));
+        return view('pages.study-abroad', compact('posts'));
     }
 
     public function onlineCourses()
@@ -73,14 +73,14 @@ class FrontController extends FrontBaseController
         return view('pages.in_lesson', compact('lesson'));
     }
 
-    public function inNews($slug)
+    public function inStudyAbroad($slug)
     {
         $post= Post::where('slug',$slug)->first();
         $news = Post::where('slug','!=',$slug)->limit(5)->get();
         if(!$post){
             abort(404);
         }
-        return view('pages.in_news', compact('post','news'));
+        return view('pages.in_study-abroad', compact('post','news'));
     }
     public function page($slug)
     {

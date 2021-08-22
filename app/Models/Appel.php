@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Appel extends Model
 {
     use HasFactory;
-    public $guarded = [];
+    protected $guarded = [];   
+    protected $fillable =[
+        'id',
+        'fullname',
+        'phone',
+        'country',
+        'email',
+        'type',
+        'direction',
+        'created_at',
+        'updated_at'
+    ];
 }

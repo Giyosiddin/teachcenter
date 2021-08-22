@@ -15,7 +15,7 @@
     <title>{{ config('app.name', 'Classs Education') }}</title>
     
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="/front/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/front/images/favicon_new.ico" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
@@ -164,9 +164,6 @@
                                          <a class="{{ (Route::currentRouteName() == 'about') ? 'active' : '' }}" href="{{route('about')}}">Biz haqimizda</a>
                                      </li>
                                      <li class="nav-item">
-                                         <a class="{{ (Route::currentRouteName() == 'news') ? 'active' : '' }}" href="{{route('news')}}">Yangiliklar</a>
-                                     </li>
-                                     <li class="nav-item">
                                          <a href="#">Xizmatlar</a>
                                          <ul class="sub-menu">
                                              <li><a href="/consalting">Konsalting</a></li>
@@ -174,11 +171,10 @@
                                          </ul>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="{{route('online-courses')}}" class="{{ (Route::currentRouteName() == 'online-courses') ? 'active' : '' }}">Online darslar</a>
-                                         <!-- <ul class="sub-menu">
-                                             <li><a href="events.html">Events</a></li>
-                                             <li><a href="events-singel.html">Event Singel</a></li>
-                                         </ul> -->
+                                         <a class="{{ (Route::currentRouteName() == 'study-abroad') ? 'active' : '' }}" href="{{route('study-abroad')}}">Xorijda ta'lim</a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="{{route('online-courses')}}" class="{{ (Route::currentRouteName() == 'online-courses') ? 'active' : '' }}">Fanlar</a>
                                      </li>
                                      
                                      <li class="nav-item">
@@ -264,9 +260,9 @@
                             <ul>
                                 <li><a href="{{route('home')}}"><i class="fa fa-angle-right"></i>Asosiy sahifa</a></li>
                                 <li><a href="{{route('about')}}"><i class="fa fa-angle-right"></i>Biz haqimizda</a></li>
-                                <li><a href="{{route('news')}}"><i class="fa fa-angle-right"></i>Yangiliklar</a></li>
+                                <li><a href="{{route('study-abroad')}}"><i class="fa fa-angle-right"></i>Xorijda ta'lim</a></li>
                                 <li><a href="/consalting"><i class="fa fa-angle-right"></i>Konsalting</a></li>
-                                <li><a href="{{route('online-courses')}}"><i class="fa fa-angle-right"></i>Online darslar</a></li>
+                                <li><a href="{{route('online-courses')}}"><i class="fa fa-angle-right"></i>Fanlar</a></li>
                             </ul>
                         </div> <!-- footer link -->
                     </div>

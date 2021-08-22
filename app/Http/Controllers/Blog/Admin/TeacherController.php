@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Teacher;
+use App\Models\Admin\Teacher;
 
 class TeacherController extends Controller
 {

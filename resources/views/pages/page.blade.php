@@ -37,21 +37,10 @@
                           <h3>{{$page->title_uz}}</h3>
                           <ul>
                                <li><a href="#"><i class="fa fa-calendar"></i> {{date('d M Y', strtotime($page->updated_at))}}</a></li>
-                               {{-- <li><a href="#"><i class="fa fa-user"></i>Mark anthem</a></li>
-                               <li><a href="#"><i class="fa fa-tags"></i>Education</a></li> --}}
                            </ul>
                            @php
                                echo $page->body_uz;
                            @endphp
-                           {{-- <ul class="share">
-                               <li class="title">Share :</li>
-                               <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                           </ul> --}}
-                         
                       </div> <!-- cont -->
                   </div> <!-- blog details -->
               </div>

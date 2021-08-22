@@ -7,6 +7,7 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="shortcut icon" href="/front/images/favicon_new.ico" type="image/png">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('/admin-assets/fontawesome-free/css/all.min.css')}}">
   <!-- overlayScrollbars -->
@@ -243,10 +244,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('news.index')}}" class="nav-link">
+            <a href="{{route('study-abroad.index')}}" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
-                News
+                Study abroad
                 <!-- <span class="badge badge-info right">2</span> -->
               </p>
             </a>

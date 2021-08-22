@@ -71,11 +71,11 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('/', 'MainController@index')->name('admin.index');
         Route::resource('teacher', 'TeacherController');
         Route::post('teacher/{teacher}', 'TeacherController@update')->name('teacher.update');
-        Route::get('/news', 'PostController@index')->name('news.index');
-        Route::match(['get','post'], 'news/add', 'PostController@add')->name('news.add');
-        Route::match(['get','post'], 'news/edit/{post}', 'PostController@edit')->name('news.edit');
-        Route::get('news/show/{post}', 'PostController@show')->name('news.show');
-        Route::get('news/delete/{id}', 'PostController@delete')->name('news.delete');
+        Route::get('/study-abroad', 'PostController@index')->name('study-abroad.index');
+        Route::match(['get','post'], 'study-abroad/add', 'PostController@add')->name('study-abroad.add');
+        Route::match(['get','post'], 'study-abroad/edit/{post}', 'PostController@edit')->name('study-abroad.edit');
+        Route::get('study-abroad/show/{post}', 'PostController@show')->name('study-abroad.show');
+        Route::get('study-abroad/delete/{id}', 'PostController@delete')->name('study-abroad.delete');
         Route::get('categories', 'CategoryController@index')->name('category.index');
         Route::match(['get','post'], 'category/create', 'CategoryController@create')->name('category.create');
         Route::match(['get','post'], 'category/edit/{category}', 'CategoryController@edit')->name('category.edit');
@@ -122,8 +122,8 @@ Route::group([
     Route::get('/course/{id}', 'Blog\Front\FrontController@course')->name('in.course');
     Route::get('/course/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->name('in.lesson');
     Route::get('/contact', 'Blog\Front\FrontController@contact')->name('contact');
-    Route::get('/news', 'Blog\Front\FrontController@news')->name('news');
-    Route::get('news/{slug}', 'Blog\Front\FrontController@inNews')->name('in.news');
+    Route::get('/study-abroad', 'Blog\Front\FrontController@studyAbroad')->name('study-abroad');
+    Route::get('study-abroad/{slug}', 'Blog\Front\FrontController@inStudyAbroad')->name('in.study-abroad');
     Route::get('/{slug}', 'Blog\Front\FrontController@page')->name('page');
 });
 

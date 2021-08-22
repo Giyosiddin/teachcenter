@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Bosh sahifa</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('courses')}}">Online kurslar</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('online-courses')}}">Online kurslar</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{$course->translation->title}}</li>
                         </ol>
                     </nav>
@@ -176,7 +176,7 @@
                             <ul>
                                 @foreach ($news as $item)
                                 <li>
-                                     <a href="{{route('in.news',$item->slug)}}">
+                                     <a href="{{route('in.study-abroad',$item->slug)}}">
                                          <div class="singel-post">
                                             <div class="thum" style="float: left;padding-bottom: 20px; padding-right:20px">
                                                 <img src="{{\Storage::url($item->image)}}" width="150px" alt="Blog">
