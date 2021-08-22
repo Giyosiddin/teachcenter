@@ -95,7 +95,7 @@
                         @endif
                       </td>
                       <td class="project-state">
-                          <span class="badge badge-success">Success</span>
+                        <img src="{{\Storage::url($lesson->image)}}" alt="" width="100px">
                       </td>
                       <td class="project-actions text-right">
                           {{-- <a class="btn btn-primary btn-sm" href="{{route('lesson.show', $lesson->id)}}">

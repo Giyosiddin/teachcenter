@@ -46,7 +46,8 @@ class TeacherController extends Controller
         }
         $data = $request->all();
         $save = $teacher->update($data);
-        if($request->hasFile('image')){			
+        if($request->hasFile('image')){		
+            // dd($request->file('image'));	
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/teachers',$id.'.'.$ext_image);
 			$teacher->image = $image;

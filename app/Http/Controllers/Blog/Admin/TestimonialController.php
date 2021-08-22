@@ -71,8 +71,8 @@ class TestimonialController extends Controller
             $data = $request->all();
             // dd($data);
             $update = $testimonial->update($data);
-            // dd($request->file('image'));
             if($request->hasFile('image')){			
+                // dd($request->file('image'));
                 $ext_image = $request->file('image')->extension();
                 $image = $request->file('image')->storeAs('public/testimonial',$id.'.'.$ext_image);
                 $testimonial->image = $image;

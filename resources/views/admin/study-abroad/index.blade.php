@@ -63,7 +63,10 @@
                       </th>
                       <th>
                           Photo
-                      </th>
+                      </th>                      
+                      <th>
+                        Slider
+                    </th>
                       <th style="width: 20%">
                       </th>
                   </tr>
@@ -96,6 +99,13 @@
                       <td class="project-state">
                           <img src="{{\Storage::url($post->image)}}" width="200px" alt="">
                       </td>
+                      <td>
+                        @if($post->for_slider=='1')
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        @else
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        @endif
+                      </td>
                       <td class="project-actions text-right">
                           {{-- <a class="btn btn-primary btn-sm" href="{{route('study-abroad.show', $post->id)}}">
                               <i class="fas fa-folder">
@@ -117,6 +127,7 @@
                   @endforeach
               </tbody>
           </table>
+          {{$posts->links()}}
         </div>
         <!-- /.card-body -->
       </div>

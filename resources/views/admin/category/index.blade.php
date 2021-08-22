@@ -99,7 +99,7 @@
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="{{route('category.index', $category->id)}}">
+                          <a class="btn btn-danger btn-sm" href="{{route('category.delete', $category->id)}}">
                               <i class="fas fa-trash">
                               </i>
                               Delete

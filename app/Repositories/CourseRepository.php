@@ -62,7 +62,8 @@ class CourseRepository {
 			'details' => $data['details'],
 		];
 		$course->translation->update($course_translation);
-		if($request->hasFile('image')){			
+		if($request->hasFile('image')){		
+			// dd($request->file('image'));	
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/courses',$course->id.'.'.$ext_image);
 			$course->image = $image;

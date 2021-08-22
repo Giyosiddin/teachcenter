@@ -50,6 +50,7 @@ class CategoryController extends Controller
                 $ext_image = $request->file('image')->extension();
                 $image = $request->file('image')->storeAs('public/categories',$category->id.'.'.$ext_image);
                 $category->image = $image;
+                // dd($category->image);
             }else{
                 $category->image = $request->delete_image;
             }
@@ -59,6 +60,19 @@ class CategoryController extends Controller
             }else{
                 return back()->withErrors(['msg' => 'Post has not been updated, something went wrong.'])->withInput();
             }
+        }
+    }
+    public function delete($id)
+    {
+        $category = Category::find($id);
+        if(!$category){
+              return back()->withErrors(['msg' => "Category not found!"]);
+        }
+        $delete = $category->delete();
+        if($delete){
+            return redirect()->route('category.index')->with(['msg' => 'Category has been deleted!']);
+        }else{
+            return back()->withErrors(['msg' => 'Category would not deleted!']);
         }
     }
 }

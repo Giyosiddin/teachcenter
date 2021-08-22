@@ -95,7 +95,7 @@
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="{{route('admin.page', $page->id)}}">
+                          <a class="btn btn-danger btn-sm" href="{{route('admin.page.delete', $page->id)}}">
                               <i class="fas fa-trash">
                               </i>
                               Delete
@@ -105,6 +105,7 @@
                   @endforeach
               </tbody>
           </table>
+          {{$pages->links()}}
         </div>
         <!-- /.card-body -->
       </div>

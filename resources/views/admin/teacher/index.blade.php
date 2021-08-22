@@ -107,6 +107,7 @@
                   @endforeach
               </tbody>
           </table>
+          {{$teachers->links()}}
         </div>
         <!-- /.card-body -->
       </div>

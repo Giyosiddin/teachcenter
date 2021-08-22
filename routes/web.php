@@ -79,7 +79,7 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('categories', 'CategoryController@index')->name('category.index');
         Route::match(['get','post'], 'category/create', 'CategoryController@create')->name('category.create');
         Route::match(['get','post'], 'category/edit/{category}', 'CategoryController@edit')->name('category.edit');
-        Route::delete('category/delete/{course}', 'CategoryController@delete')->name('category.delete');
+        Route::get('category/delete/{course}', 'CategoryController@delete')->name('category.delete');
         Route::get('course', 'CourseController@index')->name('course.index');
         Route::match(['get','post'], 'course/create', 'CourseController@create')->name('course.create');
         Route::match(['get','post'], 'course/edit/{course}', 'CourseController@edit')->name('course.edit');
@@ -99,6 +99,7 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('page','PageController@index')->name('admin.page');
         Route::match(['get', 'post'], 'page/create', 'PageController@create')->name('admin.page.create');
         Route::match(['get', 'post'], 'page/edit/{id}', 'PageController@edit')->name('admin.page.edit');
+        Route::get('/page/delete/{id}', 'PageController@delete')->name('admin.page.delete');
         Route::get('/appels','MainController@appels')->name('admin.appels');
     });
 

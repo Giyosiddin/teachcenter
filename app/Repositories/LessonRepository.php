@@ -32,6 +32,7 @@ class LessonRepository {
 		$lessonTranslation = $lesson->translation()->create($trans_data);
 		
 		if($request->hasFile('image')){			
+			// dd($request->file('image'));
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/lessons',$lesson->id.'.'.$ext_image);
 			$lesson->image = $image;
@@ -79,6 +80,7 @@ class LessonRepository {
 			return $result = "Translation of lesson had not saved!";
 		}
 		if($request->hasFile('image')){			
+			// dd($request->file('image'));		
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/lessons',$lesson->id.'.'.$ext_image);
 			$lesson->image = $image;

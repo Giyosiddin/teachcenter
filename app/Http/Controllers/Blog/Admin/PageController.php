@@ -75,7 +75,19 @@ class PageController extends Controller
         }
 
     }
-
+    public function delete($id)
+    {
+        $page = Page::find($id);
+        if(!$page){
+              return back()->withErrors(['msg' => "page not found!"]);
+        }
+        $delete = $page->delete();
+        if($delete){
+            return redirect()->route('admin.page')->with(['msg' => 'page has been deleted!']);
+        }else{
+            return back()->withErrors(['msg' => 'page would not deleted!']);
+        }
+    }
     /** Generate unique slug */
     public function createSlug($title, $id = 0)
     {
