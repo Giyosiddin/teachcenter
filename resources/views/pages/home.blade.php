@@ -12,7 +12,15 @@
                         <h1 data-animation="bounceInLeft" data-delay="1s">{{$slide->title}}</h1>
                         <p data-animation="fadeInUp" data-delay="1.3s">{{$slide->excerpt}}</p>
                         <ul>
-                            <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Batafsil</a></li>
+                            <li>
+                            @if($slide->id == 12)
+                            <a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="/courses" > Batafsil</a>
+                            @elseif($slide->id == 17)
+                            <a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="/study-abroad" >Batafsil</a>
+                            @else
+                            <a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#" >Batafsil</a>
+                             @endif
+                            </li>
                            
                         </ul>
                     </div>
@@ -33,19 +41,19 @@
     <div class="container">
         <div class="category pt-40 pb-80">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="category-text pt-40">
-                        <h2>Kurslar yo'nalishlari</h2>
+                        <h2>Yo'nalishlar</h2>
                     </div>
                 </div>
-                <div class="col-lg-6 offset-lg-1 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-8 offset-2">
-                    <div class="row category-slied mt-40">
+                <div class="col-lg-7 offset-lg-1 col-md-9 offset-md-1 col-sm-9 offset-sm-1 col-9 offset-1">
+                    <div class="row category-slied @if($categories->count() >3)slider @endif mt-40">
                         @php
                          $i=1   
                         @endphp
                         @foreach($categories as $category)
                         <div class="col-lg-4">
-                            <a href="#">
+                            <a >
                                 <span class="singel-category text-center color-<?=$i; ?>">
                                     <span class="icon">
                                         <img src="{{\Storage::url($category->image)}}" alt="Icon">
@@ -60,18 +68,6 @@
                             if($i<3){ $i++; }else{ $i=1;}
                         @endphp
                         @endforeach
-                        <div class="col-lg-4">
-                            <a href="#">
-                                <span class="singel-category text-center color-1">
-                                    <span class="icon">
-                                        <img src="{{asset('front/images/all-icon/ctg-1.png')}}" alt="Icon">
-                                    </span>
-                                    <span class="cont">
-                                        <span>Chet tili</span>
-                                    </span>
-                                </span> <!-- singel category -->
-                            </a>
-                        </div>
                         
                     </div> <!-- category slied -->
                 </div>
@@ -133,78 +129,12 @@
         </div> <!-- row -->
     </div> <!-- container -->
     <div class="about-bg">
-        <img src="{{asset('front/images/about/bg-1.png')}}" alt="About">
+        {{-- <img src="{{asset('front/images/about/bg-1.png')}}" alt="About"> --}}
+        <img src="{{\Storage::url($about->image)}}" alt="About">
     </div>
 </section>
 
 <!--====== ABOUT PART ENDS ======-->
-
-<!--====== APPLY PART START ======-->
-
-
-
-
-<!--====== APPLY PART ENDS ======-->
-
-<!--====== COURSE PART START ======-->
-
-<section id="course-part" class="pt-115 pb-120 gray-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title pb-45">
-                    <h5>Video darslar</h5>
-                    <h2>Tanlangan darslar</h2>
-                </div> <!-- section title -->
-            </div>
-        </div> <!-- row -->
-        <div class="row course-slied mt-30">
-            @foreach ($courses as $course)
-                
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="{{\Storage::url($course->image)}}" alt="Course">
-                        </div>
-                        {{-- <div class="price">
-                            <span>Tekin</span>
-                        </div> --}}
-                    </div>
-                    <div class="cont">
-                       {{--  <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>--}}
-                        <div>Kategoriya({{$course->category->title_uz}})</div> <br>
-                        <a href="{{route('in.course', $course->id)}}"><h4>{{$course->translation->title}}</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#">@if($course->teacher) <img src="{{\Storage::url($course->teacher->image)}}" alt="teacher"> @endif</a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6><small>O'qituvchi</small>@if($course->teacher) {{$course->teacher->name_uz}} @endif</h6></a>
-                            </div>
-                            {{-- <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
-            @endforeach
-          
-        </div> <!-- course slied -->
-    </div> <!-- container -->
-</section>
-
-<!--====== COURSE PART ENDS ======-->
 
 <!--====== VIDEO FEATURE PART START ======-->
 
@@ -213,7 +143,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 order-last order-lg-first">
                 <div class="video text-lg-left text-center pt-50">
-                    <a class="Video-popup" href="https://www.youtube.com/watch?v=bRRtdzJH1oE"><i class="fa fa-play"></i></a>
+                    <a class="Video-popup" href="https://www.youtube.com/watch?v=lCtp49PE6_c"><i class="fa fa-play"></i></a>
                 </div> <!-- row -->
             </div>
             <div class="col-lg-5 offset-lg-1 order-first order-lg-last">
@@ -255,25 +185,12 @@
                                   <i class="fas fa-edit"></i>
                                 </div>
                                 <div class="cont">
-                                    <h4>Bonus uchun video darsliklar va nazorat testi</h4>
+                                    <h4>Bonus uchun video darslar va nazorat testi</h4>
                                     <p>Foydalanuvchilar uchun qo'shimcha elektron test .</p>
                                 </div>
                             </div> 
                           
-                        </li>
-                        <li>
-                            <div class="singel-feature">
-                                <div class="icon">
-                                    <i class="far fa-handshake"></i>
-                                    <!-- <img src="images/all-icon/f-2.png" alt="icon"> -->
-                                </div>
-                                <div class="cont">
-                                    <h4>Bitiruvchilarni qo'llab quvvatlash</h4>
-                                    <p>Gravida nibh vel velit auctor aliquetn auci elit cons solliazcitudirem sem quibibendum sem nibhutis.</p>
-                                </div>
-                            </div> <!-- singel feature -->
-                        </li>
-                        
+                        </li>                       
                     </ul>
                 </div> <!-- feature -->
             </div>
@@ -283,52 +200,65 @@
 </section>
 
 <!--====== VIDEO FEATURE PART ENDS ======-->
+<!--====== COURSE PART START ======-->
 
-<!--====== TEACHERS PART START ======-->
-
-<section id="teachers-part" class="pt-70 pb-120">
+<section id="course-part" class="pt-115 pb-120 gray-bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5">
-                <div class="section-title mt-50">
-                    <h5>O'qituvchilar</h5>
-                    <h2>O'qituvchilar haqida ma'lumot</h2>
+            <div class="col-lg-6">
+                <div class="section-title pb-45">
+                    <h5>Video darslar</h5>
+                    <h2>Tanlangan darslar</h2>
                 </div> <!-- section title -->
-                <div class="teachers-cont">
-                    <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris. <br> <br> auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris</p>
-                    {{-- <a href="#" class="main-btn mt-55">Batafsil</a> --}}
-                </div> <!-- teachers cont -->
-            </div>
-            <div class="col-lg-6 offset-lg-1">
-                <div class="teachers mt-20">
-                    <div class="row">
-                        @foreach ($teachers as $teacher)
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
-                                <div class="image">
-                                    <img src="{{\Storage::url($teacher->image)}}" alt="Teachers">
-                                </div>
-                                <div class="cont">
-                                    <a href="teachers-singel.html"><h6>{{$teacher->name}}</h6></a>
-                                    <span>{{$teacher->position}}</span>
-                                </div>
-                            </div> <!-- singel teachers -->
-                        </div>
-                        @endforeach
-                    </div> <!-- row -->
-                </div> <!-- teachers -->
             </div>
         </div> <!-- row -->
+        <div class="row course-slied mt-30">
+            @foreach ($courses as $course)
+                
+            <div class="col-lg-4">
+                <div class="singel-course">
+                    <div class="thum">
+                        <div class="image">
+                            <img src="{{\Storage::url($course->image)}}" alt="Course">
+                        </div>
+                        {{-- <div class="price">
+                            <span>Tekin</span>
+                        </div> --}}
+                    </div>
+                    <div class="cont">
+                       {{--  <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>--}}
+                        {{-- <div>Kategoriya({{$course->category->title_uz}})</div> <br> --}}
+                        <a href="{{route('in.course', $course->id)}}"><h4>{{$course->translation->title}}</h4></a>
+                        <div class="course-teacher">
+                            <div class="thum">
+                                <a href="#">@if($course->teacher) <img src="{{\Storage::url($course->teacher->image)}}" alt="teacher"> @endif</a>
+                            </div>
+                            <div class="name">
+                                <a href="#"><h6><small>O'qituvchi</small>@if($course->teacher) {{$course->teacher->name_uz}} @endif</h6></a>
+                            </div>
+                            {{-- <div class="admin">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
+                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
+                                </ul>
+                            </div> --}}
+                        </div>
+                    </div>
+                </div> <!-- singel course -->
+            </div>
+            @endforeach
+          
+        </div> <!-- course slied -->
     </div> <!-- container -->
 </section>
 
-<!--====== TEACHERS PART ENDS ======-->
-
-<!--====== PUBLICATION PART START ======-->
-
-
-
-<!--====== PUBLICATION PART ENDS ======-->
+<!--====== COURSE PART ENDS ======-->
 
 <!--====== TEASTIMONIAL PART START ======-->
 

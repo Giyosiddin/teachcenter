@@ -24,7 +24,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $lessons = Lesson::all();
+        $lessons = Lesson::orderBy('id','DESC')->paginate(10);
         return view('admin.lesson.index', compact('lessons'));
     }
 

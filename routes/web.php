@@ -54,6 +54,11 @@ Route::get('/config-cache', function() {
     $exitCode = Artisan::call('config:cache');
     return '<h1>Clear Config cleared</h1>';
 });
+//Clear Config cache:
+Route::get('/storage-link', function() {
+    $exitCode = Artisan::call('storage:link');
+    return '<h1>Storage link </h1>';
+});
 
 Route::post('/send-message', 'Blog\Front\MainController@sendMessage')->name('send.message');
 Route::post('/appels', 'Blog\Front\MainController@appels')->name('appels');
@@ -71,6 +76,7 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('/', 'MainController@index')->name('admin.index');
         Route::resource('teacher', 'TeacherController');
         Route::post('teacher/{teacher}', 'TeacherController@update')->name('teacher.update');
+        Route::get('/teacher/delete/{id}', 'TeacherController@delete')->name('admin.teacher.delete');
         Route::get('/study-abroad', 'PostController@index')->name('study-abroad.index');
         Route::match(['get','post'], 'study-abroad/add', 'PostController@add')->name('study-abroad.add');
         Route::match(['get','post'], 'study-abroad/edit/{post}', 'PostController@edit')->name('study-abroad.edit');
@@ -91,7 +97,14 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('lesson/show/{lesson}', 'LessonController@show')->name('lesson.show');
         Route::get('exams','ExamController@exams')->name('admin.exams');
         Route::match(['get', 'post'], 'exams/create', 'ExamController@createExam')->name('admin.exams.create');
-        
+        Route::match(['get', 'post'], 'exams/update/{id}', 'ExamController@updateExam')->name('admin.exams.update');
+        Route::get('exams/delete/{id}','ExamController@deleteExam')->name('exam.delete');
+        Route::get('exams/view/{id}','ExamController@view')->name('admin.exams.view');
+        Route::match(['get','post'], 'exams/{exam_id}/question/create','ExamController@createQuestion')->name('admin.create.question');
+
+        Route::match(['get','post'],'exams/{exam_id}/question/edit/{question_id}','ExamController@editQuestion')->name('admin.question.edit');
+        Route::get('exams/question/delete/{id}','ExamController@questionDelete')->name('admin.question.delete');
+
         Route::get('testimonials','TestimonialController@index')->name('admin.testimonials');
         Route::match(['get', 'post'], 'testimonials/create', 'TestimonialController@create')->name('admin.testimonials.create');
         Route::match(['get', 'post'], 'testimonials/edit/{id}', 'TestimonialController@edit')->name('admin.testimonials.edit');
@@ -101,6 +114,7 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::match(['get', 'post'], 'page/edit/{id}', 'PageController@edit')->name('admin.page.edit');
         Route::get('/page/delete/{id}', 'PageController@delete')->name('admin.page.delete');
         Route::get('/appels','MainController@appels')->name('admin.appels');
+        Route::get('/appels/delete/{id}','MainController@appelDelete')->name('admin.appels.delete');
     });
 
 });
@@ -114,17 +128,19 @@ Route::group([
 ], function(){
     
     Auth::routes();
-    Route::get('/', 'Blog\Front\FrontController@home')->name('home');
+    Route::get('', 'Blog\Front\FrontController@home')->name('home');
     
     Route::get('/about', 'Blog\Front\FrontController@about')->name('about');
     
     // Route::get('/courses', 'Blog\Front\FrontController@courses')->name('courses');
-    Route::get('/online-courses', 'Blog\Front\FrontController@onlineCourses')->name('online-courses');
-    Route::get('/course/{id}', 'Blog\Front\FrontController@course')->name('in.course');
-    Route::get('/course/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->name('in.lesson');
+    Route::get('/subjects', 'Blog\Front\FrontController@onlineCourses')->name('online-courses');
+    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->name('in.course');
+    Route::get('/subjects/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->name('in.lesson');
     Route::get('/contact', 'Blog\Front\FrontController@contact')->name('contact');
     Route::get('/study-abroad', 'Blog\Front\FrontController@studyAbroad')->name('study-abroad');
     Route::get('study-abroad/{slug}', 'Blog\Front\FrontController@inStudyAbroad')->name('in.study-abroad');
+    Route::get('exams','Blog\Front\MainController@exams')->name('exams');
+    Route::get('exam/{id}','Blog\Front\MainController@getExam')->middleware(['auth'])->name('get.exam');
     Route::get('/{slug}', 'Blog\Front\FrontController@page')->name('page');
 });
 

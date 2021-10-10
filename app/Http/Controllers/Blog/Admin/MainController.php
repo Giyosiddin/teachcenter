@@ -18,4 +18,13 @@ class MainController extends AdminBaseController
         $appels_course = Appel::where('type','course')->get(); 
         return view('admin.appels', compact('appels_consalting','appels_course'));
     }
+    public function appelDelete($id)
+    {
+        $appel = Appel::find($id);
+        $delete = $appel->delete();
+        if($delete){
+            return back()->with(['msg' => "Appel deleted successfuly!"]);
+        }
+    }
+
 }

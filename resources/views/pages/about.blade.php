@@ -44,21 +44,22 @@
                     <div class="about-singel-items mt-30">
                         <span>01</span>
                         <h4>Bizning maqsadimiz</h4>
-                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit sollicitudirem quibibendum auci</p>
+                        <p>Barchaga birdek samarali yordam.</p>
                     </div> <!-- about singel -->
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-10">
                     <div class="about-singel-items mt-30">
                         <span>02</span>
                        <h4>Bizning afzalliklar</h4>
-                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit sollicitudirem quibibendum auci</p>
+                        <p>Universitetga kirishingiz yo'lidagi barcha muammolaringizning yechimi bitta joyda. </p>
                     </div> <!-- about singel -->
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-10">
                     <div class="about-singel-items mt-30">
                         <span>03</span>
                         <h4>Bizning natijalar</h4>
-                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit sollicitudirem quibibendum auci</p>
+                        <p>Shartnomaga amal qilib o'qiganlarning kamida 97% har yili talaba bo'ladi.
+                            Xorijdan o'qishini ko'chirish bo'yicha tayyorlanganlarning 98% muvaffaqiyatga erishdi (2021)</p>
                     </div> <!-- about singel -->
                 </div>
             </div> <!-- row -->

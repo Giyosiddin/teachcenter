@@ -50,7 +50,7 @@
                           <label for="inputName">Title</label>
                           <input type="text" required="required" id="title" required="required" name="title" class="form-control">
                         </div>
-                        <div class="form-group" id="accordion">
+                        {{-- <div class="form-group" id="accordion">
                             <div class="card">
                                 <div class="card-header" id="heading1">
                                   <h5 class="mb-0">
@@ -73,7 +73,7 @@
                                   </div>
                                 </div>
                               </div>
-                        </div>
+                        </div> --}}
                       </div>
                   </div>
                 </div>
@@ -90,8 +90,8 @@
             <div class="card-body">         
               <div class="form-group">
                   <label>Course</label>
-                  <select class="form-control select2" name="teacher_id" style="width: 100%;">
-                    <option selected="selected">-- Choose Course --</option>
+                  <select class="form-control select2" name="course_id" style="width: 100%;">
+                    <option selected="selected" value="">-- Choose Course --</option>
                     @foreach($courses as $course)
                     <option value="{{$course->id}}">{{$course->translation->title}}</option>
                     @endforeach

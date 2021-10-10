@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-banner-cont">
-                    <h2>Kurslar</h2>
+                    <h2>Fanlar</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Asosiy sahifa</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Kurslar</li>
+                            <li class="breadcrumb-item active" aria-current="page">Fanlar</li>
                         </ol>
                     </nav>
                 </div>  <!-- page banner cont -->
@@ -71,11 +71,11 @@
                                     <li><i class="fa fa-star"></i></li>
                                     <li><i class="fa fa-star"></i></li>
                                 </ul> --}}
-                                <div>Kategoriya({{$course->category->title_uz}})</div>
+                                {{-- <div>Kategoriya({{$course->category->title_uz}})</div> --}}
                                 <a href="{{route('in.course', $course->id)}}"><h4>{{$course->translation->title}}</h4></a>
                                 <div class="course-teacher">
                                     <div class="thum">
-                                        <a href="#"><img src="{{asset('front/images/course/teacher/t-1.jpg')}}" alt="teacher"></a>
+                                        <a href="#"><img src="{{\Storage::url($course->teacher->image)}}" alt="teacher"></a>
                                     </div>
                                     <div class="name">
                                         <a href="#"><h6> @if($course->teacher) {{$course->teacher->name_uz }} @endif</h6></a>

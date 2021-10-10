@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Bosh sahifa</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('online-courses')}}">Online darslar</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('online-courses')}}">Fanlar</a></li>
                             <li class="breadcrumb-item"><a href="{{route('in.course',$lesson->course->id)}}">{{$lesson->course->translation->title}}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{$lesson->translation->title}}</li>
                         </ol>
@@ -32,7 +32,7 @@
                 <div class="col-lg-8">
                     <div class="events-left">
                         <h3>{{$lesson->translation->title}}</h3>
-                        <a href="#"><span><i class="fa fa-calendar"></i> {{date('d M Y', $lesson->update_at)}}</span></a>
+                        <a href="#"><span><i class="fa fa-calendar"></i>{{date("d/m/Y", strtotime($lesson->created_at));}}</span></a>
                         <a href="#"><span><i class="fa fa-clock-o"></i> {{$lesson->time}}</span></a>
                         {{-- <a href="#"><span><i class="fa fa-map-marker"></i> Rc Auditorim</span></a> --}}
                         <br>
@@ -77,7 +77,7 @@
                                         </div>
                                     </div> <!-- singel address -->
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <div class="singel-address">
                                         <div class="icon">
                                             <i class="fa fa-map"></i>
@@ -86,7 +86,29 @@
                                             <h6>Til</h6>
                                             <span>{{$lesson->translation->locale}}</span>
                                         </div>
-                                    </div> <!-- singel address -->
+                                    </div> 
+                                </li> -->
+                                <li>
+                                    <div class="singel-address">
+                                        <div class="icon">
+                                            <i class="fa fa-file"></i>
+                                        </div>
+                                        <div class="cont">
+                                        <h6>Birinchi fayl material :</h6> @if (empty($lesson->file_first))<span>Yo'q </span> @else
+                                            <a href="{{\Storage::url($lesson->file_first)}}">Birinchi</a>@endif
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="singel-address">
+                                        <div class="icon">
+                                            <i class="fa fa-file"></i>
+                                        </div>
+                                        <div class="cont">
+                                            <h6>Ikkinchi fayl material :</h6> @if (empty($lesson->file_second))<span>Yo'q </span> @else
+                                            <a href="{{\Storage::url($lesson->file_second)}}">Birinchi</a>@endif
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                             

@@ -107,6 +107,14 @@
                                             <div class="help-block with-errors"></div>
                                         </div> <!-- singel form --> 
                                     </div>
+                                    @if (\Request::path() == 'consalting')
+                                    <div class="col-md-12">
+                                        <div class="singel-form form-group">
+                                         <textarea name="message" id="" cols="30" rows="10" placeholder="Xabaringizni yozin"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div> <!-- singel form --> 
+                                    </div>
+                                    @endif
                                     <p class="form-message"></p>
                                     <div class="col-md-12">
                                         <div class="singel-form">

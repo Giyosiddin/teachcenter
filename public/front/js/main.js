@@ -118,7 +118,7 @@ $(function() {
     
     //===== Slick Category Slied
     
-    $('.category-slied').slick({
+    $('.category-slied.slider').slick({
         dots: false,
         infinite: false,
         speed: 800,

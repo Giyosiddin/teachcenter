@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Bosh sahifa</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('online-courses')}}">Online kurslar</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('online-courses')}}">Fanlar</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{$course->translation->title}}</li>
                         </ol>
                     </nav>
@@ -89,10 +89,12 @@
                                            echo $course->translation->body;
                                        @endphp
                                     </div>
-                                    {{-- <div class="singel-description pt-40">
-                                        <h6>Talablar</h6>
-                                        <p>Bu joyda kursni boshlash uchun o'quvchidan qanday bilim va ko'niklamar ta'lab qilinadi, qaysi darajada bo'lishi kerak  kabi ma'lumotlar yoziladi .</p>
-                                    </div> --}}
+                                    <div class="singel-description pt-40">
+                                       @php
+                                           echo $course->translation->details;
+                                       @endphp
+                                    </div>
+                                    
                                 </div> <!-- overview description -->
                             </div>
                             <div class="tab-pane fade" id="curriculam" role="tabpanel" aria-labelledby="curriculam-tab">
@@ -159,10 +161,15 @@
                         <div class="course-features mt-30">
                            <h4>Kurs detallari </h4>
                             <ul>
-                                <li><i class="fa fa-clock-o"></i>Duaration : <span>10 Hours</span></li>
-                                <li><i class="fa fa-clone"></i>Leactures : <span>09</span></li>
-                                <li><i class="fa fa-beer"></i>Quizzes :  <span>05</span></li>
-                                <li><i class="fa fa-user-o"></i>Students :  <span>100</span></li>
+                                <li><i class="fa fa-clock-o"></i>Video darslar : <span>{{$course->lessons()->count()}} ta</span></li>
+                                {{-- <li><i class="fa fa-clone"></i> : <span>09</span></li> --}}
+                                <li><i class="fa fa-map"></i> Til : {{$lesson->translation->locale}}</li>
+                                <!-- <li><i class="fa fa-file"></i>Birinchi fayl material : @if (empty($course->file_first))<span>Yo'q </span> @else
+                                    <a href="{{\Storage::url($course->file_first)}}">Birinchi</a>
+                                @endif</li>
+                                <li><i class="fa fa-file"></i>Ikkinchi fayl material : @if (empty($course->file_second))<span>Yo'q </span> @else
+                                    <a href="{{\Storage::url($course->file_second)}}">Birinchi</a>
+                                @endif</li> -->
                             </ul>
                             {{-- <div class="price-button pt-10">
                                 <span>Price : <b>$25</b></span>
@@ -172,7 +179,7 @@
                     </div>
                     <div class="col-lg-12 col-md-6">
                         <div class="singel-makelike mt-20" style="border-radius:3px; background: white; padding:20px;">
-                            <h4>Yangiliklar</h4><br>
+                            <h4>Xorijda ta'lim</h4><br>
                             <ul>
                                 @foreach ($news as $item)
                                 <li>

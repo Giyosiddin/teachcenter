@@ -69,7 +69,7 @@
                                         <i class="fa fa-home"></i>
                                     </div>
                                     <div class="cont">
-                                        <p>Toshkent sh. Yunusobod t. Amir Temur 18-uy</p>
+                                        <p>Toshkent sh. Chilonzor tumani, zavqiy kuchasi 41a</p>
                                     </div>
                                 </div> <!-- singel address -->
                             </li>
@@ -79,8 +79,8 @@
                                         <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="cont">
-                                        <p>+998 90 353 44 35</p>
-                                        <p>+998 90 353 44 35</p>
+                                        <p>+998 97 333-9-666</p>
+                                        <p>+998 99 945-56-66</p>
                                     </div>
                                 </div> <!-- singel address -->
                             </li>
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="cont">
                                         <p>info@classedu.uz</p>
-                                        <p>info@classedu.uz</p>
+                                        {{-- <p>info@classedu.uz</p> --}}
                                     </div>
                                 </div> <!-- singel address -->
                             </li>
@@ -115,7 +115,9 @@
 
     </section>
     <div class="map map-big">
-        <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7124.225129282619!2d69.282241689685!3d41.344361180219714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b53a7ec3c8d%3A0x186a1db9c8b975a4!2sAmir%20Temur%20Avenue%2C%20Tashkent%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1629289262494!5m2!1sen!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11990.210137186841!2d69.2247256!3d41.2968421!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE3JzQ4LjMiTiA2OcKwMTMnMjkuNCJF!5e0!3m2!1sen!2s!4v1629700314053!5m2!1sen!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
     </div> <!-- map -->
     <!--====== CONTACT PART ENDS ======-->
 @endsection

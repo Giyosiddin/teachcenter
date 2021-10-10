@@ -53,3 +53,7 @@ $('a.delete_file').on('click', function(e){
   // $(this).parent().prev().children('input').val('deleted');
 // alert( $(this).parent().parent().prev('.img').children('a'));
 });
+$(".is_correct").change(function(){
+  $(".is_correct").prop('checked', false);    
+  $(this).prop('checked', true);
+})

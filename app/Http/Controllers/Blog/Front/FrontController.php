@@ -23,17 +23,17 @@ class FrontController extends FrontBaseController
         $teachers = Teacher::select('name_'.app()->getLocale() . ' as name','position_'.app()->getLocale().' as position', 'image')->get(4);
         $courses = Course::with('translation')->limit(10)->get();        
         $categories = Category::select('title_'.app()->getLocale() .' as title','image')->get(6);
-        $slider = Post::where('for_slider','1')->select('title_'.app()->getLocale().' as title',
+        $slider = Post::where('for_slider','1')->select('id','title_'.app()->getLocale().' as title',
         'excerpt_'.app()->getLocale().' as excerpt', 'slug', 'image')->get();
         $posts = Post::where('for_slider','0')->select('title_'.app()->getLocale(),
         'excerpt_'.app()->getLocale(), 'slug', 'image','updated_at')->get(12);
-        $about = Page::where('slug','about-us')->select('excerpt_'.app()->getLocale().' as excerpt')->first();
+        $about = Page::where('slug','about-us')->select('excerpt_'.app()->getLocale().' as excerpt','image')->first();
         return view('pages.home',compact('testimonials', 'teachers', 'courses','posts','categories','slider','about'));
     }
 
     public function studyAbroad()
     {
-        $posts = Post::select('title_'.app()->getLocale().' as title',
+        $posts = Post::where('for_slider','!=','1')->select('title_'.app()->getLocale().' as title',
         'excerpt_'.app()->getLocale().' as excerpt', 'slug', 'image')->paginate(12);
         return view('pages.study-abroad', compact('posts'));
     }
@@ -58,7 +58,7 @@ class FrontController extends FrontBaseController
     public function course($id)
     {
         $course = Course::find($id);
-        $news = Post::limit(3)->get();
+        $news = Post::where('for_slider','!=','1')->limit(3)->get();
         if(!$course){
             abort(404);
         }
@@ -76,7 +76,10 @@ class FrontController extends FrontBaseController
     public function inStudyAbroad($slug)
     {
         $post= Post::where('slug',$slug)->first();
-        $news = Post::where('slug','!=',$slug)->limit(5)->get();
+        $news = Post::where([
+            ['for_slider','!=','1'],
+            ['slug','!=',$slug]
+        ])->limit(5)->get();
         if(!$post){
             abort(404);
         }

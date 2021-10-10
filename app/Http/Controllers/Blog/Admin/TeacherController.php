@@ -47,10 +47,10 @@ class TeacherController extends Controller
         $data = $request->all();
         $save = $teacher->update($data);
         if($request->hasFile('image')){		
-            // dd($request->file('image'));	
-			$ext_image = $request->file('image')->extension();
+            $ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/teachers',$id.'.'.$ext_image);
 			$teacher->image = $image;
+            // dd($image);	
 		}else{
 			$teacher->image = $request->delete_image;
 		}
@@ -75,10 +75,10 @@ class TeacherController extends Controller
     public function delete($id)
     {
         $teacher = Teacher::find($id);
-        if($teacher){
+        // dd($teacher);
+        if(!$teacher){
             return back()->withErrors(['msg' => "Not found item!"]);
         }
-
         $delete = $teacher->delete();
         if($delete){
             return redirect()->route('teacher.index')->with(['success' => "Item was deleted! "]);

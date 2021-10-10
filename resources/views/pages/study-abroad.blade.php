@@ -33,7 +33,7 @@
                         <img src="{{\Storage::url($post->image)}}" alt="{{$post->title_uz}}">
                     </div>
                     <div class="event-cont">
-                        <span><i class="fa fa-calendar"></i> {{date('d M Y', strtotime($post->updated_at))}}</span>
+                        <!-- <span><i class="fa fa-calendar"></i> {{date('d M Y', strtotime($post->updated_at))}}</span> -->
                         <a href="{{route('in.study-abroad', $post->slug)}}"><h4>{{$post->title}}</h4></a>
                         {{-- <span><i class="fa fa-clock-o"></i> {{time('m h s', strtotime($post->updated_at))}}</span> --}}
                         {{-- <span><i class="fa fa-map-marker"></i> Rc Auditorim</span> --}}

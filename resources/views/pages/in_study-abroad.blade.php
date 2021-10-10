@@ -3,7 +3,7 @@
     
     <!--====== PAGE BANNER PART START ======-->
     
-    <section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8" style="background-image: url({{\Storage::url($post->image)}})">
+    <section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8" style="background-image: url({{asset('front/images/consulting.jpg')}})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -60,12 +60,12 @@
                    <div class="saidbar">
                        <div class="row">
                            <div class="col-lg-12 col-md-6">
-                               <div class="saidbar-search mt-30">
+                               {{-- <div class="saidbar-search mt-30">
                                    <form action="#">
                                        <input type="text" placeholder="Search">
                                        <button type="button"><i class="fa fa-search"></i></button>
                                    </form>
-                               </div> <!-- saidbar search -->
+                               </div> <!-- saidbar search --> --}}
                                {{-- <div class="categories mt-30">
                                    <h4>Categories</h4>
                                    <ul>
@@ -82,7 +82,7 @@
                            </div> <!-- categories -->
                            <div class="col-lg-12 col-md-6">
                                <div class="saidbar-post mt-30">
-                                   <h4>Yangiliklar</h4>
+                                   <h4>Xorijda ta'lim</h4>
                                    <ul>
                                        @foreach ($news as $item)
                                        <li>

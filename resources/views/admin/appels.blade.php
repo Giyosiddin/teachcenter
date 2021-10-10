@@ -70,13 +70,17 @@
                                 <th style="width: 20%">
                                     Country
                                 </th>
+                                <th style="width: 20%">
+                                    Message
+                                </th>
                                 <th>
                                    Direction
                                 </th>                                
                                 <th>
                                     Date
+                                 </th>                                                               
+                                 <th>
                                  </th>
-                                
                             </tr>
                         </thead>
                         <tbody>
@@ -98,6 +102,11 @@
                                         <strong>{{$appel->country }}</strong>
                                     </div>
                                 </td>
+                                <td>
+                                    <div>
+                                        <strong>{{$appel->message }}</strong>
+                                    </div>
+                                </td>
                                 <td class="project_progress">
                                     <p style="max-width: 500px">
                                     {{$appel->direction}}
@@ -105,6 +114,13 @@
                                 </td>
                                 <td class="project-actions ">
                                     Created {{$appel->created_at}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="{{route('admin.appels.delete', $appel->id)}}">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach
@@ -162,6 +178,13 @@
                                 </td>
                                 <td class="project-actions">
                                     Created {{$appel_course->created_at}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="{{route('admin.appels.delete', $appel_course->id)}}">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

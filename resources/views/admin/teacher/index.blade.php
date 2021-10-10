@@ -97,7 +97,7 @@
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="{{route('teacher.destroy', $teacher->id)}}">
+                          <a class="btn btn-danger btn-sm" href="{{route('admin.teacher.delete', $teacher->id)}}">
                               <i class="fas fa-trash">
                               </i>
                               Delete

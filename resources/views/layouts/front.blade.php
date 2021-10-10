@@ -5,15 +5,17 @@
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" CONTENT="Class education - O'quv-konsalting markazi, qisqa muddatda o'z metodikasiga ega bo'lgan jamoa!">
+    <meta name="google-site-verification" content="IxqVrQde2hmN2tbL_tVOjgrBNW8Cm8TgZlL6hwflYLk"/>
 
     <title>{{ config('app.name', 'Classs Education') }}</title>
-    
+    <meta name="robots" content="">
+    <meta name="googlebot" content="" />
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="/front/images/favicon_new.ico" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -114,7 +116,7 @@
                                  </div>
                                  <div class="cont">
                                      <p>Qo'shimcha ma'lumotlar uchun bog'laning</p>
-                                     <span>90 353 44 35</span>
+                                     <span>97 333-9-666</span>
                                  </div>
                              </div>
                              @guest
@@ -175,6 +177,10 @@
                                      </li>
                                      <li class="nav-item">
                                          <a href="{{route('online-courses')}}" class="{{ (Route::currentRouteName() == 'online-courses') ? 'active' : '' }}">Fanlar</a>
+                                     </li>
+                                     
+                                     <li class="nav-item">
+                                         <a href="{{route('exams')}}" class="{{ (Route::currentRouteName() == 'exams') ? 'active' : '' }}">Online test</a>
                                      </li>
                                      
                                      <li class="nav-item">
@@ -245,10 +251,10 @@
                             </div>
                             <p>Ushbu web sayt orqali konsalting va o'quv fanlaridan o'zingizga kerakli ma'lumotlarni olasiz.</p>
                             <ul class="mt-20">
-                                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa fa-telegram"></i></a></li>
+                                <li><a href="https://www.facebook.com/classedu.uz"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="https://t.me/classeduuz"><i class="fa fa-telegram"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.instagram.com/classedu.uz/"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div> <!-- footer about -->
                     </div>
@@ -290,7 +296,7 @@
                                         <i class="fa fa-home"></i>
                                     </div>
                                     <div class="cont">
-                                        <p>Toshkent sh. Yunusobod t. Amir Temur 18-uy</p>
+                                        <p>Toshkent sh. Chilonzor tumani, zavqiy kuchasi 41a</p>
                                     </div>
                                 </li>
                                 <li>
@@ -298,7 +304,7 @@
                                         <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="cont">
-                                        <p>90 353 44 35</p>
+                                        <p>99 945 56 66</p>
                                     </div>
                                 </li>
                                 <li>

@@ -57,6 +57,9 @@
 .form-group.row i {
   padding-right: 5px;
 }
+li.nav-item ul.nav.nav-treeview {
+  padding-left: 25px;
+}
 /* .img a:before {
     content: "x";
     position: absolute;

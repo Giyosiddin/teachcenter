@@ -61,8 +61,11 @@ class PageController extends Controller
             $save = $page->update($data);
             if($request->hasFile('image')){			
                 $ext_image = $request->file('image')->extension();
-                $image = $request->file('image')->storeAs('public/posts',$page->id.'.'.$ext_image);
+                $name_file = $request->file('image')->getClientOriginalName();
+                $image = $request->file('image')->storeAs('public/pages',$name_file.'.'.$ext_image);
                 $page->image = $image;
+                // dump($image);
+                // dd($page->image);
             }else{
                 $page->image = $request->delete_image;
             }

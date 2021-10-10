@@ -281,12 +281,12 @@
                   <p>Lessons</p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="{{route('admin.exams')}}" class="nav-link">
                   <i class="fas fa-laptop-code nav-icon"></i>
                   <p>Exams</p>
                 </a>
-              </li> --}}
+              </li>
             </ul>
           </li>
           <li class="nav-item">

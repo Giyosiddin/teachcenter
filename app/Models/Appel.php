@@ -16,6 +16,7 @@ class Appel extends Model
         'country',
         'email',
         'type',
+        'message',
         'direction',
         'created_at',
         'updated_at'

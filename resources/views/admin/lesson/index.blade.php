@@ -39,7 +39,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">lessons</h3>
+          <h3 class="card-title">Lessons</h3>
 
           <div class="card-tools">
             <a href="{{route('lesson.create')}}" class="btn btn-block btn-success btn-flat"> Add lesson</a>
@@ -73,7 +73,7 @@
                  
                   <tr>
                       <td>
-                          #
+                          #{{$lesson->id}}
                       </td>
                       <td>
                           <a>
@@ -117,9 +117,12 @@
                   </tr>
                   @endforeach
               </tbody>
-          </table>
+          </table> 
         </div>
         <!-- /.card-body -->
+        <div class="d-flex justify-content-center">
+           {!! $lessons->links('vendor.pagination') !!}
+        </div>
       </div>
       <!-- /.card -->
 
