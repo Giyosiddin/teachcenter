@@ -93,7 +93,7 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('lessons', 'LessonController@index')->name('lesson.index');
         Route::match(['get','post'], 'lesson/create', 'LessonController@create')->name('lesson.create');
         Route::match(['get','post'], 'lesson/edit/{lesson}', 'LessonController@edit')->name('lesson.edit');
-        Route::get('lesson/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');        
+        Route::get('lesson/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');
         Route::get('lesson/show/{lesson}', 'LessonController@show')->name('lesson.show');
         Route::get('exams','ExamController@exams')->name('admin.exams');
         Route::match(['get', 'post'], 'exams/create', 'ExamController@createExam')->name('admin.exams.create');
@@ -126,22 +126,26 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ], function(){
-    
+
     Auth::routes();
     Route::get('', 'Blog\Front\FrontController@home')->name('home');
-    
+
     Route::get('/about', 'Blog\Front\FrontController@about')->name('about');
-    
+
     // Route::get('/courses', 'Blog\Front\FrontController@courses')->name('courses');
     Route::get('/subjects', 'Blog\Front\FrontController@onlineCourses')->name('online-courses');
-    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->name('in.course');
-    Route::get('/subjects/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->name('in.lesson');
+    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->middleware(['auth'])->name('in.course');
+    Route::get('/subjects/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->middleware(['auth'])->name('in.lesson');
     Route::get('/contact', 'Blog\Front\FrontController@contact')->name('contact');
     Route::get('/study-abroad', 'Blog\Front\FrontController@studyAbroad')->name('study-abroad');
     Route::get('study-abroad/{slug}', 'Blog\Front\FrontController@inStudyAbroad')->name('in.study-abroad');
     Route::get('exams','Blog\Front\MainController@exams')->name('exams');
     Route::get('exam/{id}','Blog\Front\MainController@getExam')->middleware(['auth'])->name('get.exam');
+    Route::get('myresults/', 'Blog\Front\MainController@getAllResults')->middleware(['auth'])->name('get.allResults');
+    Route::get('myresults/{result_id}', 'Blog\Front\MainController@getResult')->middleware(['auth'])->name('get.result');
+    Route::post('exam/{id}/to-check', 'Blog\Front\MainController@checkExam')->name('check.exam');
     Route::get('/{slug}', 'Blog\Front\FrontController@page')->name('page');
+
 });
 
 

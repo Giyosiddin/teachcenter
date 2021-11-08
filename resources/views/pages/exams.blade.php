@@ -1,7 +1,7 @@
 @extends('layouts.front')
-@section('content')    
+@section('content')
     <!--====== PAGE BANNER PART START ======-->
-    
+
     <section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8" style="background-image: url('/front/images/page-banner-2.jpg')">
         <div class="container">
             <div class="row">
@@ -19,14 +19,17 @@
             </div> <!-- row -->
         </div> <!-- container -->
     </section>
-    
+
     <!--====== PAGE BANNER PART ENDS ======-->
-       
+
     <section id="blog-singel" class="pt-90 pb-120 gray-bg">
         <div class="container">
            <div class="row">
-              <div class="col-lg-12">                  
-                    <h3>Online testlarimizni ishlash uchun saytda ro'yxatdan o'tgan bo'lishingiz zarur. </h3>
+              <div class="col-lg-12">
+                    <div class="row">
+                        <h4 class="col-10">Online testlarimizni ishlash uchun saytda ro'yxatdan o'tgan bo'lishingiz zarur. </h4>
+                        <a href="{{ route('get.allResults') }}" class="btn btn-success col-2">Natijalarimni ko'rish</a>
+                    </div>
                   <div class="blog-details mt-30 row">
                         <div class="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <?php $i=1; ?>

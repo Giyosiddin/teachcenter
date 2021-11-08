@@ -1,8 +1,8 @@
 @extends('layouts.front')
 @section('content')
-    
-    
-  
+
+
+
 <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url({{asset('front/images/page-banner-2.jpg')}})">
     <div class="container">
         <div class="row">
@@ -39,7 +39,7 @@
                         </li>
                         <li class="nav-item">Showning 4 0f 24 Results</li>
                     </ul> <!-- nav -->
-                    
+
                     <div class="courses-search float-right">
                         <form action="#">
                             <input type="text" placeholder="Search">
@@ -51,6 +51,7 @@
         </div> <!-- row --> --}}
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="courses-grid" role="tabpanel" aria-labelledby="courses-grid-tab">
+                <h4 class="col-10">Video darslarimizni ko'rish uchun saytda ro'yxatdan o'tgan bo'lishingiz zarur. </h4>
                 <div class="row">
                     @foreach ($courses as $course)
                     <div class="col-lg-4 col-md-6">
@@ -90,7 +91,7 @@
                             </div>
                         </div> <!-- singel course -->
                     </div>
-                        
+
                     @endforeach
                 </div> <!-- row -->
             </div>

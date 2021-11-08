@@ -29,28 +29,31 @@
                     <span>({{$exam->questions()->count()}} ta savol)</span>
                 </div>
             </div>
-            <div class="border">                
-                <?php $i=1 ?>
-                @foreach ($exam->questions as $question)
-                    <div class="question bg-white p-3 border-bottom">
-                        <div class="d-flex flex-row align-items-center question-title">
-                            <h5 class="text-danger">№:{{$i}} </h5>
-                            <h5 class=" ml-2">{{$question->question}}</h5>
-                        </div>
-                        <div class="row">
-                            @foreach($question->answers as $answer)
-                            <div class="ans1 col-6">
-                                <label class="radio"> <input type="radio" name="answer" value="{{$answer->id}}"> <span>{{$answer->answer}}</span>
-                                </label>
+            <div class="border">
+                <form method="post" action="{{ route('check.exam', $exam->id) }}">
+                    @csrf
+                    <?php $i=1 ?>
+                    @foreach ($exam->questions as $question)
+                        <div class="question bg-white p-3 border-bottom">
+                            <div class="d-flex flex-row align-items-center question-title">
+                                <h5 class="text-danger">№:{{$i}} </h5>
+                                <h5 class=" ml-2">{{$question->question}}</h5>
                             </div>
-                            @endforeach
+                            <div class="row">
+                                @foreach($question->answers as $answer)
+                                <div class="ans1 col-6">
+                                    <label class="radio"> <input type="radio" name="answer[{{ $question->id }}]" value="{{$answer->id}}"> <span>{{$answer->answer}}</span>
+                                    </label>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
+                    <?php $i++; ?>
+                    @endforeach
+                    <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                    <button class="btn btn-primary border-success align-items-center btn-success" type="submit">Testni yakunlash<i class="fa fa-angle-right ml-2"></i></button>
                     </div>
-                <?php $i++; ?>
-                @endforeach
-                <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
-                <button class="btn btn-primary border-success align-items-center btn-success" type="button">Testni yakunlash<i class="fa fa-angle-right ml-2"></i></button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
