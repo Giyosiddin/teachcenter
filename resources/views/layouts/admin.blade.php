@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{asset('/admin-assets/fontawesome-free/css/all.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('/admin-assets/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
-  
+
   <!-- dropzonejs -->
   <link rel="stylesheet" href="{{asset('/admin-assets/dropzone/min/dropzone.min.css')}}">
   <!-- Theme style -->
@@ -167,7 +167,7 @@
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                     {{ ucfirst(Auth::user()->name) }}
-                     
+
                     </h3>
                     <p class="text-sm"> <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();" class="float-right text-sm text-danger"><i class="fas fa-sign-out-alt"></i></a>
@@ -180,7 +180,7 @@
                 <!-- Message End -->
               </div>
               <div class="dropdown-divider"></div>
-             
+
             </div>
         </li>
     </ul>
@@ -316,6 +316,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('admin.users')}}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -323,7 +332,7 @@
     <!-- /.sidebar -->
   </aside>
  @yield('content')
- 
+
   <!-- Main Footer -->
   {{-- <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>

@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('content')
-     
+
 <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url({{asset('front/images/page-banner-2.jpg')}})">
     <div class="container">
         <div class="row">
@@ -38,7 +38,7 @@
                                 <div class="teacher-name">
                                     <div class="thum">
                                         @if ($course->teacher)
-                                            
+
                                         <img src="{{\Storage::url($course->teacher->image)}}" alt="Teacher" style="max-width: 40px; height: 40px;">
                                         @endif
                                     </div>
@@ -60,11 +60,11 @@
                             </li>
                         </ul>
                     </div> <!-- course terms -->
-                    
+
                     <div class="corses-singel-image pt-50">
                         <img src="{{\Storage::url($course->image)}}" alt="Courses">
                     </div> <!-- corses singel image -->
-                    
+
                     <div class="corses-tab mt-30">
                         <ul class="nav nav-justified" id="myTab" role="tablist">
                             <li class="nav-item">
@@ -80,7 +80,7 @@
                                 <a id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Izoh</a>
                             </li> --}}
                         </ul>
-                        
+
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                                 <div class="overview-description">
@@ -94,7 +94,7 @@
                                            echo $course->translation->details;
                                        @endphp
                                     </div>
-                                    
+
                                 </div> <!-- overview description -->
                             </div>
                             <div class="tab-pane fade" id="curriculam" role="tabpanel" aria-labelledby="curriculam-tab">
@@ -107,10 +107,10 @@
                                            $i=1;
                                        @endphp
                                         @foreach ($course->lessons as $lesson)
-                                        
+
                                         <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <a href="{{route('in.lesson',[$course->id,$lesson->id])}}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <div class="card-header" id="heading{{ $lesson->id }}">
+                                                <a href="{{route('in.lesson',[$course->id,$lesson->id])}}" class="collapsed" data-toggle="collapse" data-target="#collapse{{ $lesson->id }}" aria-expanded="true" aria-controls="collapse{{ $lesson->id }}">
                                                     <ul>
                                                         <li><i class="fab fa-youtube"></i></li>
                                                         <li><span class="lecture">Video 1.<?=$i; ?></span></li>
@@ -120,7 +120,7 @@
                                                 </a>
                                             </div>
 
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                            <div id="collapse{{ $lesson->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                <div class="card-body">
                                                     <p><a href="{{route('in.lesson',[$course->id,$lesson->id])}}">
                                                     <img src="{{\Storage::url($lesson->image)}}" alt="Course" width="80" class="p-2"></a>{{$lesson->translation->excerpt}}</p>
@@ -130,7 +130,7 @@
                                         @php
                                             $i++;
                                         @endphp
-                                        @endforeach                                   
+                                        @endforeach
                                     </div>
                                 </div> <!-- curriculam cont -->
                             </div>
@@ -153,7 +153,7 @@
                         </div> <!-- tab content -->
                     </div>
                 </div> <!-- corses singel left -->
-                
+
             </div>
             <div class="col-lg-4">
                 <div class="row">
@@ -171,10 +171,6 @@
                                     <a href="{{\Storage::url($course->file_second)}}">Birinchi</a>
                                 @endif</li> -->
                             </ul>
-                            {{-- <div class="price-button pt-10">
-                                <span>Price : <b>$25</b></span>
-                                <a href="#" class="main-btn">Enroll Now</a>
-                            </div> --}}
                         </div> <!-- course features -->
                     </div>
                     <div class="col-lg-12 col-md-6">
@@ -199,129 +195,9 @@
                             </ul>
                         </div> <!-- saidbar post -->
                     </div>
-                    {{-- <div class="col-lg-12 col-md-6">
-                        <div class="You-makelike mt-30">
-                            <h4>You make like </h4> 
-                            <div class="singel-makelike mt-20">
-                                <div class="image">
-                                    <img src="{{asset('front/images/your-make/y-1.jpg')}}" alt="Image">
-                                </div>
-                                <div class="cont">
-                                    <a href="#"><h4>Introduction to machine languages</h4></a>
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-user"></i>31</a></li>
-                                        <li>$50</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="singel-makelike mt-20">
-                                <div class="image">
-                                    <img src="{{asset('front/images/your-make/y-1.jpg')}}" alt="Image">
-                                </div>
-                                <div class="cont">
-                                    <a href="#"><h4>How to build a basis game with java </h4></a>
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-user"></i>31</a></li>
-                                        <li>$50</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="singel-makelike mt-20">
-                                <div class="image">
-                                    <img src="{{asset('front/images/your-make/y-1.jpg')}}" alt="Image">
-                                </div>
-                                <div class="cont">
-                                    <a href="#"><h4>Basic accounting from primary</h4></a>
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-user"></i>31</a></li>
-                                        <li>$50</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div> <!-- row -->
-        {{-- <div class="row">
-            <div class="col-lg-8">
-                <div class="releted-courses pt-95">
-                    <div class="title">
-                        <h3>Releted Courses</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="singel-course mt-30">
-                                <div class="thum">
-                                    <div class="image">
-                                        <img src="images/course/cu-2.jpg" alt="Course">
-                                    </div>
-                                    <div class="price">
-                                        <span>Free</span>
-                                    </div>
-                                </div>
-                                <div class="cont">
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <span>(20 Reviws)</span>
-                                    <a href="courses-singel.html"><h4>Learn basis javascirpt from start for beginner</h4></a>
-                                    <div class="course-teacher">
-                                        <div class="thum">
-                                            <a href="#"><img src="images/course/teacher/t-2.jpg" alt="teacher"></a>
-                                        </div>
-                                        <div class="name">
-                                            <a href="#"><h6>Mark anthem</h6></a>
-                                        </div>
-                                        <div class="admin">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- singel course -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="singel-course mt-30">
-                                <div class="thum">
-                                    <div class="image">
-                                        <img src="images/course/cu-1.jpg" alt="Course">
-                                    </div>
-                                    <div class="price">
-                                        <span>Free</span>
-                                    </div>
-                                </div>
-                                <div class="cont">
-                                    Kategoriya
-                                    <span>(20 Reviws)</span>
-                                    <a href="courses-singel.html"><h4>Learn basis javascirpt from start for beginner</h4></a>
-                                    <div class="course-teacher">
-                                        <div class="thum">
-                                            <a href="#"><img src="images/course/teacher/t-3.jpg" alt="teacher"></a>
-                                        </div>
-                                        <div class="name">
-                                            <a href="#"><h6>Mark anthem</h6></a>
-                                        </div>
-                                        <div class="admin">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- singel course -->
-                        </div>
-                    </div> <!-- row -->
-                </div> <!-- releted courses -->
-            </div>
-        </div> <!-- row --> --}}
     </div> <!-- container -->
 </section>
 

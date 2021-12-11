@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-    use Notifiable;
+    // use SoftDeletes;
+    // use Notifiable;
 
     protected $hidden = [
         'password',
@@ -22,6 +22,10 @@ class User extends Model
 
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role','user_roles')->withTimestamps();
+        return $this->belongsToMany(Role::class,'user_roles');
+    }
+    public function role()
+    {
+        return $this->hasOne(Role::class);
     }
 }

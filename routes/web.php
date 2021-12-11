@@ -115,6 +115,8 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('/page/delete/{id}', 'PageController@delete')->name('admin.page.delete');
         Route::get('/appels','MainController@appels')->name('admin.appels');
         Route::get('/appels/delete/{id}','MainController@appelDelete')->name('admin.appels.delete');
+        Route::get('/users','MainController@users')->name('admin.users');
+        Route::match(['get','post'], '/user/edit/{id}', 'MainController@change_status')->name('change.status.user');
     });
 
 });
@@ -134,15 +136,15 @@ Route::group([
 
     // Route::get('/courses', 'Blog\Front\FrontController@courses')->name('courses');
     Route::get('/subjects', 'Blog\Front\FrontController@onlineCourses')->name('online-courses');
-    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->middleware(['auth'])->name('in.course');
-    Route::get('/subjects/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->middleware(['auth'])->name('in.lesson');
+    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->middleware(['buyer'])->name('in.course');
+    Route::get('/subjects/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->middleware(['buyer'])->name('in.lesson');
     Route::get('/contact', 'Blog\Front\FrontController@contact')->name('contact');
     Route::get('/study-abroad', 'Blog\Front\FrontController@studyAbroad')->name('study-abroad');
     Route::get('study-abroad/{slug}', 'Blog\Front\FrontController@inStudyAbroad')->name('in.study-abroad');
     Route::get('exams','Blog\Front\MainController@exams')->name('exams');
-    Route::get('exam/{id}','Blog\Front\MainController@getExam')->middleware(['auth'])->name('get.exam');
-    Route::get('myresults/', 'Blog\Front\MainController@getAllResults')->middleware(['auth'])->name('get.allResults');
-    Route::get('myresults/{result_id}', 'Blog\Front\MainController@getResult')->middleware(['auth'])->name('get.result');
+    Route::get('exam/{id}','Blog\Front\MainController@getExam')->middleware(['buyer'])->name('get.exam');
+    Route::get('myresults/', 'Blog\Front\MainController@getAllResults')->middleware(['buyer'])->name('get.allResults');
+    Route::get('myresults/{result_id}', 'Blog\Front\MainController@getResult')->middleware(['buyer'])->name('get.result');
     Route::post('exam/{id}/to-check', 'Blog\Front\MainController@checkExam')->name('check.exam');
     Route::get('/{slug}', 'Blog\Front\FrontController@page')->name('page');
 
