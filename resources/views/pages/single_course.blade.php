@@ -30,7 +30,8 @@
             <div class="col-lg-8">
                 <div class="corses-singel-left mt-30">
                     <div class="title">
-                        <h3>{{$course->translation->title}}</h3>
+                        <h3 class="pb-0">{{$course->translation->title}}</h3>
+                        <p class="mb-40"><b>Video darslarimizni ko'rish uchun saytda ro'yxatdan o'tgan bo'lishingiz zarur. </b></p>
                     </div> <!-- title -->
                     <div class="course-terms">
                         <ul>
@@ -123,7 +124,7 @@
                                             <div id="collapse{{ $lesson->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                <div class="card-body">
                                                     <p><a href="{{route('in.lesson',[$course->id,$lesson->id])}}">
-                                                    <img src="{{\Storage::url($lesson->image)}}" alt="Course" width="80" class="p-2"></a>{{$lesson->translation->excerpt}}</p>
+                                                    <img src="{{asset('front/images/play.png')}}" alt="Course" width="80" class="p-2"></a>{{$lesson->translation->excerpt}}</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -61,16 +61,16 @@
                       <th>
                           Course
                       </th>
-                      <th>
+                      {{-- <th>
                           Photo
-                      </th>
+                      </th> --}}
                       <th style="width: 20%">
                       </th>
                   </tr>
               </thead>
               <tbody>
                   @foreach($lessons as $lesson)
-                 
+
                   <tr>
                       <td>
                           #{{$lesson->id}}
@@ -94,9 +94,9 @@
                           <p>{{$lesson->course->translation->title}}</p>
                         @endif
                       </td>
-                      <td class="project-state">
-                        <img src="{{\Storage::url($lesson->image)}}" alt="" width="100px">
-                      </td>
+                     {{-- <td class="project-state">
+                         <img src="{{\Storage::url($lesson->image)}}" alt="" width="100px">
+                      </td> --}}
                       <td class="project-actions text-right">
                           {{-- <a class="btn btn-primary btn-sm" href="{{route('lesson.show', $lesson->id)}}">
                               <i class="fas fa-folder">
@@ -117,7 +117,7 @@
                   </tr>
                   @endforeach
               </tbody>
-          </table> 
+          </table>
         </div>
         <!-- /.card-body -->
         <div class="d-flex justify-content-center">

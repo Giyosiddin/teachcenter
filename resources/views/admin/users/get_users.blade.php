@@ -101,7 +101,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" href="#">
+                                    <a class="btn btn-danger btn-sm" href="{{ route('admin.users.delete', $user->id) }}">
                                         <i class="fas fa-trash">
                                         </i>
                                         Delete

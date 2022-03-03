@@ -24,7 +24,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $lessons = Lesson::orderBy('id','DESC')->paginate(10);
+        $lessons = Lesson::orderBy('id','DESC')->paginate(100);
         return view('admin.lesson.index', compact('lessons'));
     }
 
@@ -86,7 +86,7 @@ class LessonController extends Controller
         if($request->isMethod('get')){
             return view('admin.lesson.edit',compact('lesson','courses'));
         }else{
-            
+
         // dd($request->file('image'));
             $validated = $request->validate([
                 'title' => 'required|max:255',

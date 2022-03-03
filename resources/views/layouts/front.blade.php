@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-   
+
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    
+
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" CONTENT="Class education - O'quv-konsalting markazi, qisqa muddatda o'z metodikasiga ega bo'lgan jamoa!">
@@ -26,10 +26,10 @@
 
     <!--====== Animate css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/animate.css')}}">
-    
+
     <!--====== Nice Select css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/nice-select.css')}}">
-    
+
     <!--====== Nice Number css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/jquery.nice-number.min.css')}}">
 
@@ -38,29 +38,29 @@
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/bootstrap.min.css')}}">
-    
+
     <!--====== Fontawesome css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/font-awesome.min.css')}}">
-    
+
     <!--====== Default css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/default.css')}}">
-    
+
     <!--====== Style css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/style.css')}}">
-    
+
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/responsive.css')}}">
-    
+
     <!--====== Custom css ======-->
     <link rel="stylesheet" href="{{asset('/front/css/custom.css')}}">
-  
-  
+
+
 </head>
 
 <body>
-   
+
     <!--====== PRELOADER PART START ======-->
-    
+
     <div class="preloader">
         <div class="loader rubix-cube">
             <div class="layer layer-1"></div>
@@ -73,13 +73,13 @@
             <div class="layer layer-8"></div>
         </div>
     </div>
-    
+
     <!--====== PRELOADER PART START ======-->
-    
+
     <!--====== HEADER PART START ======-->
-    
+
     <header id="header-part">
-       
+
         <!--  <div class="header-top d-none d-lg-block">
                 <div class="container">
                     <div class="row">
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                  </div  -->
-         
+
          <div class="header-logo-support pt-30 pb-30">
              <div class="container">
                  <div class="row">
@@ -116,7 +116,7 @@
                                  </div>
                                  <div class="cont">
                                      <p>Qo'shimcha ma'lumotlar uchun bog'laning</p>
-                                     <span>97 333-9-666</span>
+                                     <span>999-455-666</span>
                                  </div>
                              </div>
                              @guest
@@ -139,13 +139,13 @@
                                 {{-- <a href="{{route('login')}}" class="main-btn">Kirish</a> --}}
                             </div>
                             @endauth
-                            
+
                          </div>
                      </div>
                  </div> <!-- row -->
              </div> <!-- container -->
-         </div> <!-- header logo support --> 
-         
+         </div> <!-- header logo support -->
+
          <div class="navigation">
              <div class="container">
                  <div class="row">
@@ -156,7 +156,7 @@
                                  <span class="icon-bar"></span>
                                  <span class="icon-bar"></span>
                              </button>
- 
+
                              <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                  <ul class="navbar-nav mr-auto">
                                      <li class="nav-item">
@@ -178,14 +178,14 @@
                                      <li class="nav-item">
                                          <a href="{{route('online-courses')}}" class="{{ (Route::currentRouteName() == 'online-courses') ? 'active' : '' }}">Fanlar</a>
                                      </li>
-                                     
+
                                      <li class="nav-item">
                                          <a href="{{route('exams')}}" class="{{ (Route::currentRouteName() == 'exams') ? 'active' : '' }}">Online test</a>
                                      </li>
-                                     
+
                                      <li class="nav-item">
                                          <a href="{{route('contact')}}" class="{{ (Route::currentRouteName() == 'contact') ? 'active' : '' }}">Bog'lanish</a>
-                                         
+
                                      </li>
                                  </ul>
                              </div>
@@ -207,17 +207,17 @@
                             </div> --}}
                          </div> <!-- right icon -->
                      </div>
-                    
+
                  </div> <!-- row -->
              </div> <!-- container -->
          </div>
-         
+
     </header>
-     
+
      <!--====== HEADER PART ENDS ======-->
-    
+
      <!--====== SEARCH BOX PART START ======-->
-     
+
     <div class="search-box">
         <div class="serach-form">
             <div class="closebtn">
@@ -230,16 +230,16 @@
             </form>
         </div> <!-- serach form -->
     </div>
-     
-    
+
+
     <!--====== SEARCH BOX PART ENDS ======-->
-        
+
 
         @yield('content')
 
 
     <!--====== FOOTER PART START ======-->
-    
+
     <footer id="footer-part">
         <div class="footer-top pt-40 pb-70">
             <div class="container">
@@ -321,7 +321,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer top -->
-        
+
         <div class="footer-copyright pt-10 pb-25">
             <div class="container">
                 <div class="row">
@@ -330,62 +330,62 @@
                             <p><a>Barcha huquqlar himoyalangan © {{date('Y')}}</a> </p>
                         </div>
                     </div>
-                   
+
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer copyright -->
     </footer>
-    
+
     <!--====== FOOTER PART ENDS ======-->
-   
+
     <!--====== BACK TO TP PART START ======-->
-    
+
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
-    
+
     <!--====== BACK TO TP PART ENDS ======-->
-   
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     <!--====== jquery js ======-->
     <script src="{{asset('/front/js/vendor/modernizr-3.6.0.min.js')}}"></script>
     <script src="{{asset('/front/js/vendor/jquery-1.12.4.min.js')}}"></script>
 
     <!--====== Bootstrap js ======-->
     <script src="{{asset('/front/js/bootstrap.min.js')}}"></script>
-    
+
     <!--====== Slick js ======-->
     <script src="{{asset('/front/js/slick.min.js')}}"></script>
-    
+
     <!--====== Magnific Popup js ======-->
     <script src="{{asset('/front/js/jquery.magnific-popup.min.js')}}"></script>
-    
+
     <!--====== Counter Up js ======-->
     <script src="{{asset('/front/js/waypoints.min.js')}}"></script>
     <script src="{{asset('/front/js/jquery.counterup.min.js')}}"></script>
-    
+
     <!--====== Nice Select js ======-->
     <script src="{{asset('/front/js/jquery.nice-select.min.js')}}"></script>
-    
+
     <!--====== Nice Number js ======-->
     <script src="{{asset('/front/js/jquery.nice-number.min.js')}}"></script>
-    
+
     <!--====== Count Down js ======-->
     <script src="{{asset('/front/js/jquery.countdown.min.js')}}"></script>
-    
+
     <!--====== Validator js ======-->
     <script src="{{asset('/front/js/validator.min.js')}}"></script>
-    
+
     <!--====== Ajax Contact js ======-->
     <script src="{{asset('/front/js/ajax-contact.js')}}"></script>
-    
+
     <!--====== Main js ======-->
     <script src="{{asset('/front/js/main.js')}}"></script>
-    
+
     <!--====== Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
     <script src="{{asset('/front/js/map-script.js')}}"></script>

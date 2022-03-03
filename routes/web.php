@@ -20,45 +20,45 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('cache:clear');
-    return '<h1>Cache facade value cleared</h1>';
-});
+// Route::get('/clear-cache', function() {
+//     $exitCode = Artisan::call('cache:clear');
+//     return '<h1>Cache facade value cleared</h1>';
+// });
 
-//Reoptimized class loader:
-Route::get('/optimize', function() {
-    $exitCode = Artisan::call('optimize');
-    return '<h1>Reoptimized class loader</h1>';
-});
+// //Reoptimized class loader:
+// Route::get('/optimize', function() {
+//     $exitCode = Artisan::call('optimize');
+//     return '<h1>Reoptimized class loader</h1>';
+// });
 
-//Route cache:
-Route::get('/route-cache', function() {
-    $exitCode = Artisan::call('route:cache');
-    return '<h1>Routes cached</h1>';
-});
+// //Route cache:
+// Route::get('/route-cache', function() {
+//     $exitCode = Artisan::call('route:cache');
+//     return '<h1>Routes cached</h1>';
+// });
 
-//Clear Route cache:
-Route::get('/route-clear', function() {
-    $exitCode = Artisan::call('route:clear');
-    return '<h1>Route cache cleared</h1>';
-});
+// //Clear Route cache:
+// Route::get('/route-clear', function() {
+//     $exitCode = Artisan::call('route:clear');
+//     return '<h1>Route cache cleared</h1>';
+// });
 
-//Clear View cache:
-Route::get('/view-clear', function() {
-    $exitCode = Artisan::call('view:clear');
-    return '<h1>View cache cleared</h1>';
-});
+// //Clear View cache:
+// Route::get('/view-clear', function() {
+//     $exitCode = Artisan::call('view:clear');
+//     return '<h1>View cache cleared</h1>';
+// });
 
-//Clear Config cache:
-Route::get('/config-cache', function() {
-    $exitCode = Artisan::call('config:cache');
-    return '<h1>Clear Config cleared</h1>';
-});
-//Clear Config cache:
-Route::get('/storage-link', function() {
-    $exitCode = Artisan::call('storage:link');
-    return '<h1>Storage link </h1>';
-});
+// //Clear Config cache:
+// Route::get('/config-cache', function() {
+//     $exitCode = Artisan::call('config:cache');
+//     return '<h1>Clear Config cleared</h1>';
+// });
+// //Clear Config cache:
+// Route::get('/storage-link', function() {
+//     $exitCode = Artisan::call('storage:link');
+//     return '<h1>Storage link </h1>';
+// });
 
 Route::post('/send-message', 'Blog\Front\MainController@sendMessage')->name('send.message');
 Route::post('/appels', 'Blog\Front\MainController@appels')->name('appels');
@@ -116,6 +116,7 @@ Route::group(['middleware'=>['status','auth']], function(){
         Route::get('/appels','MainController@appels')->name('admin.appels');
         Route::get('/appels/delete/{id}','MainController@appelDelete')->name('admin.appels.delete');
         Route::get('/users','MainController@users')->name('admin.users');
+        Route::get('/users/delete/{id}','MainController@userDelete')->name('admin.users.delete');
         Route::match(['get','post'], '/user/edit/{id}', 'MainController@change_status')->name('change.status.user');
     });
 
@@ -136,7 +137,7 @@ Route::group([
 
     // Route::get('/courses', 'Blog\Front\FrontController@courses')->name('courses');
     Route::get('/subjects', 'Blog\Front\FrontController@onlineCourses')->name('online-courses');
-    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->middleware(['buyer'])->name('in.course');
+    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->name('in.course');
     Route::get('/subjects/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->middleware(['buyer'])->name('in.lesson');
     Route::get('/contact', 'Blog\Front\FrontController@contact')->name('contact');
     Route::get('/study-abroad', 'Blog\Front\FrontController@studyAbroad')->name('study-abroad');

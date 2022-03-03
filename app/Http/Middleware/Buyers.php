@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class Buyers
 {
@@ -17,6 +18,8 @@ class Buyers
     public function handle(Request $request, Closure $next)
     {
         if(\Auth::user() && \Auth::user()->isBuyer()){
+            return $next($request);
+        }elseif(\Auth::user() && \Auth::user()->isAdmin()){
             return $next($request);
         }else{
             return redirect('/login');

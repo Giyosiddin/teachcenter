@@ -17,9 +17,8 @@ class CheckStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->isAdmin()){
-
-        return $next($request);
+        if(\Auth::user() && \Auth::user()->isAdmin()){
+            return $next($request);
         }else{
             return redirect('/');
         }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Appel;
 use App\Models\Admin\User;
 use App\Models\Admin\Role;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends AdminBaseController
 {
@@ -41,7 +42,7 @@ class MainController extends AdminBaseController
         if(request()->isMethod('get')){
             return view('admin.users.change_status', compact('user','roles'));
         }else{
-            $change_role = \DB::table('user_roles')->where('user_id', $id)
+            $change_role = DB::table('user_roles')->where('user_id', $id)
             ->update(['role_id' => request()->role]);
             if($change_role){
                 return back()->with(['msg'=>'User role has been changed successfuly!']);
@@ -49,6 +50,16 @@ class MainController extends AdminBaseController
                 return back()->withErrors(['msg' => "This has been someone error, please try agein!"]);
             }
             // dd($change_role);
+        }
+    }
+    public function userDelete($id)
+    {
+        $user = User::findOrFail($id);
+        $delete = $user->delete($user);
+        if($delete){
+            return redirect()->back()->with(['msg' => 'User has been deleted!']);
+        }else{
+            return redirect()->back()->with(['msg' => 'User has not been deleted, heppened some error!']);
         }
     }
 
