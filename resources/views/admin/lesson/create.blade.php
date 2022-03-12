@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{route('lesson.index')}}">Lesson</a></li>
+              <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Lessons</a></li>
               <li class="breadcrumb-item active">Add lesson</li>
             </ol>
           </div>
@@ -149,30 +149,27 @@
                 <div class="col mt-2 ">
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
                 </div>
-              </div>              
+              </div>
               <div class="img"><a class="file_name"></a></div>
               <div class="form-group row">
                 <div class="dropzone col mt-2 ">
                   <div><i class="fas fa-plus"></i> Second file</div>
                   <input type="file" name="file_second" id="file_second" class="form-control">
-                </div>                
+                </div>
                 <div class="col mt-2 ">
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
                 </div>
-              </div>                            
+              </div>
               <div class="form-group">
                 <label for="timeVideo">Time video</label>
                 <input type="text" name="time" id="timeVideo" class="form-control">
-              </div>                            
-              {{-- <div class="form-group">
-                  <label>Teacher</label>
-                  <select class="form-control select2" name="teacher_id" style="width: 100%;">
-                    <option selected="selected">-- Choose teacher --</option>
-                    @foreach($teachers as $teacher)
-                    <option value="{{$teacher->id}}">{{$teacher->name_uz}}</option>
-                    @endforeach
-                  </select>
-              </div>                    --}}
+              </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="paid" name="paid" checked>
+                        <label class="custom-control-label" for="paid">This lesson is paid</label>
+                    </div>
+                </div>
               <div class="form-group">
                   <label>Course</label>
                   <select class="form-control select2" name="course_id" style="width: 100%;">
@@ -181,7 +178,7 @@
                     <option value="{{$course->id}}">{{$course->translation->title}}</option>
                     @endforeach
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                   <label>Language</label>
                   <select class="form-control select2" name="locale" style="width: 100%;">
@@ -190,7 +187,7 @@
                     <option value="ru">Ru</option>
                     <option value="en">En</option>
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                 <input type="submit" value="Add lesson" class="btn btn-success float-right">
               </div>

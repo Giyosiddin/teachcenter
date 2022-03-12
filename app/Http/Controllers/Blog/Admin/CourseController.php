@@ -21,7 +21,7 @@ class CourseController extends Controller
 
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::orderBy('order','ASC')->get();
         return view('admin.course.index',compact('courses'));
     }
 
@@ -68,7 +68,7 @@ class CourseController extends Controller
             $update = $this->courseRepository->updateCourse($request, $course->id);
             if($update){
                 return redirect()->route('course.edit',$course->id)->with(['msg' => "Course has been created successfuly!"]);
-            }        
+            }
         }
     }
 
@@ -85,5 +85,11 @@ class CourseController extends Controller
         }else{
             return back()->withErrors(['msg' => 'Course would not deleted!']);
         }
+    }
+    public function lessons($course_id)
+    {
+        $course = Course::find($course_id);
+        $lessons = $course->lessons()->orderBy('id','ASC')->paginate(50);
+        return view('admin.lesson.index', compact('lessons','course'));
     }
 }

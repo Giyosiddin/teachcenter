@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-      		<h1>Categories</h1>
+      		<h1>Courses</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-              <li class="breadcrumb-item active">Categories</li>
+              <li class="breadcrumb-item active">Courses</li>
             </ol>
           </div>
         </div>
@@ -52,28 +52,28 @@
                       <th style="width: 1%">
                           #
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 19%">
                          Course name
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 18%">
                           Description
                       </th>
                       <th>
                           Category
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 18%">
                           Teacher
                       </th>
                       <th>
                           Photo
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 35%">
                       </th>
                   </tr>
               </thead>
               <tbody>
                   @foreach($courses as $course)
-                 
+
                   <tr>
                       <td>
                           #
@@ -108,11 +108,11 @@
                         <img src="{{\Storage::url($course->image)}}" alt="" width="100px">
                       </td>
                       <td class="project-actions text-right">
-                          {{-- <a class="btn btn-primary btn-sm" href="#">
-                              <i class="fas fa-folder">
+                          <a class="btn btn-primary btn-sm" href="{{ route('course.lessons', $course->id) }}">
+                              <i class="fas fa-list">
                               </i>
-                              View
-                          </a> --}}
+                              Lessons
+                          </a>
                           <a class="btn btn-info btn-sm" href="{{route('course.edit', $course->id)}}">
                               <i class="fas fa-pencil-alt">
                               </i>

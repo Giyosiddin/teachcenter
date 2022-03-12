@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Repositories;
 
@@ -19,6 +19,7 @@ class CourseRepository {
 		$course_data = [
 				'teacher_id' => $data['teacher_id'],
 				'category_id' => $data['category_id'],
+                'order' => $data['order']
 			];
 		$course = Course::create($course_data);
 
@@ -30,12 +31,12 @@ class CourseRepository {
 			'body' => $data['body'],
 			'details' => $data['details'],
 		];
-		if($request->hasFile('image')){			
+		if($request->hasFile('image')){
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/courses',$course->id.'.'.$ext_image);
 			$course->image = $image;
 		}
-		
+
 		$course->save();
 		$course_translation = CourseTranslation::create($course_translation);
 		if($course){
@@ -51,6 +52,7 @@ class CourseRepository {
 		$course_data = [
 				'teacher_id' => $data['teacher_id'],
 				'category_id' => $data['category_id'],
+                'order' => $data['order']
 			];
 		$course->update($course_data);
 		$course_translation = [
@@ -62,8 +64,8 @@ class CourseRepository {
 			'details' => $data['details'],
 		];
 		$course->translation->update($course_translation);
-		if($request->hasFile('image')){		
-			// dd($request->file('image'));	
+		if($request->hasFile('image')){
+			// dd($request->file('image'));
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/courses',$course->id.'.'.$ext_image);
 			$course->image = $image;

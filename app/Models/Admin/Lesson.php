@@ -12,6 +12,7 @@ class Lesson extends Model
     public $guarded = [];
     protected $fillable =[
         'id',
+        'paid',
         'teacher_id',
         'file_first',
         'file_second',

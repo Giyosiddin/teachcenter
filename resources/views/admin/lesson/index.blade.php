@@ -9,11 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-      		<h1>Lessons</h1>
+      		<h1>Lessons of {{$course->translation->title}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('course.index')}}">Courses</a></li>
               <li class="breadcrumb-item active">Lessons</li>
             </ol>
           </div>
@@ -55,16 +56,13 @@
                       <th style="width: 20%">
                          lesson name
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 30%">
                           Description
                       </th>
                       <th>
                           Course
                       </th>
-                      {{-- <th>
-                          Photo
-                      </th> --}}
-                      <th style="width: 20%">
+                      <th style="width: 30%">
                       </th>
                   </tr>
               </thead>
@@ -90,9 +88,7 @@
                           </p>
                       </td>
                       <td class="project-state">
-                        @if($lesson->course)
-                          <p>{{$lesson->course->translation->title}}</p>
-                        @endif
+                          <p>{{$course->translation->title}}</p>
                       </td>
                      {{-- <td class="project-state">
                          <img src="{{\Storage::url($lesson->image)}}" alt="" width="100px">

@@ -90,7 +90,9 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <strong>{{$user->roles[0]->name }}</strong>
+                                        @foreach ($user->roles as $role )
+                                             <strong>{{$role->name}}</strong>
+                                        @endforeach
                                     </div>
                                 </td>
                                 <td class="project-actions ">

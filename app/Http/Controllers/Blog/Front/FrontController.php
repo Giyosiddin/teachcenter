@@ -21,7 +21,7 @@ class FrontController extends FrontBaseController
         $testimonials = Testimonial::select('name_'.app()->getLocale() .' as name','direction_'.app()->getLocale().' as direction',
          'text_'.app()->getLocale(),'image')->get();
         $teachers = Teacher::select('name_'.app()->getLocale() . ' as name','position_'.app()->getLocale().' as position', 'image')->get(4);
-        $courses = Course::with('translation')->limit(10)->get();        
+        $courses = Course::with('translation')->limit(10)->get();
         $categories = Category::select('title_'.app()->getLocale() .' as title','image')->get(6);
         $slider = Post::where('for_slider','1')->select('id','title_'.app()->getLocale().' as title',
         'excerpt_'.app()->getLocale().' as excerpt', 'slug', 'image')->get();
@@ -40,7 +40,7 @@ class FrontController extends FrontBaseController
 
     public function onlineCourses()
     {
-        $courses = Course::paginate(12);
+        $courses = Course::orderBy('order','ASC')->paginate(12);
         return view('pages.online-courses', compact('courses'));
     }
 

@@ -234,7 +234,6 @@
 
     <!--====== SEARCH BOX PART ENDS ======-->
 
-
         @yield('content')
 
 
@@ -345,12 +344,6 @@
     <!--====== BACK TO TP PART ENDS ======-->
 
 
-
-
-
-
-
-
     <!--====== jquery js ======-->
     <script src="{{asset('/front/js/vendor/modernizr-3.6.0.min.js')}}"></script>
     <script src="{{asset('/front/js/vendor/jquery-1.12.4.min.js')}}"></script>
@@ -389,6 +382,29 @@
     <!--====== Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
     <script src="{{asset('/front/js/map-script.js')}}"></script>
+        @if ($message = Session::get('msg'))
+            <script  type="text/javascript">
+            $(document).ready(function () {
+                $('#msgModel').modal('toggle')
+            })
+            </script>
+            <!-- Modal -->
+            <div class="modal fade" style="display:block;" id="msgModel" tabindex="-1" role="dialog" aria-labelledby="msgModel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xabar oynasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ $message }}</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        @endif
 
 </body>
 </html>

@@ -51,10 +51,22 @@
                         </div>
                         <div class="form-group">
                             <label>Status</label>
-                            <select class="form-control select2" name="role" style="width: 100%;">
+                            <select class="form-control role" name="role" style="width: 100%;">
                                 <option selected="selected">-- Choose Status --</option>
                                 @foreach($roles as $role)
                                 <option value="{{$role->id}}" @if($user->roles[0]->id == $role->id) selected @endif>{{ucfirst($role->name)}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group courses @if($user->roles[0]->id != 4 && $user->roles[0]->id != 5) d-none @endif">
+                            <label>Courses </label>
+                            <?php //dump($user->courses()->pluck('courses.id')->toArray()); ?>
+                            <select class="select2" multiple="multiple" name="courses[]" data-placeholder="Select a Courses" style="width: 100%;">
+                                @foreach ($courses as $course )
+                                <option value="{{ $course->id }}"
+                                @if(in_array($course->id, $user->courses()->pluck('courses.id')->toArray()))
+                                    selected
+                                @endif >{{ $course->translation->title }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -13,6 +13,7 @@ class Course extends Model
     public $guarded = [];
     protected $fillable =[
         'id',
+        'order',
         'teacher_id',
         'category_id',
         'image',
@@ -32,5 +33,9 @@ class Course extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
     }
 }

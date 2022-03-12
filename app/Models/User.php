@@ -54,16 +54,30 @@ class User extends Authenticatable
     public function isUser()
     {
         return $this->roles()->where('name','user')->exists();
-        if($user) return "user";
     }
     public function isBuyer()
     {
         return $this->roles()->where('name','buyer')->exists();
-        if($user) return "buyer";
+    }
+    public function isGrant()
+    {
+        return $this->roles()->where('name','grant')->exists();
     }
     public function isDisabled()
     {
         return $this->roles()->where('name','disabled')->exists();
-        if($user) return "disabled";
+    }
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class,'user_courses');
+    }
+    public function isUserCourse($course_id)
+    {
+        $user_courses = $this->courses()->pluck('id')->toArray();
+        if(in_array($course_id,$user_courses)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

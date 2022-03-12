@@ -77,36 +77,6 @@
                         </div>
                       </div>
                   </div>
-                <!--   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                    <div class="card-header">
-                        <h3 class="card-title">Рускый язик</h3>
-                      </div>
-                      <div class="card-body">
-                        <div class="form-group">
-                          <label for="inputName">Title</label>
-                          <input type="text" required="required" id="title_ru" required="required" name="title_ru" class="form-control">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputDescription">Excerpt</label>
-                          <textarea id="inputDescription" class="form-control" name="excerpt_ru" rows="4"></textarea>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                    <div class="card-header">
-                        <h3 class="card-title">English</h3>
-                      </div>
-                      <div class="card-body">
-                        <div class="form-group">
-                          <label for="inputName">Title</label>
-                          <input type="text" required="required" id="title_en" required="required" name="title_en" class="form-control">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputDescription">Excerpt</label>
-                          <textarea id="inputDescription" class="form-control" name="excerpt_en" rows="4"></textarea>
-                        </div>
-                      </div>
-                  </div> -->
                 </div>
               </div>
               <!-- /.card -->
@@ -119,7 +89,7 @@
               <h3 class="card-title">Others</h3>
             </div>
             <div class="card-body">
-              
+
               <div class="img"><a class=""><img src="{{\Storage::url($course->image)}}" alt=""></a></div>
               <div class="form-group row" >
                 <div class="dropzone col mt-2">
@@ -130,7 +100,11 @@
                 <div class="col mt-2 ">
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
                 </div>
-              </div>               
+              </div>
+              <div class="form-group">
+                  <label>Order</label>
+                  <input type="number" class="form-control" name="order" style="width: 100%;" value="{{ $course->order }}">
+              </div>
               <div class="form-group">
                   <label>Teacher</label>
                   <select class="form-control select2" name="teacher_id" style="width: 100%;">
@@ -139,7 +113,7 @@
                     <option value="{{$teacher->id}}" @if($course->teacher_id == $teacher->id) selected @endif>{{$teacher->name_uz}}</option>
                     @endforeach
                   </select>
-              </div>                   
+              </div>
               <div class="form-group">
                   <label>Category</label>
                   <select class="form-control select2" name="category_id" style="width: 100%;">
@@ -148,7 +122,7 @@
                     <option value="{{$category->id}}" @if($course->category_id == $category->id) selected @endif>{{$category->title_uz}}</option>
                     @endforeach
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                   <label>Language</label>
                   <select class="form-control select2" name="locale" style="width: 100%;">
@@ -157,7 +131,7 @@
                     <option value="ru" @if($course->translation->locale == 'ru') selected @endif>Ru</option>
                     <option value="en" @if($course->translation->locale == 'en') selected @endif>En</option>
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                 <input type="submit" value="Save course" class="btn btn-success float-right">
               </div>

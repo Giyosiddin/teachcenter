@@ -128,7 +128,11 @@
                 <div class="col mt-2 ">
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i> <span>Delete</span></a>
                 </div>
-              </div>             
+              </div>
+              <div class="form-group">
+                  <label>Order</label>
+                  <input type="number" class="form-control" name="order" style="width: 100%;">
+              </div>
               <div class="form-group">
                   <label>Teacher</label>
                   <select class="form-control select2" name="teacher_id" style="width: 100%;">
@@ -137,7 +141,7 @@
                     <option value="{{$teacher->id}}">{{$teacher->name_uz}}</option>
                     @endforeach
                   </select>
-              </div>                   
+              </div>
               <div class="form-group">
                   <label>Category</label>
                   <select class="form-control select2" name="category_id" style="width: 100%;">
@@ -146,7 +150,7 @@
                     <option value="{{$category->id}}">{{$category->title_uz}}</option>
                     @endforeach
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                   <label>Language</label>
                   <select class="form-control select2" name="locale" style="width: 100%;">
@@ -155,7 +159,7 @@
                     <option value="ru">Ru</option>
                     <option value="en">En</option>
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                 <input type="submit" value="Add course" class="btn btn-success float-right">
               </div>

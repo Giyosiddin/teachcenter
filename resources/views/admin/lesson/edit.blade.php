@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{route('lesson.index')}}">Lesson</a></li>
+              <li class="breadcrumb-item"><a href="{{route('course.lessons', $lesson->course_id)}}">Lesson</a></li>
               <li class="breadcrumb-item active">Edit lesson</li>
             </ol>
           </div>
@@ -108,7 +108,7 @@
                 <div class="col mt-2 ">
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
                 </div>
-              </div>              
+              </div>
               <div class="img"> <a  class="file_name">@if(!is_null($lesson->file_second))<i class="fas fa-file"></i>
                 <span>{{basename(\Storage::url($lesson->file_second))}}</span>  @endif</a></div>
               <div class="form-group row">
@@ -116,24 +116,24 @@
                   <div><i class="fas fa-plus"></i> Second file</div>
                   <input type="file" name="file_second" value="{{\Storage::path($lesson->file_second)}}" id="file_second" class="form-control">
                   <input type="hidden" name="delete_file_second" id="delete_file_second" value="@if(!empty($lesson->file_second)){{$lesson->file_second}} @endif">
-                </div>                
+                </div>
                 <div class="col mt-2 ">
                   <a href="#" class="btn btn-success w-100 pt-1 delete_file"><i class="fas fa-times"></i><span>Delete</span></a>
                 </div>
-              </div>                            
+              </div>
               <div class="form-group">
                 <label for="timeVideo">Time video</label>
                 <input type="text" name="time" id="timeVideo" value="{{$lesson->time}}" class="form-control">
-              </div>                            
-              {{-- <div class="form-group">
-                  <label>Teacher</label>
-                  <select class="form-control select2" name="teacher_id" style="width: 100%;">
-                    <option selected="selected">-- Choose teacher --</option>
-                    @foreach($teachers as $teacher)
-                    <option value="{{$teacher->id}}">{{$teacher->name_uz}}</option>
-                    @endforeach
-                  </select>
-              </div>                    --}}
+              </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" name="paid" id="paid" @if($lesson->paid == 1)
+                            checked
+                        @endif>
+                        <label class="custom-control-label" for="paid">This lesson is paid</label>
+                    </div>
+                </div>
               <div class="form-group">
                   <label>Course</label>
                   <select class="form-control select2" name="course_id" style="width: 100%;">
@@ -142,7 +142,7 @@
                     <option value="{{$course->id}}" @if($lesson->course_id == $course->id) selected @endif>{{$course->translation->title}}</option>
                     @endforeach
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                   <label>Language</label>
                   <select class="form-control select2" name="locale" style="width: 100%;">
@@ -151,7 +151,7 @@
                     <option value="ru" @if($lesson->translation->locale == 'ru') selected @endif>Ru</option>
                     <option value="en" @if($lesson->translation->locale == 'en') selected @endif>En</option>
                   </select>
-              </div>              
+              </div>
               <div class="form-group">
                 <input type="submit" value="Save lesson" class="btn btn-success float-right">
               </div>

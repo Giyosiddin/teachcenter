@@ -19,13 +19,21 @@ class User extends Model
     protected $casts = [
         'email_verified_at' => 'datatime',
     ];
-
     public function roles()
     {
-        return $this->belongsToMany(Role::class,'user_roles');
+        return $this->belongsToMany(Role::class, 'user_roles');
     }
-    public function role()
+
+    public function courses()
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsToMany(Course::class,'user_courses');
+    }
+    public function isBuyer()
+    {
+        return $this->roles()->where('name','buyer')->exists();
+    }
+    public function isGrant()
+    {
+        return $this->roles()->where('name','grant')->exists();
     }
 }

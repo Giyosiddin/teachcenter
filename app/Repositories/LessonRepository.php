@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Repositories;
 
@@ -14,12 +14,14 @@ class LessonRepository {
 	}
 
 	public function createLesson($request)
-	{				
+	{
 		$data = $request->all();
+        $paid = isset($data['paid']) ? '1' : '0';
 		$lesson_data = [
 			'video' => $data['video'],
 			'time' => $data['time'],
-			'course_id' => $data['course_id']
+			'course_id' => $data['course_id'],
+            'paid' =>$paid
 		];
 		$lesson = Lesson::create($lesson_data);
 		$trans_data = [
@@ -30,8 +32,8 @@ class LessonRepository {
 			'lesson_id' => $lesson->id
 		];
 		$lessonTranslation = $lesson->translation()->create($trans_data);
-		
-		if($request->hasFile('image')){			
+
+		if($request->hasFile('image')){
 			// dd($request->file('image'));
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/lessons',$lesson->id.'.'.$ext_image);
@@ -55,14 +57,14 @@ class LessonRepository {
 
 	public function editLesson($request, $id)
 	{
-		// dump($request->delete_file_first);
-		// dd($request->delete_file_second);
-		$lesson = Lesson::find($id);		
+		$lesson = Lesson::find($id);
 		$data = $request->all();
+        $paid = isset($data['paid']) ? '1' : '0';
 		$lesson_data = [
 			'video' => $data['video'],
 			'time' => $data['time'],
-			'course_id' => $data['course_id']
+			'course_id' => $data['course_id'],
+            'paid' => $paid
 		];
 		$lesson_edit = $lesson->update($lesson_data);
 		if(!$lesson_edit){
@@ -74,13 +76,13 @@ class LessonRepository {
 			'body' => $data['body'],
 			'locale' => $data['locale'],
 			'lesson_id' => $id
-		];		
+		];
 		$lessonTranslation = $lesson->translation()->update($trans_data);
 		if(!$lessonTranslation){
 			return $result = "Translation of lesson had not saved!";
 		}
-		if($request->hasFile('image')){			
-			// dd($request->file('image'));		
+		if($request->hasFile('image')){
+			// dd($request->file('image'));
 			$ext_image = $request->file('image')->extension();
 			$image = $request->file('image')->storeAs('public/lessons',$lesson->id.'.'.$ext_image);
 			$lesson->image = $image;

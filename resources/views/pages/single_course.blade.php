@@ -164,7 +164,7 @@
                             <ul>
                                 <li><i class="fa fa-clock-o"></i>Video darslar : <span>{{$course->lessons()->count()}} ta</span></li>
                                 {{-- <li><i class="fa fa-clone"></i> : <span>09</span></li> --}}
-                                <li><i class="fa fa-map"></i> Til : {{$lesson->translation->locale}}</li>
+                                <li><i class="fa fa-map"></i> Til : {{$course->translation->locale}}</li>
                                 <!-- <li><i class="fa fa-file"></i>Birinchi fayl material : @if (empty($course->file_first))<span>Yo'q </span> @else
                                     <a href="{{\Storage::url($course->file_first)}}">Birinchi</a>
                                 @endif</li>
