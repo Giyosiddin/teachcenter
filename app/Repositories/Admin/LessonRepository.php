@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Admin;
 
 use App\Models\Admin\Lesson;
 use App\Models\Admin\LessonTranslation;

@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
+use App\Repositories\Admin\TeacherRepository;
+use App\Http\Requests\TeacherCreateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Teacher;
 
 class TeacherController extends Controller
 {
+    private $teacherRepository;
+
+    public function __construct(TeacherRepository $teacherRepository)
+    {
+        $this->teacherRepository = $teacherRepository;
+    }
     public function index()
     {
-        $teachers = Teacher::orderBy('id','ASC')->paginate(10);
-        return view('admin.teacher.index', compact('teachers'));
+        return $this->teacherRepository->index();
 
     }
 
@@ -20,70 +27,26 @@ class TeacherController extends Controller
         return view('admin.teacher.create');
     }
 
-    public function store(Request $request)
+    public function store(TeacherCreateRequest $request)
     {
-        // dd($request->all());
-        $data = $request->all();
-        $teacher = Teacher::create($data);
-        if($request->hasFile('image')){			
-            $ext_image = $request->file('image')->extension();
-            $image = $request->file('image')->storeAs('public/teachers',$teacher->id.'.'.$ext_image);
-            $teacher->image = $image;
-            $teacher->save();
-        }
-        if($teacher){
-            return redirect()->route('teacher.index')->with(['success' => 'Has been created!']);
-        }else{
-            return redirect()->back()->with(['error' => 'Error. Has not been created!']);
-        }
+        return $this->teacherRepository->add($request);
     }
 
-    public function update(Request $request, $id)
+    public function update(TeacherCreateRequest $request, $id)
     {
-        $teacher = Teacher::find($id);
-        if(!$teacher){
-            return back()->withErrors(['msg' => 'Not found teacher!'])->withInput();
-        }
-        $data = $request->all();
-        $save = $teacher->update($data);
-        if($request->hasFile('image')){		
-            $ext_image = $request->file('image')->extension();
-			$image = $request->file('image')->storeAs('public/teachers',$id.'.'.$ext_image);
-			$teacher->image = $image;
-            // dd($image);	
-		}else{
-			$teacher->image = $request->delete_image;
-		}
-        $teacher->save();
-        if($save){
-            return back()->with(['msg' => " Successfuly updated"]);
-        }else{
-            return back()->withErrors(['msg' => " Error happen saving!"]);
-        }
-
+        return $this->teacherRepository->update($request, $id);
     }
 
     public function edit($id)
     {
-        $teacher = Teacher::find($id);
-        if(!$teacher){
-            return back()->withErrors(['msg' => 'Not found teacher!']);
-        }
+        $teacher = Teacher::findOrFail($id);
         return view('admin.teacher.edit',compact('teacher'));
     }
  
     public function delete($id)
     {
-        $teacher = Teacher::find($id);
-        // dd($teacher);
-        if(!$teacher){
-            return back()->withErrors(['msg' => "Not found item!"]);
-        }
+        $teacher = Teacher::findOrFail($id);
         $delete = $teacher->delete();
-        if($delete){
-            return redirect()->route('teacher.index')->with(['success' => "Item was deleted! "]);
-        }else{
-            return back()->withErrors(['msg' => "Item has not deleted!"]);
-        }
+        return redirect()->route('teacher.index')->with(['success' => "Item was deleted! "]);
     }
 }

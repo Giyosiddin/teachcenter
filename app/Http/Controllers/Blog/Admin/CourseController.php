@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\CourseRepository;
+use App\Http\Repositories\Admin\CourseRepository;
 use Illuminate\Http\Request;
 use App\Models\Admin\Course;
 use App\Models\Admin\Category;

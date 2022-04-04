@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use App\Repositories\LessonRepository;
+use App\Repositories\Admin\LessonRepository;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Course;
 use Illuminate\Http\Request;

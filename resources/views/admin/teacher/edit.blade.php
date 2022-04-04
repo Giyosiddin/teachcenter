@@ -31,6 +31,19 @@
             </div>
           </div>
         @endif
+        @if ($errors->any())
+           <div class="row justify-content-center">
+              <div class="col-md-11">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+              </div>
+            </div>
+          @endif
       </div><!-- /.container-fluid -->
     </section>
 

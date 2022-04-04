@@ -74,52 +74,84 @@ Route::group(['middleware'=>['status','auth']], function(){
     Route::group($groupData, function(){
 
         Route::get('/', 'MainController@index')->name('admin.index');
-        Route::resource('teacher', 'TeacherController');
-        Route::post('/teacher/{teacher}', 'TeacherController@update')->name('teacher.update');
-        Route::get('/teacher/delete/{id}', 'TeacherController@delete')->name('admin.teacher.delete');
-        Route::get('/study-abroad', 'PostController@index')->name('study-abroad.index');
-        Route::match(['get','post'], 'study-abroad/add', 'PostController@add')->name('study-abroad.add');
-        Route::match(['get','post'], 'study-abroad/edit/{post}', 'PostController@edit')->name('study-abroad.edit');
-        Route::get('study-abroad/show/{post}', 'PostController@show')->name('study-abroad.show');
-        Route::get('study-abroad/delete/{id}', 'PostController@delete')->name('study-abroad.delete');
-        Route::get('categories', 'CategoryController@index')->name('category.index');
-        Route::match(['get','post'], 'category/create', 'CategoryController@create')->name('category.create');
-        Route::match(['get','post'], 'category/edit/{category}', 'CategoryController@edit')->name('category.edit');
-        Route::get('category/delete/{course}', 'CategoryController@delete')->name('category.delete');
-        Route::get('course', 'CourseController@index')->name('course.index');
-        Route::match(['get','post'], 'course/create', 'CourseController@create')->name('course.create');
-        Route::match(['get','post'], 'course/edit/{course}', 'CourseController@edit')->name('course.edit');
-        Route::get('course/delete/{course}', 'CourseController@delete')->name('course.delete');
-        Route::get('course/{course}/lessons', 'CourseController@lessons')->name('course.lessons');
-        // Route::get('lessons', 'LessonController@index')->name('lesson.index');
-        Route::match(['get','post'], 'lesson/create', 'LessonController@create')->name('lesson.create');
-        Route::match(['get','post'], 'lesson/edit/{lesson}', 'LessonController@edit')->name('lesson.edit');
-        Route::get('lesson/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');
-        Route::get('lesson/show/{lesson}', 'LessonController@show')->name('lesson.show');
-        Route::get('exams','ExamController@exams')->name('admin.exams');
-        Route::match(['get', 'post'], 'exams/create', 'ExamController@createExam')->name('admin.exams.create');
-        Route::match(['get', 'post'], 'exams/update/{id}', 'ExamController@updateExam')->name('admin.exams.update');
-        Route::get('exams/delete/{id}','ExamController@deleteExam')->name('exam.delete');
-        Route::get('exams/view/{id}','ExamController@view')->name('admin.exams.view');
-        Route::match(['get','post'], 'exams/{exam_id}/question/create','ExamController@createQuestion')->name('admin.create.question');
 
-        Route::match(['get','post'],'exams/{exam_id}/question/edit/{question_id}','ExamController@editQuestion')->name('admin.question.edit');
-        Route::get('exams/question/delete/{id}','ExamController@questionDelete')->name('admin.question.delete');
+        Route::group(['prefix' => 'users'], function(){
+            Route::get('/','UserController@users')->name('admin.users');
+            Route::get('/delete/{id}','UserController@userDelete')->name('admin.users.delete');
+            Route::get('/edit/{id}', 'UserController@get_user')->name('get.status.user');
+            Route::post('/edit/{id}', 'UserController@change_status')->name('change.status.user');
+        });
+        
+        Route::group(['prefix' => 'teacher'], function(){
+            Route::get('/','TeacherController@index')->name('teacher.index');
+            Route::get('/create','TeacherController@create')->name('teacher.create');
+            Route::post('/store','TeacherController@store')->name('teacher.store');
+            Route::get('/edit/{teacher}','TeacherController@edit')->name('teacher.edit');
+            Route::post('/update/{teacher}', 'TeacherController@update')->name('teacher.update');
+            Route::get('/delete/{id}', 'TeacherController@delete')->name('admin.teacher.delete');
+        });
 
-        Route::get('testimonials','TestimonialController@index')->name('admin.testimonials');
-        Route::match(['get', 'post'], 'testimonials/create', 'TestimonialController@create')->name('admin.testimonials.create');
-        Route::match(['get', 'post'], 'testimonials/edit/{id}', 'TestimonialController@edit')->name('admin.testimonials.edit');
-        Route::get('testimonial/delete/{id}', 'TestimonialController@delete')->name('testimonial.delete');
-        Route::get('page','PageController@index')->name('admin.page');
-        Route::match(['get', 'post'], 'page/create', 'PageController@create')->name('admin.page.create');
-        Route::match(['get', 'post'], 'page/edit/{id}', 'PageController@edit')->name('admin.page.edit');
-        Route::get('/page/delete/{id}', 'PageController@delete')->name('admin.page.delete');
-        Route::get('/appels','MainController@appels')->name('admin.appels');
-        Route::get('/appels/delete/{id}','MainController@appelDelete')->name('admin.appels.delete');
-        Route::get('/users','UserController@users')->name('admin.users');
-        Route::get('/users/delete/{id}','UserController@userDelete')->name('admin.users.delete');
-        Route::get('/user/edit/{id}', 'UserController@get_user')->name('get.status.user');
-        Route::post('/user/edit/{id}', 'UserController@change_status')->name('change.status.user');
+        Route::group(['prefix' => 'study-abroad'], function(){
+            Route::get('/', 'PostController@index')->name('study-abroad.index');
+            Route::match(['get','post'], '/add', 'PostController@add')->name('study-abroad.add');
+            Route::match(['get','post'], '/edit/{post}', 'PostController@edit')->name('study-abroad.edit');
+            Route::get('/show/{post}', 'PostController@show')->name('study-abroad.show');
+            Route::get('/delete/{id}', 'PostController@delete')->name('study-abroad.delete');
+        });
+        
+        Route::group(['prefix' => 'category'], function(){
+            Route::get('/', 'CategoryController@index')->name('category.index');
+            Route::match(['get','post'], '/create', 'CategoryController@create')->name('category.create');
+            Route::match(['get','post'], '/edit/{category}', 'CategoryController@edit')->name('category.edit');
+            Route::get('/delete/{course}', 'CategoryController@delete')->name('category.delete');
+        });
+
+        Route::group(['prefix' => 'course'], function(){
+            Route::get('/', 'CourseController@index')->name('course.index');
+            Route::match(['get','post'], '/create', 'CourseController@create')->name('course.create');
+            Route::match(['get','post'], '/edit/{course}', 'CourseController@edit')->name('course.edit');
+            Route::get('/delete/{course}', 'CourseController@delete')->name('course.delete');
+            Route::get('/{course}/lessons', 'CourseController@lessons')->name('course.lessons');            
+        });
+
+        Route::group(['prefix' => 'lesson'], function(){
+            // Route::get('lessons', 'LessonController@index')->name('lesson.index');
+            Route::match(['get','post'], '/create', 'LessonController@create')->name('lesson.create');
+            Route::match(['get','post'], '/edit/{lesson}', 'LessonController@edit')->name('lesson.edit');
+            Route::get('/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');
+            Route::get('/show/{lesson}', 'LessonController@show')->name('lesson.show');
+        });
+
+        Route::group(['prefix' => 'exams'], function(){
+            Route::get('/','ExamController@exams')->name('admin.exams');
+            Route::match(['get', 'post'], '/create', 'ExamController@createExam')->name('admin.exams.create');
+            Route::match(['get', 'post'], '/update/{id}', 'ExamController@updateExam')->name('admin.exams.update');
+            Route::get('/delete/{id}','ExamController@deleteExam')->name('exam.delete');
+            Route::get('/view/{id}','ExamController@view')->name('admin.exams.view');
+            Route::match(['get','post'], '/{exam_id}/question/create','ExamController@createQuestion')->name('admin.create.question');
+            Route::match(['get','post'],'/{exam_id}/question/edit/{question_id}','ExamController@editQuestion')->name('admin.question.edit');
+            Route::get('/question/delete/{id}','ExamController@questionDelete')->name('admin.question.delete');
+        });
+
+        Route::group(['prefix' => 'testimonials'], function(){
+            Route::get('/','TestimonialController@index')->name('admin.testimonials');
+            Route::match(['get', 'post'], '/create', 'TestimonialController@create')->name('admin.testimonials.create');
+            Route::match(['get', 'post'], '/edit/{id}', 'TestimonialController@edit')->name('admin.testimonials.edit');
+            Route::get('/delete/{id}', 'TestimonialController@delete')->name('testimonial.delete');
+        });
+
+        Route::group(['prefix' => 'pages'], function(){
+            Route::get('/','PageController@index')->name('admin.page');
+            Route::match(['get', 'post'], '/create', 'PageController@create')->name('admin.page.create');
+            Route::match(['get', 'post'], '/edit/{id}', 'PageController@edit')->name('admin.page.edit');
+            Route::get('/delete/{id}', 'PageController@delete')->name('admin.page.delete');
+        });
+
+        Route::group(['prefix' => 'appels'], function(){
+            Route::get('/','MainController@appels')->name('admin.appels');
+            Route::get('/delete/{id}','MainController@appelDelete')->name('admin.appels.delete');
+        });
+
     });
 
 });

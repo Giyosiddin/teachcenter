@@ -24,6 +24,19 @@
 
     <!-- Main content -->
     <section class="content">
+      @if ($errors->any())
+       <div class="row justify-content-center">
+          <div class="col-md-11">
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          </div>
+        </div>
+      @endif
 	<form action="{{route('teacher.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
       <div class="row">
