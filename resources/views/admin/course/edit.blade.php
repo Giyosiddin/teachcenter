@@ -34,7 +34,7 @@
         </ul>
     </div>
     @endif
-	  <form action="{{route('course.edit', $course->id)}}" method="POST" enctype="multipart/form-data">
+	  <form action="{{route('course.update', $course->id)}}" method="POST" enctype="multipart/form-data">
      @csrf
       <div class="row">
         <div class="col-md-9">

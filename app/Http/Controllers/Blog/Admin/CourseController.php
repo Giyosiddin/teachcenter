@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Repositories\Admin\CourseRepository;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseRequest;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 use App\Models\Admin\Course;
-use App\Models\Admin\Category;
 use App\Models\Teacher;
 
 class CourseController extends Controller
@@ -21,75 +22,36 @@ class CourseController extends Controller
 
     public function index()
     {
-        $courses = Course::orderBy('order','ASC')->get();
-        return view('admin.course.index',compact('courses'));
+        return $this->courseRepository->index();
     }
 
-    public function create(Request $request)
+    public function addCourse()
     {
-
-        $teachers = Teacher::all();
-        $categories = Category::all();
-        if($request->isMethod('get')){
-            return view('admin.course.create',compact('teachers','categories'));
-        }else{
-
-            $validated = $request->validate([
-                'title' => 'required|max:255',
-                'description' => 'required|max:255',
-                'body' => 'required',
-                'locale' => 'required',
-            ]);
-            $create = $this->courseRepository->createCourse($request);
-            if($create){
-                return redirect()->route('course.edit',$create->id)->with(['msg' => "Course has been created successfuly!"]);
-                // dd();
-            }
-        }
+       return $this->courseRepository->addCourse();        
     }
 
-    public function edit(Request $request, $id)
+    public function create(CourseRequest $request)
     {
-        $course = Course::find($id);
-        $categories = Category::all();
-        $teachers = Teacher::all();
-        if(!$course){
-            return redirect()->route('course.index')->withErrors(['msg' => "Course not found!"])->withInput();
-        }
-        if($request->isMethod('get')){
-            return view('admin.course.edit', compact('course','teachers','categories'));
-        }else{
-            $validated = $request->validate([
-                'title' => 'required|max:255',
-                'description' => 'required|max:255',
-                'body' => 'required',
-                'locale' => 'required',
-            ]);
-            $update = $this->courseRepository->updateCourse($request, $course->id);
-            if($update){
-                return redirect()->route('course.edit',$course->id)->with(['msg' => "Course has been created successfuly!"]);
-            }
-        }
+        return $this->courseRepository->createCourse($request);
+    }
+
+    public function edit($id)
+    {    
+        return $this->courseRepository->edit($id);
+    }
+
+    public function update(CourseRequest $request, $id)
+    {
+         return $this->courseRepository->updateCourse($request, $id);
     }
 
     public function delete($id)
     {
-        $course = Course::find($id);
-        if(!$course){
-              return back()->withErrors(['msg' => "Course not found!"]);
-        }
-        $translation_delete = $course->translation()->delete();
-        $delete = $course->delete();
-        if($delete){
-            return redirect()->route('course.index')->with(['msg' => 'Course has been deleted!']);
-        }else{
-            return back()->withErrors(['msg' => 'Course would not deleted!']);
-        }
+        return $this->courseRepository->delete($id);
     }
+
     public function lessons($course_id)
     {
-        $course = Course::find($course_id);
-        $lessons = $course->lessons()->orderBy('id','ASC')->paginate(50);
-        return view('admin.lesson.index', compact('lessons','course'));
+        return $this->courseRepository->lessons($course_id);
     }
 }

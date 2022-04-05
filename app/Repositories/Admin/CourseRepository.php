@@ -3,6 +3,8 @@
 namespace App\Http\Repositories\Admin;
 
 use App\Models\Admin\Course;
+use App\Models\Admin\Teacher;
+use App\Models\Admin\Category;
 use App\Models\Admin\CourseTranslation;
 
 class CourseRepository {
@@ -11,6 +13,19 @@ class CourseRepository {
 	{
 		// parent::__construct();
 		$this->course = $course;
+	}
+
+	public function index()
+	{
+		$courses = Course::orderBy('order','ASC')->get();
+        return view('admin.course.index',compact('courses'));
+	}
+
+	public function addCourse()
+	{
+		$teachers = Teacher::all();
+        $categories = Category::all();
+        return view('admin.course.create',compact('teachers','categories'));
 	}
 
 	public function createCourse($request)
@@ -40,8 +55,16 @@ class CourseRepository {
 		$course->save();
 		$course_translation = CourseTranslation::create($course_translation);
 		if($course){
-			return $course;
+			return redirect()->route('course.edit', $course->id);
 		}
+	}
+
+	public function edit($id)
+	{
+		$course = Course::findOrFail($id);
+        $categories = Category::all();
+        $teachers = Teacher::all();
+        return view('admin.course.edit', compact('course','teachers','categories'));
 	}
 
 	public function updateCourse($request, $id)
@@ -73,9 +96,20 @@ class CourseRepository {
 			$course->image = $request->delete_image;
 		}
 		$course->save();
-		if($course){
-			return $course;
-		}
+		return redirect()->route('course.edit', $course->id);
 	}
 
+	public function delete($id)
+	{
+		$course = Course::with('translation')->findOrFail($id);
+        $translation_delete = $course->translation()->delete();
+        $delete = $course->delete();
+        return redirect()->route('course.index')->with(['msg' => 'Course has been deleted!']);
+	}
+
+	public function lessons($course_id)
+	{
+        $lessons = Course::with('lessons','translation')->find($course_id)->lessons()->with('course','course.translation')->orderBy('id','ASC')->paginate(50);
+        return view('admin.lesson.index', compact('lessons'));
+	}
 }

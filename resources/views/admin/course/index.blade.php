@@ -42,7 +42,7 @@
           <h3 class="card-title">Courses</h3>
 
           <div class="card-tools">
-            <a href="{{route('course.create')}}" class="btn btn-block btn-success btn-flat"> Add Course</a>
+            <a href="{{route('course.add')}}" class="btn btn-block btn-success btn-flat"> Add Course</a>
           </div>
         </div>
         <div class="card-body p-0">

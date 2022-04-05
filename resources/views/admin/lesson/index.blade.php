@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-      		<h1>Lessons of {{$course->translation->title}}</h1>
+      		<h1>Lessons of course - №{{request('course')}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -43,7 +43,7 @@
           <h3 class="card-title">Lessons</h3>
 
           <div class="card-tools">
-            <a href="{{route('lesson.create')}}" class="btn btn-block btn-success btn-flat"> Add lesson</a>
+            <a href="{{route('lesson.add')}}" class="btn btn-block btn-success btn-flat"> Add lesson</a>
           </div>
         </div>
         <div class="card-body p-0">
@@ -88,7 +88,7 @@
                           </p>
                       </td>
                       <td class="project-state">
-                          <p>{{$course->translation->title}}</p>
+                          <p>{{$lesson->course->translation->title}}</p>
                       </td>
                      {{-- <td class="project-state">
                          <img src="{{\Storage::url($lesson->image)}}" alt="" width="100px">

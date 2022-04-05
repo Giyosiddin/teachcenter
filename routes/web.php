@@ -108,16 +108,19 @@ Route::group(['middleware'=>['status','auth']], function(){
 
         Route::group(['prefix' => 'course'], function(){
             Route::get('/', 'CourseController@index')->name('course.index');
-            Route::match(['get','post'], '/create', 'CourseController@create')->name('course.create');
-            Route::match(['get','post'], '/edit/{course}', 'CourseController@edit')->name('course.edit');
+            Route::get('/add', 'CourseController@addCourse')->name('course.add');
+            Route::post('/create', 'CourseController@create')->name('course.create');
+            Route::get('/edit/{course}', 'CourseController@edit')->name('course.edit');
+            Route::post('/edit/{course}', 'CourseController@update')->name('course.update');
             Route::get('/delete/{course}', 'CourseController@delete')->name('course.delete');
             Route::get('/{course}/lessons', 'CourseController@lessons')->name('course.lessons');            
         });
 
         Route::group(['prefix' => 'lesson'], function(){
-            // Route::get('lessons', 'LessonController@index')->name('lesson.index');
-            Route::match(['get','post'], '/create', 'LessonController@create')->name('lesson.create');
-            Route::match(['get','post'], '/edit/{lesson}', 'LessonController@edit')->name('lesson.edit');
+            Route::get('/add', 'LessonController@add')->name('lesson.add');
+            Route::post('/create', 'LessonController@create')->name('lesson.create');
+            Route::get('/edit/{lesson}', 'LessonController@edit')->name('lesson.edit');
+            Route::post('/edit/{lesson}', 'LessonController@update')->name('lesson.update');
             Route::get('/delete/{lesson}', 'LessonController@delete')->name('lesson.delete');
             Route::get('/show/{lesson}', 'LessonController@show')->name('lesson.show');
         });
@@ -161,7 +164,7 @@ Route::group(['middleware'=>['status','auth']], function(){
 Route::group([
     // 'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-], function(){
+    ], function(){
 
     Auth::routes();
     Route::get('', 'Blog\Front\FrontController@home')->name('home');
@@ -169,17 +172,26 @@ Route::group([
     Route::get('/about', 'Blog\Front\FrontController@about')->name('about');
 
     // Route::get('/courses', 'Blog\Front\FrontController@courses')->name('courses');
-    Route::get('/subjects', 'Blog\Front\FrontController@onlineCourses')->name('online-courses');
-    Route::get('/subjects/{id}', 'Blog\Front\FrontController@course')->name('in.course');
-    Route::get('/subjects/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->middleware('buyer')->name('in.lesson');
+    Route::group(['prefix' => 'subjects'], function(){
+        Route::get('/', 'Blog\Front\FrontController@onlineCourses')->name('online-courses');
+        Route::get('/{id}', 'Blog\Front\FrontController@course')->name('in.course');
+        Route::get('/{course_id}/{lesson}', 'Blog\Front\FrontController@lesson')->middleware('buyer')->name('in.lesson');
+    });
+
+    Route::group(['prefix' => 'study-abroad'], function(){
+        Route::get('/', 'Blog\Front\FrontController@studyAbroad')->name('study-abroad');
+        Route::get('/{slug}', 'Blog\Front\FrontController@inStudyAbroad')->name('in.study-abroad');
+    });
+
     Route::get('/contact', 'Blog\Front\FrontController@contact')->name('contact');
-    Route::get('/study-abroad', 'Blog\Front\FrontController@studyAbroad')->name('study-abroad');
-    Route::get('study-abroad/{slug}', 'Blog\Front\FrontController@inStudyAbroad')->name('in.study-abroad');
     Route::get('exams','Blog\Front\MainController@exams')->name('exams');
-    Route::get('exam/{id}','Blog\Front\MainController@getExam')->middleware(['examiner'])->name('get.exam');
-    Route::get('myresults/', 'Blog\Front\MainController@getAllResults')->middleware(['examiner'])->name('get.allResults');
-    Route::get('myresults/{result_id}', 'Blog\Front\MainController@getResult')->middleware(['examiner'])->name('get.result');
-    Route::post('exam/{id}/to-check', 'Blog\Front\MainController@checkExam')->name('check.exam');
+
+    Route::group(['prefix' => 'exam', 'middleware' => 'examiner'], function(){
+        Route::get('/{id}','Blog\Front\MainController@getExam')->name('get.exam');
+        Route::get('myresults/', 'Blog\Front\MainController@getAllResults')->name('get.allResults');
+        Route::get('myresults/{result_id}', 'Blog\Front\MainController@getResult')->name('get.result');
+        Route::post('/{id}/to-check', 'Blog\Front\MainController@checkExam')->name('check.exam');
+    });
     Route::get('/{slug}', 'Blog\Front\FrontController@page')->name('page');
 
 });
